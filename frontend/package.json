@@ -1,0 +1,31 @@
+{
+  "name": "soulkadhi",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "fs-extra": "^11.3.2",
+    "gsap": "^3.14.2",
+    "lucide-react": "^0.548.0",
+    "next": "^15.5.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.5.0",
+    "react-player": "^3.3.3",
+    "react-spinners": "^0.17.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
