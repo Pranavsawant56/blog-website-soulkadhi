@@ -1,6 +1,5 @@
 'use client'
-
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 
 export default function AluVadiPage() {
@@ -29,6 +28,18 @@ export default function AluVadiPage() {
   const [videoOpen, setVideoOpen] = useState(false)
   const [stepPage, setStepPage] = useState(0)
   const [index, setIndex] = useState(0)
+
+  const scrollRef = useRef(null);
+  const [sPage, setSPage] = useState(0);
+
+  const scrollDown = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        top: 120,
+        behavior: "smooth",
+      });
+    }
+  };
 
   // Auto slide every 8 seconds
   useEffect(() => {
@@ -136,26 +147,27 @@ export default function AluVadiPage() {
           </div>
 
           {/* Ingredient Box */}
-          <div className="rounded-[12px] overflow-hidden ">
+          <div className="relative rounded-[12px] overflow-hidden">
             <aside
-              className=" bg-[#ccac8d]/40 shadow-inner border-[18px] border-transparent rounded-2xl
-                [border-image:url('/images/material/br-extended.png')_32_stretch]
-                [border-image-outset:2] max-h-92 overflow-y-auto 
-                [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+              ref={scrollRef}
+              className="bg-[#ccac8d]/40 shadow-inner border-[18px] border-transparent rounded-2xl
+        [border-image:url('/images/material/br-extended.png')_32_stretch]
+        [border-image-outset:2] max-h-92 overflow-y-auto
+        [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
             >
               <ul className="list-none text-sm leading-6 p-4 sm:p-6 space-y-2">
                 {[
-                  { name: " (Alu) Leaves", qty: "6–8 leaves" },
+                  { name: "(Alu) Leaves", qty: "6–8 leaves" },
                   { name: "Gram Flour", qty: "250 Gm" },
                   { name: "aagul", qty: "½ cup" },
                   { name: "Salt", qty: "1 spoon" },
-                  { name: " Spices", qty: "1 tsp" },
+                  { name: "Spices", qty: "1 tsp" },
                   { name: "Oil", qty: "5 tbsp" },
-                  { name: " (Alu) Leaves", qty: "6–8 leaves" },
+                  { name: "(Alu) Leaves", qty: "6–8 leaves" },
                   { name: "Gram Flour", qty: "250 Gm" },
                   { name: "aagul", qty: "½ cup" },
                   { name: "Salt", qty: "1 spoon" },
-                  { name: " Spices", qty: "1 tsp" },
+                  { name: "Spices", qty: "1 tsp" },
                   { name: "Oil", qty: "5 tbsp" },
                 ].map((item, idx, arr) => (
                   <li key={idx}>
@@ -164,9 +176,9 @@ export default function AluVadiPage() {
                         <span className="mt-2 h-2 w-2 rounded-full bg-black/70" />
                         <span>{item.name}</span>
                       </div>
-                      <span className="text-left ml-15 ">{item.qty}</span>
+                      <span className="text-left ml-15">{item.qty}</span>
                     </div>
-                    {/* Divider — NOT for last item */}
+
                     {idx !== arr.length - 1 && (
                       <div className="mt-3 ml-3 h-[2px] w-[90%] bg-gradient-to-r from-[#a0522d] via-[#a0522d]/40 to-transparent" />
                     )}
@@ -174,6 +186,16 @@ export default function AluVadiPage() {
                 ))}
               </ul>
             </aside>
+
+            {/* ⬇️ Scroll Down Button */}
+            <button
+              onClick={scrollDown}
+              className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-white/70 backdrop-blur-md shadow-lg
+           rounded-full w-8 h-8 flex items-center justify-center
+           hover:bg-white transition">
+
+              ▼
+            </button>
           </div>
         </div>
       </section>
@@ -218,58 +240,62 @@ export default function AluVadiPage() {
 
         {/* HOW TO MAKE */}
         <div className="relative overflow-hidden">
-          <div className="flex items-center mb-1 w-full px-3 ">
-            <Image src="/images/material/mat4.svg" width={26} height={26} alt="leaf" />
-            <h3 className="font-serif text-xl flex items-center ml-2 w-full">
-              How to Make
-              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
-                  from-[#a0522d] 
-                  via-[#a0522d]/40 
-                 
-                  to-transparent"></span>
-            </h3>
-          </div>
-          <aside className="p-8 rounded-xl shadow-inner pt-4  ">
-            <div className="grid grid-cols-2 gap-2">
-              {stepImages.slice(stepPage * 4, stepPage * 4 + 4).map((img, i) => (
-                <div key={i} className="flex flex-col items-center py-2">
-                  <div className="relative w-[200px] h-[120px] ">
-                    {/* Clickable Image */}
-                    <button
-                      onClick={() => setModalIndex(stepPage * 4 + i)}
-                      className="w-full h-full rounded-xl overflow-hidden  "
-                    >
-                      <Image
-                        src={img}
-                        fill
-                        className="object-cover"
-                        alt={`step ${stepPage * 4 + i + 1}`}
-                      />
-                    </button>
+          <aside className="p-8 rounded-xl shadow-inner pt-4">
 
-                    {/* Step Number Badge */}
-                    <span className="absolute -bottom-1 -left-1 z-10 w-6 h-6  border border-black bg-[#ffffff]/90 text-black flex items-center justify-center font-bold shadow">
-                      {stepPage * 4 + i + 1}
+            {/* SLIDER WINDOW */}
+            <div className="overflow-hidden h-[320px]">
+              <div
+                className="grid grid-cols-2 gap-2 transition-transform duration-500 ease-in-out"
+                style={{
+                  transform: sPage === 0 ? "translateY(0px)" : "translateY(-320px)",
+                }}
+              >
+                {stepImages.map((img, i) => (
+                  <div key={i} className="flex flex-col items-center py-2">
+                    <div className="relative w-[200px] h-[120px]">
+
+                      <button
+                        onClick={() => setModalIndex(i)}
+                        className="w-full h-full rounded-xl overflow-hidden"
+                      >
+                        <Image
+                          src={img}
+                          fill
+                          className="object-cover"
+                          alt={`step ${i + 1}`}
+                        />
+                      </button>
+
+                      {/* STEP NUMBER */}
+                      <span className="absolute -bottom-1 -left-1 z-10 w-6 h-6 border border-black bg-white text-black flex items-center justify-center font-bold shadow">
+                        {i + 1}
+                      </span>
+                    </div>
+
+                    <span className="mt-1 text-sm font-medium text-[#3b2f2f] text-center">
+                      {stepDescriptions[i]}
                     </span>
                   </div>
-                  <span className="mt-1 text-sm font-medium text-[#3b2f2f] text-center">
-                    {stepDescriptions[stepPage * 4 + i]}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            <div className="flex justify-center ">
+            {/* BUTTON */}
+            <div className="flex justify-center mt-3">
               <button
-                className="w-[25%] bg-[#7b4a2e] text-white  rounded-lg"
-                onClick={() => setStepPage(stepPage === 0 ? 1 : 0)}
+                className={`w-[25%] bg-[#7b4a2e] text-white rounded-lg py-1
+              transition-transform duration-300
+              ${sPage === 1 ? "rotate-180" : ""}`}
+                onClick={() => setSPage(sPage === 0 ? 1 : 0)}
               >
                 ▼
               </button>
-            </div>
-          </aside>
 
+            </div>
+
+          </aside>
         </div>
+
 
       </section>
 
