@@ -11,48 +11,120 @@
   /* Brand Colors */
   --color-dark-brown: #5b3523;
   --color-light-orange: #faf4ee;
-  --color-pastel-greyorange: #e3c7a5;
+  --color-pastel-greyorange: #faf7f2;
   --color-grey-brown: #7b4b2a;
   --color-grey-orange: #c08a5a;
 
-  /* Fonts */
+  /* Fonts (used via next/font variables) */
   --font-poppins: "Poppins", sans-serif;
   --font-roboto: "Roboto", sans-serif;
 }
+
+/* Libre Baskerville - Regular */
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/fonts/Baskervville-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; /* variable font range */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Libre Baskerville - Italic */
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: url('/fonts/Baskervville-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Playfair Display - Regular */
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/fonts/Playfair-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-stretch: 75% 125%; /* width axis */
+  font-optical-sizing: auto; /* optical size axis */
+  font-display: swap;
+}
+
+/* Playfair Display - Italic */
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('/fonts/Playfair-Italic-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-stretch: 75% 125%;
+  font-optical-sizing: auto;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bitter';
+  src: url('/fonts/Bitter-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bitter';
+  src: url('/fonts/Bitter-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+p ,div {
+  font-family: 'Bitter', serif;
+}
+
+h1 , h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600; /* can use variable font weight 100-900 */
+   font-style: normal;
+}
+ h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 800; /* can use variable font weight 100-900 */
+  font-style: italic;
+
+}
+ 
 
 /* ============================
    🧱 Base Styles
    ============================ */
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-poppins);
   font-weight: 500;
 }
 
- /* main {
-  background-color: #d4b788;
-  position: relative;
-  z-index: 0;
-} */
+.page-bg {
+  background-image: url("/images/material/bg6.png");
+  background-repeat: repeat;
+  background-position: top left;
+}
 
-/* main::before {
+
+/* ============================
+   📖 Soft paper overlay (OPTIONAL but recommended)
+   ============================ */
+body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('white-paper-texture.jpg');
-  background-repeat: repeat;
-  background-size: auto;
-  opacity: 0.5; 
-  z-index: -1;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
   pointer-events: none;
-}  */
+  z-index: -1;
+}
 
-
-/* Utility: apply Roboto when needed */
+/* ============================
+   🔤 Utility Font Class
+   ============================ */
 .roboto {
   font-family: var(--font-roboto);
 }
@@ -85,7 +157,7 @@ body {
   40% { transform: scale(1); }
 }
 
-/* Tailwind-compatible classes */
+/* Tailwind-compatible animation classes */
 .animate-spin-slow {
   animation: spin-slow 2s linear infinite;
 }
@@ -108,5 +180,17 @@ body {
 
 .animate-bounce-delay-400 {
   animation: bounce-delay 1.2s infinite 0.4s;
+}
+
+.blend-image {
+ 
+ 
+  box-shadow: 0px 0px 100px 100px #F5E1CF inset;
+ 
+  mask: radial-gradient(
+    ellipse at center,
+    black 50%,
+    transparent 69%
+  );
 }
 

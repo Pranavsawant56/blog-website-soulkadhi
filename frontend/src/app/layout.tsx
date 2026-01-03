@@ -4,7 +4,7 @@ import ClientWrapper from "@/components/ClientWrapper";
 import { Poppins, Roboto } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
-import { Playfair_Display, Libre_Baskerville } from 'next/font/google'
+import { Playfair_Display, Libre_Baskerville } from "next/font/google";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,16 +19,16 @@ const roboto = Roboto({
 });
 
 const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-playfair',
-})
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-playfair",
+});
 
 const baskerville = Libre_Baskerville({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-baskerville',
-})
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-baskerville",
+});
 
 export const metadata: Metadata = {
   title: "Soulkadhi",
@@ -39,7 +39,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${roboto.variable}`}>

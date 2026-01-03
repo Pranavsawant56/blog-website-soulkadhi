@@ -7,14 +7,13 @@ error_reporting(E_ALL);
 ini_set("log_errors", 1);
 ini_set("error_log", __DIR__ . "/error_log.txt"); // Error log file
 
+
 // Function to write custom logs
-function writeLog($message) {
-    error_log("[" . date("Y-m-d H:i:s") . "] " . $message . "\n", 3, __DIR__ . "/error_log.txt");
-}
+
 
 // Database connection
 $conn = new mysqli(
-    "auth-db1826.hostgtr.io",
+    "localhost",
     "u219254479_anubhooteeuser",
     "MauliNiwas@@2025",
     "u219254479_Soulkadhi_DB"
@@ -47,3 +46,8 @@ while ($row = $result->fetch_assoc()) {
 // Send JSON to frontend
 echo json_encode($videos);
 ?>
+
+
+
+
+

@@ -39,34 +39,36 @@ export default function AluVadiPage() {
   }, [])
 
   const stepDescriptions = [
-    "Wash and prepare the colocasia leaves",
-    "Mix gram flour with spices",
-    "Spread mixture on leaves",
-    "Roll the leaves tightly",
-    "Steam the rolls until cooked",
-    "Cut into slices",
-    "Lightly fry the slices",
-    "Serve with chutney or solkadhi"
+    "Wash leaves",
+    "Mix flour & spices",
+    "Spread on leaves",
+    "Roll tightly",
+    "Steam till cooked",
+    "Slice rolls",
+    "Lightly fry",
+    "Serve with chutney"
   ];
 
   return (
-    <main className="bg-[url('/images/material/Texture.png')]  bg-fix bg-cover bg-center bg-repeat text-[#3b2f2f]">
+    <main className="  bg-fix bg-cover bg-center bg-repeat text-[#3b2f2f]">
 
 
       {/* HERO */}
       <section className="relative h-[20vh] w-full flex items-center justify-center">
         <div className="relative w-full h-full">
           <Image
-            src="images/blogpost-banner/herobanner.png"
+            src="/images/blogpost-banner/blog3-banner.png"
             fill
-            className="object-cover"
+            className="object-cover object-top"
             alt="Alu Vadi"
             priority
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
+
         <div className="absolute text-center px-4">
-          <h1 className="{`text-4xl md:text-5xl text-white tracking-wide ${playfair.className}`}">
+          <h1 className="{`text-4xl md:text-5xl text-white tracking-wide font-family: 'Playfair Display', serif;
+                        font-variation-settings: 'wght' 800, 'wdth' 11`}">
             Alu Vadi
           </h1>
           <p className="text-lg text-white mt-2 ${baskerville.className}">
@@ -78,7 +80,7 @@ export default function AluVadiPage() {
       {/* INTRODUCTION */}
       <section className="max-w-6xl mx-auto mb-0 px-6 py-6 space-y-4 ">
         <div className="space-y-4">
-          <p className="leading-7 max-w-4xl ">
+          <p className="leading-7 max-w-6xl ">
             Alu Wadi is a popular traditional snack from Maharashtra. It is made using alu (colocasia) leaves and gram flour with basic
             spices. The leaves are coated with the mixture, rolled, steamed, cut into pieces, and lightly fried. It is usually eaten as
             a tea-time snack or side dish and is commonly prepared at home. 🌿
@@ -86,81 +88,93 @@ export default function AluVadiPage() {
         </div>
       </section>
 
+
+      <div className="flex items-center max-w-6xl mx-auto ">
+        {/* Left line */}
+        <span className="flex-grow h-px bg-gradient-to-r from-transparent via-[#a0522d]  to-[#a0522d] " />
+
+        {/* Dots */}
+        <span className="flex gap-2 mx-4">
+          <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
+          <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
+          <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
+        </span>
+
+        {/* Right line */}
+        <span className="flex-grow h-px bg-gradient-to-l from-transparent via-[#a0522d]  to-[#a0522d] " />
+      </div>
+
+
+
+
+
       {/* SLIDER + INGREDIENTS */}
-      <section className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-6 py-6 items-start">
+      <section className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 py-6 items-start">
 
         {/* IMAGE SLIDER */}
-        <div className="md:col-span-2 relative h-[320px] rounded-xl overflow-hidden ">
+        <div className="md:col-span-2 blend-image relative w-full max-w-full aspect-video rounded-xl overflow-hidden">
           <Image
-            src={sliderImages[index]}
+            src={sliderImages[index] ?? sliderImages[0]}
             fill
             className="object-cover transition-opacity duration-700"
             alt="Alu Vadi"
             priority
           />
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: `
-                        linear-gradient(to top,rgba(227, 199, 165, 1), transparent 5%),
-                        linear-gradient(to bottom, rgba(227, 199, 165, 1), transparent 5%),
-                        linear-gradient(to left,rgba(227, 199, 165, 1), transparent 10%),
-                        linear-gradient(to right, rgba(227, 199, 165, 1), transparent 0%)
-                         `
-            }}
-          />
+          <div className="absolute inset-0 pointer-events-none" />
         </div>
 
-        <div className="w-80">
-          {/* Heading outside the box */}
-          <div className="flex items-center mb-1 w-full">
+        {/* Ingredients */}
+        <div className="w-full max-w-md md:max-w-full">
+          {/* Heading */}
+          <div className="flex items-center mb-2 w-full">
             <Image src="/images/material/leaf.svg" width={26} height={26} alt="leaf" />
-            <h3 className="font-serif text-xl flex items-center ml-2 w-full">
+            <h3 className="text-xl flex items-center mb-2 ml-2 w-full">
               Ingredients
-              <span className="flex-grow border-b-2 border-[#a0522d] ml-3"></span>
+              <span className="flex-grow mt-3 ml-3 h-[2px] bg-gradient-to-r 
+            from-[#a0522d] via-[#a0522d]/30 to-transparent"></span>
             </h3>
           </div>
 
           {/* Ingredient Box */}
-          <aside className="bg-[#efe3cf] rounded-xl shadow-inner border-2 border-[#a0522d] max-h-72 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-
-            <ul className="list-none text-sm leading-6 p-6 space-y-2">
-              {[
-                { name: " (Alu) Leaves", qty: "6–8 leaves" },
-                { name: "Gram Flour", qty: "250 Gram" },
-                { name: "aagul", qty: "½ cup" },
-                { name: "Salt", qty: "1 spoon" },
-                { name: " Spices", qty: "1 tsp" },
-                { name: "Oil", qty: "5 tbsp" },
-                 { name: " (Alu) Leaves", qty: "6–8 leaves" },
-                { name: "Gram Flour", qty: "250 Gram" },
-                { name: "aagul", qty: "½ cup" },
-                { name: "Salt", qty: "1 spoon" },
-                { name: " Spices", qty: "1 tsp" },
-                { name: "Oil", qty: "5 tbsp" },
-
-              ].map((item, idx) => (
-                <li key={idx}>
-                  <div className="grid grid-cols-[1fr_140px] gap-6 items-start">
-
-                    {/* Ingredient with bullet */}
-                    <div className="flex items-start gap-2">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-black/70" />
-                      <span>{item.name}</span>
+          <div className="rounded-[12px] overflow-hidden ">
+            <aside
+              className=" bg-[#ccac8d]/40 shadow-inner border-[18px] border-transparent rounded-2xl
+                [border-image:url('/images/material/br-extended.png')_32_stretch]
+                [border-image-outset:2] max-h-92 overflow-y-auto 
+                [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+            >
+              <ul className="list-none text-sm leading-6 p-4 sm:p-6 space-y-2">
+                {[
+                  { name: " (Alu) Leaves", qty: "6–8 leaves" },
+                  { name: "Gram Flour", qty: "250 Gm" },
+                  { name: "aagul", qty: "½ cup" },
+                  { name: "Salt", qty: "1 spoon" },
+                  { name: " Spices", qty: "1 tsp" },
+                  { name: "Oil", qty: "5 tbsp" },
+                  { name: " (Alu) Leaves", qty: "6–8 leaves" },
+                  { name: "Gram Flour", qty: "250 Gm" },
+                  { name: "aagul", qty: "½ cup" },
+                  { name: "Salt", qty: "1 spoon" },
+                  { name: " Spices", qty: "1 tsp" },
+                  { name: "Oil", qty: "5 tbsp" },
+                ].map((item, idx, arr) => (
+                  <li key={idx}>
+                    <div className="grid grid-cols-[1fr_140px] gap-4 items-start">
+                      <div className="flex items-start gap-2">
+                        <span className="mt-2 h-2 w-2 rounded-full bg-black/70" />
+                        <span>{item.name}</span>
+                      </div>
+                      <span className="text-left ml-15 ">{item.qty}</span>
                     </div>
-
-                    {/* Measurement (left-aligned) */}
-                    <span className="text-left ml-5">{item.qty}</span>
-
-                  </div>
-                  <hr className="mt-2 border-[#a0522d]" />
-                </li>
-              ))}
-            </ul>
-
-
-          </aside>
-
+                    {/* Divider — NOT for last item */}
+                    {idx !== arr.length - 1 && (
+                      <div className="mt-3 ml-3 h-[2px] w-[90%] bg-gradient-to-r from-[#a0522d] via-[#a0522d]/40 to-transparent" />
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          </div>
         </div>
       </section>
 
@@ -171,57 +185,73 @@ export default function AluVadiPage() {
         <div className="relative">
           <div className="flex items-center mb-1 w-full">
             <Image src="/images/material/mat2.png" width={26} height={26} alt="leaf" />
-            <h3 className="font-serif text-xl flex items-center ml-2 w-full">
+            <h3 className=" text-xl flex items-center ml-2 w-full">
               Introduction
-              <span className="flex-grow border-b-2 border-[#a0522d] ml-3"></span>
+              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
+                  from-[#a0522d] 
+                  via-[#a0522d]/40 
+                  /* via-[#a0522d]/10  */
+                  to-transparent"></span>
             </h3>
           </div>
 
-          <aside className="bg-[#efe3cf] p-4 rounded-xl shadow-inner pt-4">
-            <p className="text-sm leading-6">
-              Alu Wadi is a traditional and much-loved dish from Maharashtra, especially from the Konkan region.
-              It is prepared using fresh alu leaves, also known as colocasia or taro leaves, which grow abundantly
-              during the monsoon season. This dish represents the deep connection between local food, seasonal ingredients,
-              and traditional cooking methods followed in many Maharashtrian households. Alu Wadi is not just a snack or side dish;
-              it is a reflection of regional wisdom, where nature and food come together in perfect balance. The main ingredient,
-              alu leaves, are large, heart-shaped green leaves that require careful handling. Though nutritious, raw alu leaves can cause itching
-              if not prepared properly. Traditional cooking methods ensure that the leaves are cleaned thoroughly and cooked well to make them safe
-              and delicious. This knowledge has been passed down through generations, especially among women in village households, who learned how
-              to prepare Alu Wadi with patience and care. how many words are the
+          <aside className="bg-[#ccac8d]/50 p-4 rounded-xl shadow-inner pt-4">
+            <p>
+              <strong>Alu Wadi</strong> is a <strong>traditional and much-loved dish from Maharashtra</strong>, especially from the
+              <strong> Konkan region</strong>. It is prepared using <strong>fresh alu leaves</strong>, also known as
+              <strong> colocasia or taro leaves</strong>, which grow abundantly during the
+              <strong> monsoon season</strong>. This dish represents the
+              <strong> deep connection between local food, seasonal ingredients, and traditional cooking methods</strong>
+              followed in many Maharashtrian households. <strong>Alu Wadi is not just a snack or side dish</strong>; it is a
+              <strong> reflection of regional wisdom</strong>, where <strong>nature and food come together in perfect balance</strong>.
+              The main ingredient, <strong>alu leaves</strong>, are <strong>large, heart-shaped green leaves</strong> that require
+              <strong> careful handling</strong>. Though nutritious, <strong>raw alu leaves can cause itching</strong> if not
+              prepared properly. <strong>Traditional cooking methods</strong> ensure that the leaves are
+              <strong> cleaned thoroughly and cooked well</strong> to make them <strong>safe and delicious</strong>.
+              This <strong>knowledge has been passed down through generations</strong>, especially among
+              <strong> women in village households</strong>, who learned how to prepare Alu Wadi with
+              <strong> patience and care</strong>.
             </p>
+
           </aside>
         </div>
 
         {/* HOW TO MAKE */}
-        <div className="relative">
+        <div className="relative overflow-hidden">
           <div className="flex items-center mb-1 w-full px-3 ">
             <Image src="/images/material/mat4.svg" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               How to Make
-              <span className="flex-grow border-b-2 border-[#a0522d] ml-3"></span>
+              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
+                  from-[#a0522d] 
+                  via-[#a0522d]/40 
+                 
+                  to-transparent"></span>
             </h3>
           </div>
-
-          <aside className="bg-[#efe3cf] p-4 rounded-xl shadow-inner pt-4">
-            <div className="grid grid-cols-2 gap-2  ">
+          <aside className="p-8 rounded-xl shadow-inner pt-4  ">
+            <div className="grid grid-cols-2 gap-2">
               {stepImages.slice(stepPage * 4, stepPage * 4 + 4).map((img, i) => (
-                <div key={i} className="flex flex-col items-center">
-                  <button onClick={() => setModalIndex(stepPage * 4 + i)} className="relative">
-                    <Image
-                      src={img}
-                      width={200}
-                      height={120}
-                      className="rounded-xl"
-                      alt={`step ${stepPage * 4 + i + 1}`}
-                    />
+                <div key={i} className="flex flex-col items-center py-2">
+                  <div className="relative w-[200px] h-[120px] ">
+                    {/* Clickable Image */}
+                    <button
+                      onClick={() => setModalIndex(stepPage * 4 + i)}
+                      className="w-full h-full rounded-xl overflow-hidden  "
+                    >
+                      <Image
+                        src={img}
+                        fill
+                        className="object-cover"
+                        alt={`step ${stepPage * 4 + i + 1}`}
+                      />
+                    </button>
 
-                    {/* STEP NUMBER */}
-                    <span className="absolute bottom-2 left-2 bg-[#7b4a2e] text-white
-                         w-8 h-8 flex items-center justify-center rounded-full text-sm font-bold">
+                    {/* Step Number Badge */}
+                    <span className="absolute -bottom-1 -left-1 z-10 w-6 h-6  border border-black bg-[#ffffff]/90 text-black flex items-center justify-center font-bold shadow">
                       {stepPage * 4 + i + 1}
                     </span>
-                  </button>
-
+                  </div>
                   <span className="mt-1 text-sm font-medium text-[#3b2f2f] text-center">
                     {stepDescriptions[stepPage * 4 + i]}
                   </span>
@@ -229,13 +259,16 @@ export default function AluVadiPage() {
               ))}
             </div>
 
-            <button
-              className="mt-2 w-full bg-[#7b4a2e] text-white py-2 rounded"
-              onClick={() => setStepPage(stepPage === 0 ? 1 : 0)}
-            >
-              ▼
-            </button>
+            <div className="flex justify-center ">
+              <button
+                className="w-[25%] bg-[#7b4a2e] text-white  rounded-lg"
+                onClick={() => setStepPage(stepPage === 0 ? 1 : 0)}
+              >
+                ▼
+              </button>
+            </div>
           </aside>
+
         </div>
 
       </section>
@@ -250,7 +283,11 @@ export default function AluVadiPage() {
             <Image src="/images/material/3leafs.png" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               Recipe Video
-              <span className="flex-grow border-b-2 border-[#a0522d] ml-3"></span>
+              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
+                  from-[#a0522d] 
+                  via-[#a0522d]/40 
+                  /* via-[#a0522d]/10  */
+                  to-transparent"></span>
             </h3>
           </div>
 
@@ -305,11 +342,15 @@ export default function AluVadiPage() {
             <Image src="/images/material/leaf3.png" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               Main Ingredient – Colocasia Leaves
-              <span className="flex-grow border-b-2 border-[#a0522d] ml-3"></span>
+              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
+                  from-[#a0522d] 
+                  via-[#a0522d]/30 
+                  /* via-[#a0522d]/10  */
+                  to-transparent"></span>
             </h3>
           </div>
 
-          <aside className="bg-[#efe3cf] p-4 rounded-xl shadow-inner">
+          <aside className=" p-4 rounded-xl shadow-inner">
             <div className="flex flex-col items-center text-center">
               <Image
                 src="/images/aluwadi/main-img/aluwadi.jpeg"
@@ -339,11 +380,15 @@ export default function AluVadiPage() {
             <Image src="/images/material/mat2.png" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               History of Alu Vadi
-              <span className="flex-grow border-b-2 border-[#a0522d] ml-3"></span>
+              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
+                  from-[#a0522d] 
+                  via-[#a0522d]/40 
+                  /* via-[#a0522d]/10  */
+                  to-transparent"></span>
             </h3>
           </div>
 
-          <aside className="bg-[#efe3cf] p-4 rounded-xl shadow-inner">
+          <aside className=" p-4 rounded-xl shadow-inner">
             <p className="text-sm leading-7">
               Alu Wadi (अळू वडी) is a traditional and much-loved dish from Maharashtra’s Konkan region 🌿.
               Its roots lie in village life during the monsoon season, when fresh colocasia (alu) leaves grow
@@ -360,11 +405,15 @@ export default function AluVadiPage() {
             <Image src="/images/material/leaf2.svg" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               Geography & Weather
-              <span className="flex-grow border-b-2 border-[#a0522d] ml-3"></span>
+              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
+                  from-[#a0522d] 
+                  via-[#a0522d]/40 
+                  /* via-[#a0522d]/10  */
+                  to-transparent"></span>
             </h3>
           </div>
 
-          <aside className="bg-[#efe3cf] p-4 rounded-xl shadow-inner space-y-2">
+          <aside className=" p-4 rounded-xl shadow-inner space-y-2">
             <Image
               src="/images/aluwadi/weather/weather.png"
               width={500}
@@ -384,44 +433,106 @@ export default function AluVadiPage() {
       </section>
 
       {/* HEALTH BENEFITS */}
-      <section className=" py-6">
-        <div className="max-w-5xl m-auto grid grid-cols-5 pb-5">
-          {Array(5).fill(borderImage[0]).map((src, i) => (
-            <Image key={i} src={src} width={200} height={80} alt="leaf" />
-          ))}
+      <section className="py-6">
+        {/* TOP BORDER */}
+        <div className="flex items-center max-w-6xl mx-auto ">
+          {/* Left line */}
+          <span className="flex-grow h-px bg-gradient-to-r from-transparent via-[#a0522d]  to-[#a0522d] " />
+
+          {/* Dots */}
+          <span className="flex gap-2 mx-4">
+            <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
+            <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
+            <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
+          </span>
+
+          {/* Right line */}
+          <span className="flex-grow h-px bg-gradient-to-l from-transparent via-[#a0522d]  to-[#a0522d] " />
         </div>
 
-        <div className="max-w-5xl mx-auto text-center ">
-          <div className="flex justify-center items-center gap-2 mb-4">
-            <Image src="/images/material/leaf-1.png" width={40} height={40} alt="leaf" />
-            <h2 className="font-serif text-2xl">Health Benefits</h2>
+        {/* WRAPPER */}
+        <div className="max-w-5xl mx-auto grid grid-cols-[30%_70%] gap-6 items-start">
+
+          {/* LEFT BOX — 30% */}
+          <div className="flex items-start gap-3 mt-15">
+            <Image
+              src="/images/material/leaf-1.png"
+              width={40}
+              height={40}
+              alt="leaf"
+            />
+            <h2 className="font-serif text-2xl leading-tight">
+              Health  Benefits
+            </h2>
+            <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
+                  from-[#a0522d] 
+                  via-[#a0522d]/30 
+                  /* via-[#a0522d]/10  */
+                  to-transparent"></span>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm ">
-            <div className="flex flex-col items-center gap-2 ">
-              <Image src="/images/material/rich-in-fiber.png" width={120} height={120} alt="Fiber" />
+          {/* RIGHT BOX — 70% */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mt-5 mb-5">
+            <div className="flex flex-col items-center gap-2">
+              <Image
+                src="/images/material/rich-in-fiber.png"
+                width={120}
+                height={120}
+                alt="Fiber"
+              />
               <p>Rich in Fiber</p>
             </div>
+
             <div className="flex flex-col items-center gap-2">
-              <Image src="/images/material/high-in-vitamins.png" width={120} height={130} alt="Vitamins" />
+              <Image
+                src="/images/material/high-in-vitamins.png"
+                width={120}
+                height={130}
+                alt="Vitamins"
+              />
               <p>High in Vitamins</p>
             </div>
+
             <div className="flex flex-col items-center gap-2">
-              <Image src="/images/material/no-preservatives.png" width={120} height={120} alt="No Preservatives" />
+              <Image
+                src="/images/material/no-preservatives.png"
+                width={120}
+                height={120}
+                alt="No Preservatives"
+              />
               <p>No Preservatives</p>
             </div>
+
             <div className="flex flex-col items-center gap-2">
-              <Image src="/images/material/traditional.png" width={120} height={130} alt="Traditional" />
+              <Image
+                src="/images/material/traditional.png"
+                width={120}
+                height={130}
+                alt="Traditional"
+              />
               <p>Wholesome & Traditional</p>
             </div>
           </div>
+
         </div>
-        <div className="max-w-5xl m-auto grid grid-cols-5 pt-5">
-          {Array(5).fill(borderImage[0]).map((src, i) => (
-            <Image key={i} src={src} width={200} height={80} alt="leaf" />
-          ))}
+
+        {/* BOTTOM BORDER */}
+        <div className="flex items-center max-w-6xl mx-auto ">
+          {/* Left line */}
+          <span className="flex-grow h-px bg-gradient-to-r from-transparent via-[#a0522d]  to-[#a0522d] " />
+
+          {/* Dots */}
+          <span className="flex gap-2 mx-4">
+            <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
+            <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
+            <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
+          </span>
+
+          {/* Right line */}
+          <span className="flex-grow h-px bg-gradient-to-l from-transparent via-[#a0522d]  to-[#a0522d] " />
         </div>
       </section>
+
 
       {/* WHY KONKAN LOVES IT */}
       <section className="max-w-6xl mx-auto px-6 py-6">
@@ -429,7 +540,11 @@ export default function AluVadiPage() {
           <Image src="/images/material/leaf.svg" width={30} height={30} alt="leaf" />
           <h2 className="font-serif text-2xl flex items-center w-full">
             Complimentary Foods
-            <span className="flex-grow border-b-2 border-[#a0522d] ml-3"></span>
+            <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
+                  from-[#a0522d] 
+                  via-[#a0522d]/50 
+                  /* via-[#a0522d]/10  */
+                  to-transparent"></span>
           </h2>
         </div>
 

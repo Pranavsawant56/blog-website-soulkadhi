@@ -1,31 +1,16 @@
-
-<?php
-header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *");
-
-$conn = new mysqli(
-    "localhost",
-    "u219254479_anubhooteeuser",
-    "MauliNiwas@@2025",
-    "u219254479_Soulkadhi_DB"
-);
-
-$result = $conn->query("SELECT * FROM videos");
-echo json_encode($result->fetch_all(MYSQLI_ASSOC));
-// /////////////////////////////////////////////////////
 <?php
 
 // ===============================
 // CONFIG
 // ===============================
-$apiKey = "YOUR_API_KEY";          // ← Add your YouTube API key
-$playlistId = "YOUR_PLAYLIST_ID";  // ← Add your playlist ID
+$apiKey = "YT_API_KEY";          // ← Add your YouTube API key
+$playlistId = "PLAYLIST_ID";  // ← Add your playlist ID
 
 // ===============================
 // DATABASE CONNECTION
 // ===============================
 $conn = new mysqli(
-    "auth-db1826.hostgtr.io",
+    "localhost",
     "u219254479_anubhooteeuser",
     "MauliNiwas@@2025",
     "u219254479_Soulkadhi_DB"

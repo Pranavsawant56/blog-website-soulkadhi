@@ -47,13 +47,13 @@ export default function VideosPage() {
     return (
         <section
             className="py-10 px-4 sm:px-8 lg:px-16 xl:px-24"
-            style={{ backgroundColor: "var(--color-pastel-greyorange)" }}
+           
         >
             <div className="max-w-6xl mx-auto">
                 {/* Heading */}
                 <div className="flex items-center justify-center mb-6">
                     <h2 className="bg-[#6b3d24] text-white text-lg sm:text-xl px-4 py-1 rounded font-(--font-roboto)">
-                        ALL VIDEOS
+                        All Videos
                     </h2>
                 </div>
 
@@ -70,9 +70,9 @@ export default function VideosPage() {
                     <button
                         disabled={currentPage === 1}
                         onClick={() => setCurrentPage(currentPage - 1)}
-                        className={`px-4 py-2 rounded font-(--font-roboto) ${
+                        className={`px-4 py-2 rounded  ${
                             currentPage === 1
-                                ? "bg-gray-400 text-white cursor-not-allowed"
+                                ? "bg-[#7b4b2a] text-white cursor-not-allowed"
                                 : "bg-[#6b3d24] text-white hover:bg-[#5f341e]"
                         }`}
                     >
@@ -80,7 +80,7 @@ export default function VideosPage() {
                     </button>
 
                     {/* Page number */}
-                    <p className="text-lg font-(--font-poppins)">
+                    <p className="text-lg">
                         Page {currentPage} of {totalPages}
                     </p>
 
@@ -88,9 +88,9 @@ export default function VideosPage() {
                     <button
                         disabled={currentPage === totalPages}
                         onClick={() => setCurrentPage(currentPage + 1)}
-                        className={`px-4 py-2 rounded font-(--font-roboto) ${
+                        className={`px-4 py-2 rounded  ${
                             currentPage === totalPages
-                                ? "bg-gray-400 text-white cursor-not-allowed"
+                                ? "bg-[#7b4b2a] text-white cursor-not-allowed"
                                 : "bg-[#6b3d24] text-white hover:bg-[#5f341e]"
                         }`}
                     >

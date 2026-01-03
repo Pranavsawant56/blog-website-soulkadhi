@@ -17,7 +17,7 @@ const brothers = [
 
 
   return (
-    <div className="w-full min-h-screen py-10 px-4 bg-(--color-pastel-greyorange)">
+    <div className="w-full min-h-screen py-10 px-4">
       <div className="max-w-4xl mx-auto">
 
         {/* INTRO SECTION */}

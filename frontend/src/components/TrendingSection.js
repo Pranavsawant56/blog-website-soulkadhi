@@ -32,19 +32,19 @@ export default function TrendingSection() {
     }, []);
 
     return (
-        <section className="py-4 px-4 sm:px-8 lg:px-16 xl:px-24" style={{ backgroundColor: "var(--color-pastel-greyorange)" }}>
+        <section className="py-4 px-4 sm:px-8 lg:px-16 xl:px-24" >
             <div className="max-w-6xl mx-auto">
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center flex-1">
                         <h2 className="bg-[#6b3d24] text-white text-lg sm:text-xl font-bold px-4 py-1 rounded font-['poppins']">
-                            TRENDING VIDEOS
+                            Trending Videos
                         </h2>
-                        <div className="flex-1 border-t-4 border-dotted border-[#6b3d24] ml-3"></div>
+                        <div className="flex-1 border-t-2 border-dotted border-[#6b3d24] ml-4 mt-8"></div>
                     </div>
 
                     <a
-                        href="/videos.html?filter=trending"
-                        className="bg-[#7b4b2a] text-white font-semibold font-['poppins'] text-base px-4 py-2 rounded hover:bg-[#5f341e] transition ml-4"
+                        href="/videos?filter=trending"
+                        className=" text-[#6b3d24]   px-4 py-2 rounded  transition ml-4"
                     >
                         See All
                     </a>
