@@ -92,7 +92,7 @@ export default function AluVadiPage() {
       if (e.key === "ArrowRight") {
         setModalIndex((prev) => (prev + 1) % stepImages.length);
       }
-         if (e.key === "Escape") {
+      if (e.key === "Escape") {
         setModalIndex(null);
       }
     };
@@ -264,7 +264,7 @@ export default function AluVadiPage() {
       </section>
 
       {/* INTRO + HOW TO MAKE */}
-      <section className="max-w-6xl mx-auto px-6 py-6 grid md:grid-cols-2 gap-6">
+      <section className="max-w-6xl mx-auto px-6  grid md:grid-cols-2 gap-6">
 
         {/* INTRO */}
         <div className="relative">
@@ -280,7 +280,7 @@ export default function AluVadiPage() {
             </h3>
           </div>
 
-          <aside className=" p-4 rounded-xl shadow-inner pt-4">
+          <aside className="  rounded-xl shadow-inner pt-4">
             <p>
               <strong>Alu Wadi</strong> is a <strong>traditional and much-loved dish from Maharashtra</strong>, especially from the
               <strong> Konkan region</strong>. It is prepared using <strong>fresh alu leaves</strong>, also known as
@@ -311,20 +311,21 @@ export default function AluVadiPage() {
             from-[#a0522d] via-[#a0522d]/30 to-transparent"></span>
             </h3>
           </div>
-          <aside className="p-8 rounded-xl shadow-inner pt-4">
+          <aside className="p-4 sm:p-8 rounded-xl shadow-inner pt-4">
 
             {/* SLIDER WINDOW */}
             <div className="overflow-hidden h-[320px]">
               <div
-                className="grid grid-cols-2 gap-2 transition-transform duration-500 ease-in-out"
+                className="grid grid-cols-2 sm:grid-cols-2 gap-2 transition-transform duration-500 ease-in-out"
                 style={{
                   transform: `translateY(-${sPage * 320}px)`,
                 }}
               >
                 {stepImages.map((img, i) => (
                   <div key={i} className="flex flex-col items-center py-1">
-                    <div className="relative w-[200px] h-[120px]">
 
+                    {/* IMAGE BOX */}
+                    <div className="relative w-full max-w-[200px] h-[120px] sm:h-[120px]">
                       <button
                         onClick={() => setModalIndex(i)}
                         className="w-full h-full rounded-xl overflow-hidden"
@@ -343,7 +344,8 @@ export default function AluVadiPage() {
                       </span>
                     </div>
 
-                    <span className="mt-1 text-sm font-medium text-[#3b2f2f] text-center ">
+                    {/* TEXT */}
+                    <span className="mt-1 text-sm font-medium text-[#3b2f2f] text-center">
                       {stepDescriptions[i]}
                     </span>
                   </div>
@@ -352,25 +354,23 @@ export default function AluVadiPage() {
             </div>
 
             {/* BUTTON */}
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center">
               <button
-                className="w-[25%] bg-[#7b4a2e] text-white rounded-lg py-1"
+                className="w-[45%] sm:w-[25%] bg-[#7b4a2e] text-white rounded-lg py-1"
                 onClick={() => setSPage(prev => (prev + 1) % totalPages)}
               >
                 {sPage === totalPages - 1 ? "▲" : "▼"}
               </button>
-
-
             </div>
-
           </aside>
+
         </div>
 
 
       </section>
 
       {/* VIDEO + MAIN INGREDIENT */}
-      <section className="max-w-6xl mx-auto px-6 py-6 grid md:grid-cols-2 gap-6 items-start">
+      <section className="max-w-6xl mx-auto px-6  grid md:grid-cols-2 gap-6 items-start">
 
         <div className="relative">
 
@@ -529,7 +529,7 @@ export default function AluVadiPage() {
       </section>
 
       {/* HEALTH BENEFITS */}
-      <section className="py-6">
+      <section className="">
         {/* TOP BORDER */}
         <div className="flex items-center max-w-6xl mx-auto ">
           {/* Left line */}
@@ -612,26 +612,25 @@ export default function AluVadiPage() {
 
         </div>
 
-        {/* BOTTOM BORDER */}
+     {/* 
         <div className="flex items-center max-w-6xl mx-auto ">
-          {/* Left line */}
+         
           <span className="flex-grow h-px bg-gradient-to-r from-transparent via-[#a0522d]  to-[#a0522d] " />
 
-          {/* Dots */}
           <span className="flex gap-2 mx-4">
             <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
             <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
             <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
           </span>
 
-          {/* Right line */}
+          
           <span className="flex-grow h-px bg-gradient-to-l from-transparent via-[#a0522d]  to-[#a0522d] " />
-        </div>
+        </div> */}
       </section>
 
 
       {/* WHY KONKAN LOVES IT */}
-      <section className="max-w-6xl mx-auto px-6 py-6">
+      <section className="max-w-6xl mx-auto px-6 pt-1 ">
         <div className="flex items-center gap-2 mb-4 w-full">
           <Image src="/images/material/leaf.svg" width={30} height={30} alt="leaf" />
           <h2 className="font-serif text-2xl flex items-center w-full">
@@ -690,7 +689,7 @@ export default function AluVadiPage() {
               </button>
 
               {/* IMAGE */}
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full mt-10">
                 <Image
                   src={stepImages[modalIndex]}
                   fill
@@ -712,7 +711,7 @@ export default function AluVadiPage() {
             </div>
 
             {/* STEP TEXT */}
-            <p className="mt-3 px-4 text-white text-center text-lg max-w-3xl">
+            <p className="mt-3 px-4 text-white text-center text-lg max-w-3xl z-10">
               <span className="font-bold mr-2">
                 Step {modalIndex + 1}:
               </span>
