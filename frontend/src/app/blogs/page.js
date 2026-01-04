@@ -557,9 +557,9 @@ export default function AluVadiPage() {
               height={40}
               alt="leaf"
             />
-            <h2 className="font-serif text-2xl leading-tight">
+            <h3 className="font-serif text-xl leading-tight">
               Health  Benefits
-            </h2>
+            </h3>
             <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
                   from-[#a0522d] 
                   via-[#a0522d]/30 
@@ -633,14 +633,14 @@ export default function AluVadiPage() {
       <section className="max-w-6xl mx-auto px-6 pt-1 ">
         <div className="flex items-center gap-2 mb-4 w-full">
           <Image src="/images/material/leaf.svg" width={30} height={30} alt="leaf" />
-          <h2 className="font-serif text-2xl flex items-center w-full">
+          <h3 className=" text-xl flex items-center w-full">
             Complimentary Foods
             <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
                   from-[#a0522d] 
                   via-[#a0522d]/50 
                   /* via-[#a0522d]/10  */
                   to-transparent"></span>
-          </h2>
+          </h3>
         </div>
 
 
