@@ -11,6 +11,9 @@ export default function AluVadiPage() {
   const stepImages = [
     '/images/aluwadi/stepimg/step1.jpeg', '/images/aluwadi/stepimg/step2.jpeg', '/images/aluwadi/stepimg/step3.jpeg', '/images/aluwadi/stepimg/step4.jpeg',
     '/images/aluwadi/stepimg/img5.jpeg', '/images/aluwadi/stepimg/step6.jpeg', '/images/aluwadi/stepimg/img7.jpeg', '/images/aluwadi/stepimg/img8.jpg',
+    '/images/aluwadi/stepimg/img7.jpeg', '/images/aluwadi/stepimg/img8.jpg', "/images/aluwadi/sliderimg/img2.jpeg",
+    "/images/aluwadi/sliderimg/img3.jpeg", "/images/aluwadi/sliderimg/img2.jpeg",
+
   ]
 
   const serveImages = [
@@ -28,6 +31,7 @@ export default function AluVadiPage() {
   const [videoOpen, setVideoOpen] = useState(false)
   const [stepPage, setStepPage] = useState(0)
   const [index, setIndex] = useState(0)
+
 
   const scrollRef = useRef(null);
   const [sPage, setSPage] = useState(0);
@@ -57,8 +61,16 @@ export default function AluVadiPage() {
     "Steam till cooked",
     "Slice rolls",
     "Lightly fry",
+    "Serve with chutney",
+    "Roll tightly",
+    "Steam till cooked",
+    "Slice rolls",
+    "Lightly fry",
     "Serve with chutney"
   ];
+  const itemsPerPage = 2 * 2; // 2 columns * 2 rows per page (adjust if layout changes)
+  const totalPages = Math.ceil(stepImages.length / itemsPerPage);
+
 
   return (
     <main className="  bg-fix bg-cover bg-center bg-repeat text-[#3b2f2f]">
@@ -193,7 +205,6 @@ export default function AluVadiPage() {
               className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-white/70 backdrop-blur-md shadow-lg
            rounded-full w-8 h-8 flex items-center justify-center
            hover:bg-white transition">
-
               ▼
             </button>
           </div>
@@ -217,7 +228,7 @@ export default function AluVadiPage() {
             </h3>
           </div>
 
-          <aside className="bg-[#ccac8d]/50 p-4 rounded-xl shadow-inner pt-4">
+          <aside className=" p-4 rounded-xl shadow-inner pt-4">
             <p>
               <strong>Alu Wadi</strong> is a <strong>traditional and much-loved dish from Maharashtra</strong>, especially from the
               <strong> Konkan region</strong>. It is prepared using <strong>fresh alu leaves</strong>, also known as
@@ -240,6 +251,14 @@ export default function AluVadiPage() {
 
         {/* HOW TO MAKE */}
         <div className="relative overflow-hidden">
+          <div className="flex items-center  w-full">
+            <Image src="/images/material/leaf.svg" width={26} height={26} alt="leaf" />
+            <h3 className="text-xl flex items-center mb-2 ml-2 w-full">
+              How To Make
+              <span className="flex-grow mt-3 ml-3 h-[2px] bg-gradient-to-r 
+            from-[#a0522d] via-[#a0522d]/30 to-transparent"></span>
+            </h3>
+          </div>
           <aside className="p-8 rounded-xl shadow-inner pt-4">
 
             {/* SLIDER WINDOW */}
@@ -247,11 +266,11 @@ export default function AluVadiPage() {
               <div
                 className="grid grid-cols-2 gap-2 transition-transform duration-500 ease-in-out"
                 style={{
-                  transform: sPage === 0 ? "translateY(0px)" : "translateY(-320px)",
+                  transform: `translateY(-${sPage * 320}px)`,
                 }}
               >
                 {stepImages.map((img, i) => (
-                  <div key={i} className="flex flex-col items-center py-2">
+                  <div key={i} className="flex flex-col items-center py-1">
                     <div className="relative w-[200px] h-[120px]">
 
                       <button
@@ -272,7 +291,7 @@ export default function AluVadiPage() {
                       </span>
                     </div>
 
-                    <span className="mt-1 text-sm font-medium text-[#3b2f2f] text-center">
+                    <span className="mt-1 text-sm font-medium text-[#3b2f2f] text-center ">
                       {stepDescriptions[i]}
                     </span>
                   </div>
@@ -281,15 +300,14 @@ export default function AluVadiPage() {
             </div>
 
             {/* BUTTON */}
-            <div className="flex justify-center mt-3">
+            <div className="flex justify-center mt-4">
               <button
-                className={`w-[25%] bg-[#7b4a2e] text-white rounded-lg py-1
-              transition-transform duration-300
-              ${sPage === 1 ? "rotate-180" : ""}`}
-                onClick={() => setSPage(sPage === 0 ? 1 : 0)}
+                className="w-[25%] bg-[#7b4a2e] text-white rounded-lg py-1"
+                onClick={() => setSPage(prev => (prev + 1) % totalPages)}
               >
-                ▼
+                {sPage === totalPages - 1 ? "▲" : "▼"}
               </button>
+
 
             </div>
 
