@@ -72,6 +72,58 @@ export default function AluVadiPage() {
   const totalPages = Math.ceil(stepImages.length / itemsPerPage);
 
 
+  useEffect(() => {
+    if (modalIndex === null) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowDown") {
+        setModalIndex((prev) => (prev + 1) % stepImages.length);
+      }
+      if (e.key === "ArrowUp") {
+        setModalIndex(
+          (prev) => (prev - 1 + stepImages.length) % stepImages.length
+        );
+      }
+      if (e.key === "ArrowLeft") {
+        setModalIndex(
+          (prev) => (prev - 1 + stepImages.length) % stepImages.length
+        );
+      }
+      if (e.key === "ArrowRight") {
+        setModalIndex((prev) => (prev + 1) % stepImages.length);
+      }
+         if (e.key === "Escape") {
+        setModalIndex(null);
+      }
+    };
+
+    let scrollTimeout = null;
+    const handleWheel = (e) => {
+      if (scrollTimeout) return;
+
+      scrollTimeout = setTimeout(() => {
+        scrollTimeout = null;
+      }, 400); // prevents fast scrolling
+
+      if (e.deltaY > 0) {
+        // scroll down
+        setModalIndex((prev) => (prev + 1) % stepImages.length);
+      } else {
+        // scroll up
+        setModalIndex(
+          (prev) => (prev - 1 + stepImages.length) % stepImages.length
+        );
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("wheel", handleWheel, { passive: true });
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, [modalIndex]);
   return (
     <main className="  bg-fix bg-cover bg-center bg-repeat text-[#3b2f2f]">
 
@@ -615,7 +667,7 @@ export default function AluVadiPage() {
 
             {/* CLOSE BUTTON */}
             <button
-              className="absolute top-4 right-6 text-white text-3xl z-50"
+              className="absolute top-4 right-40 text-white text-3xl z-50"
               onClick={() => setModalIndex(null)}
             >
               ✕
