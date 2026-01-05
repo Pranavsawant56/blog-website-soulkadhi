@@ -59,9 +59,9 @@ export default function HeroSlider() {
                             src={`https://www.youtube.com/embed/${vid.videoId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${vid.videoId}&start=20`}
                             allow="autoplay; fullscreen"
                             frameBorder="0"
-                            className="absolute top-0 left-0 w-full h-full pointer-events-none"
+                            className="absolute top-0 left-0 w-[100%] h-full pointer-events-none"
                             style={{
-                                width: "100vw",
+                                width: "",
                                 height: "56.25vw",
                                 position: "absolute",
                                 top: "50%",
@@ -70,7 +70,7 @@ export default function HeroSlider() {
                             }}
                         ></iframe>
                         {/* 🔥 BOTTOM BLACK GRADIENT OVERLAY */}
-                        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[30%] bg-gradient-to-t from-black/100 via-black/70 to-transparent" />
+                        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[30%] bg-gradient-to-t from-black/100    to-transparent" />
                         {/* Title overlay - centered perfectly */}
                         <div
                             className="
