@@ -206,7 +206,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/leaf.svg" width={26} height={26} alt="leaf" />
             <h3 className="text-xl flex items-center mb-2 ml-2 w-full">
               Ingredients
-             <Line  className="from-[#a0522d] via-[#a0522d]/30" />
+              <Line className="from-[#a0522d] via-[#a0522d]/30" />
             </h3>
           </div>
 
@@ -272,7 +272,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/mat2.png" width={26} height={26} alt="leaf" />
             <h3 className=" text-xl flex items-center ml-2 w-full">
               Introduction
-             <Line  className="from-[#a0522d] via-[#a0522d]/40" />
+              <Line className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
           </div>
 
@@ -303,7 +303,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/leaf.svg" width={26} height={26} alt="leaf" />
             <h3 className="text-xl flex items-center mb-2 ml-2 w-full">
               How To Make
-             <Line  className="from-[#a0522d] via-[#a0522d]/30" />
+              <Line className="from-[#a0522d] via-[#a0522d]/30" />
             </h3>
           </div>
           <aside className="p-4 sm:p-8 rounded-xl shadow-inner pt-4">
@@ -374,7 +374,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/3leafs.png" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               Recipe Video
-             <Line  className="from-[#a0522d] via-[#a0522d]/40" />
+              <Line className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
           </div>
 
@@ -428,8 +428,8 @@ export default function AluVadiPage() {
           <div className="flex items-center mb-1 w-full px-3 py-1">
             <Image src="/images/material/leaf3.png" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
-              Main Ingredient 
-              <Line  className="from-[#a0522d] via-[#a0522d]/50" />
+              Main Ingredient
+              <Line className="from-[#a0522d] via-[#a0522d]/50" />
             </h3>
           </div>
 
@@ -463,7 +463,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/mat2.png" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               History of Alu Vadi
-              <Line  className="from-[#a0522d] via-[#a0522d]/40" />
+              <Line className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
           </div>
 
@@ -484,18 +484,19 @@ export default function AluVadiPage() {
             <Image src="/images/material/leaf2.svg" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               Geography & Weather
-              <Line  className="from-[#a0522d] via-[#a0522d]/40" />
+              <Line className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
           </div>
 
           <aside className=" p-4 rounded-xl shadow-inner space-y-2">
             <Image
-              src="/images/aluwadi/weather/weather.png"
-              width={500}
-              height={160}
-              className="rounded-lg object-cover w-48 md:w-64 mx-auto"
-              alt="Konkan Monsoon Weather"
+              src="/images/weathers/winter.png"
+              width={120}
+              height={40}
+              className="rounded-lg object-contain w-24 md:w-32 mx-auto"
+              alt="Konkan Winter Weather"
             />
+
             <p className="text-sm leading-7">
               The Konkan region’s coastal geography, fertile laterite soil,
               and heavy monsoon rainfall create ideal conditions for colocasia
@@ -539,7 +540,7 @@ export default function AluVadiPage() {
             <h3 className="font-serif text-xl leading-tight">
               Health  Benefits
             </h3>
-            <Line  className="from-[#a0522d] via-[#a0522d]/80" />
+            <Line className="from-[#a0522d] via-[#a0522d]/80" />
           </div>
 
           {/* RIGHT BOX — 70% */}
@@ -587,7 +588,7 @@ export default function AluVadiPage() {
 
         </div>
 
-     {/* 
+        {/* 
         <div className="flex items-center max-w-6xl mx-auto ">
          
           <span className="flex-grow h-px bg-gradient-to-r from-transparent via-[#a0522d]  to-[#a0522d] " />
@@ -610,7 +611,7 @@ export default function AluVadiPage() {
           <Image src="/images/material/leaf.svg" width={30} height={30} alt="leaf" />
           <h3 className=" text-xl flex items-center w-full">
             Complimentary Foods
-           <Line  className="from-[#a0522d] via-[#a0522d]/50" />
+            <Line className="from-[#a0522d] via-[#a0522d]/50" />
           </h3>
         </div>
 
