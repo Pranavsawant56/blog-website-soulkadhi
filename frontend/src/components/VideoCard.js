@@ -49,7 +49,7 @@ export default function VideoCard({ video }) {
           w-full rounded-lg overflow-hidden 
           shadow-md transition-all duration-500
           ease-[cubic-bezier(0.22,1,0.36,1)]
-          max-w-[320px] sm:max-w-[360px] mx-auto 
+          max-w-[320px] sm:max-w-[360px] mx-auto  bg-black/0
         "
       >
         {isPlaying ? (
@@ -78,7 +78,7 @@ export default function VideoCard({ video }) {
             />
 
             {/* Play button overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+            <div className="absolute inset-0 flex items-center justify-center bg-black/10">
               <div className="w-10 h-10 bg-white/80 rounded-full flex items-center justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

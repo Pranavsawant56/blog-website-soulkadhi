@@ -51,7 +51,7 @@ export default function TrendingSection() {
 
                     <a
                         href="/videos?filter=trending"
-                        className=" text-black   pt-4rounded  transition ml-4"
+                        className=" text-black    rounded  transition ml-4"
                     >
                         See All
                     </a>
