@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import Line from "../../components/Line.js"
 
 export default function AluVadiPage() {
   const sliderImages = [
@@ -205,8 +206,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/leaf.svg" width={26} height={26} alt="leaf" />
             <h3 className="text-xl flex items-center mb-2 ml-2 w-full">
               Ingredients
-              <span className="flex-grow mt-3 ml-3 h-[2px] bg-gradient-to-r 
-            from-[#a0522d] via-[#a0522d]/30 to-transparent"></span>
+             <Line  className="from-[#a0522d] via-[#a0522d]/30" />
             </h3>
           </div>
 
@@ -272,11 +272,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/mat2.png" width={26} height={26} alt="leaf" />
             <h3 className=" text-xl flex items-center ml-2 w-full">
               Introduction
-              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
-                  from-[#a0522d] 
-                  via-[#a0522d]/40 
-                  /* via-[#a0522d]/10  */
-                  to-transparent"></span>
+             <Line  className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
           </div>
 
@@ -307,8 +303,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/leaf.svg" width={26} height={26} alt="leaf" />
             <h3 className="text-xl flex items-center mb-2 ml-2 w-full">
               How To Make
-              <span className="flex-grow mt-3 ml-3 h-[2px] bg-gradient-to-r 
-            from-[#a0522d] via-[#a0522d]/30 to-transparent"></span>
+             <Line  className="from-[#a0522d] via-[#a0522d]/30" />
             </h3>
           </div>
           <aside className="p-4 sm:p-8 rounded-xl shadow-inner pt-4">
@@ -379,11 +374,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/3leafs.png" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               Recipe Video
-              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
-                  from-[#a0522d] 
-                  via-[#a0522d]/40 
-                  /* via-[#a0522d]/10  */
-                  to-transparent"></span>
+             <Line  className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
           </div>
 
@@ -437,12 +428,8 @@ export default function AluVadiPage() {
           <div className="flex items-center mb-1 w-full px-3 py-1">
             <Image src="/images/material/leaf3.png" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
-              Main Ingredient – Colocasia Leaves
-              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
-                  from-[#a0522d] 
-                  via-[#a0522d]/30 
-                  /* via-[#a0522d]/10  */
-                  to-transparent"></span>
+              Main Ingredient 
+              <Line  className="from-[#a0522d] via-[#a0522d]/50" />
             </h3>
           </div>
 
@@ -476,11 +463,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/mat2.png" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               History of Alu Vadi
-              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
-                  from-[#a0522d] 
-                  via-[#a0522d]/40 
-                  /* via-[#a0522d]/10  */
-                  to-transparent"></span>
+              <Line  className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
           </div>
 
@@ -501,11 +484,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/leaf2.svg" width={26} height={26} alt="leaf" />
             <h3 className="font-serif text-xl flex items-center ml-2 w-full">
               Geography & Weather
-              <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
-                  from-[#a0522d] 
-                  via-[#a0522d]/40 
-                  /* via-[#a0522d]/10  */
-                  to-transparent"></span>
+              <Line  className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
           </div>
 
@@ -560,11 +539,7 @@ export default function AluVadiPage() {
             <h3 className="font-serif text-xl leading-tight">
               Health  Benefits
             </h3>
-            <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
-                  from-[#a0522d] 
-                  via-[#a0522d]/30 
-                  /* via-[#a0522d]/10  */
-                  to-transparent"></span>
+            <Line  className="from-[#a0522d] via-[#a0522d]/80" />
           </div>
 
           {/* RIGHT BOX — 70% */}
@@ -635,11 +610,7 @@ export default function AluVadiPage() {
           <Image src="/images/material/leaf.svg" width={30} height={30} alt="leaf" />
           <h3 className=" text-xl flex items-center w-full">
             Complimentary Foods
-            <span className="flex-grow  mt-3 ml-3 h-[2px] bg-gradient-to-r 
-                  from-[#a0522d] 
-                  via-[#a0522d]/50 
-                  /* via-[#a0522d]/10  */
-                  to-transparent"></span>
+           <Line  className="from-[#a0522d] via-[#a0522d]/50" />
           </h3>
         </div>
 

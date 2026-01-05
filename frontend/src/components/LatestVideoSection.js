@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { fetchVideos } from "../utils/fetchVideos.js";
 import VideoCard from "../components/VideoCard.js";
+import Line from "../components/Line.js"
 
 
 export default function LatestVideoSection() {
@@ -23,16 +24,16 @@ export default function LatestVideoSection() {
                 {/* Header row with title and See All button */}
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center flex-1">
-                        <h2 className="bg-[#6b3d24] text-white text-lg sm:text-xl font-bold px-4 py-1 rounded ">
+                        <h3 className=" text-black text-lg sm:text-xl  px-4 py-1 rounded ">
                             Latest Video
-                        </h2>
-                        <div className="flex-1 border-t-2 border-dotted border-[#6b3d24] ml-3 mt-7"></div>
+                        </h3>
+                        <Line/>
                     </div>
 
                     {/* See All Button */}
                     <a
                         href="/videos"
-                        className=" text-[#6b3d24]  px-4 py-2 rounded  transition ml-4"
+                        className=" text-black  px-4 pt-5 rounded  transition ml-4"
                     >
                         See All
                     </a>
