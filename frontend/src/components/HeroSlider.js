@@ -69,19 +69,20 @@ export default function HeroSlider() {
                                 transform: "translate(-50%, -50%)",
                             }}
                         ></iframe>
-
+                        {/* 🔥 BOTTOM BLACK GRADIENT OVERLAY */}
+                        <div className="pointer-events-none absolute bottom-0 left-0 w-full h-[30%] bg-gradient-to-t from-black/100 via-black/70 to-transparent" />
                         {/* Title overlay - centered perfectly */}
                         <div
                             className="
-                                 absolute bottom-14 left-1/2 -translate-x-1/2
+                                 absolute bottom-4 left-1/2 -translate-x-1/2
                                text-white 
                                  px-8 py-3 rounded-xl 
                                  text-2xl font-semibold font-[Poppins]
                                  text-center w-full max-w-[80%]
                                   " >
-                            <span className="bg-black/60 px-2 rounded-md">
-                                {vid.title.split("|")[0]}
-                            </span>
+
+                            {vid.title.split("|")[0]}
+
                         </div>
 
                     </div>
@@ -112,7 +113,7 @@ export default function HeroSlider() {
                     <div
                         key={i}
                         onClick={() => setCurrentIndex(i)}
-                        className={`w-3 h-3 rounded-full cursor-pointer transition-all
+                        className={`w-2 h-2 rounded-full cursor-pointer transition-all
                             ${i === currentIndex ? "bg-white scale-125" : "bg-white/50"}
                         `}
                     ></div>
