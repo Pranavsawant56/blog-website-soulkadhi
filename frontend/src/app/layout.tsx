@@ -4,7 +4,7 @@ import ClientWrapper from "@/components/ClientWrapper";
 import { Poppins, Roboto } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
-import { LoaderProvider } from "@/context/LoaderContext";
+
 import { Playfair_Display, Libre_Baskerville } from "next/font/google";
 
 const poppins = Poppins({
@@ -48,13 +48,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} ${roboto.variable}`}>
-        <LoaderProvider>
+        
           <ClientWrapper>
             <Header />
             {children}
             <Footer />
           </ClientWrapper>
-        </LoaderProvider>
+        
 
       </body>
     </html>
