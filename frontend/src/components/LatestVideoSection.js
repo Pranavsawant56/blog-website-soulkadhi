@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { fetchVideos } from "../utils/fetchVideos.js";
 import VideoCard from "../components/VideoCard.js";
 import Line from "../components/Line.js"
+import Image from "next/image.js";
 
 
 export default function LatestVideoSection() {
@@ -19,15 +20,21 @@ export default function LatestVideoSection() {
 
     return (
         <section className=" py-10 px-4 sm:px-8 lg:px-16 xl:px-24"
-          >
+        >
             <div className="max-w-6xl mx-auto">
                 {/* Header row with title and See All button */}
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center flex-1">
-                        <h3 className=" text-black text-lg sm:text-xl  px-4 py-1 rounded ">
+                        <Image src="/images/material/leaf5.png"
+                            width={50}
+                            height={50}
+                            alt="leaf 
+                                       "  />
+                        <h3 className=" text-black text-lg sm:text-xl  mt-3 py-1 rounded ">
                             Latest Video
                         </h3>
-                        <Line/>
+                        <span className="flex-grow  mt-6 h-[2px] bg-gradient-to-r 
+                        from-[#a0522d] via-[#a0522d]/90 to-transparent ${className}"></span>
                     </div>
 
                     {/* See All Button */}

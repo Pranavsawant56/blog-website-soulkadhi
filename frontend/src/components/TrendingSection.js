@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import VideoCard from "../components/VideoCard.js"
 import { fetchVideos } from "../utils/fetchVideos.js"
 import Line from "../components/Line.js"
+import Image from "next/image.js"
 
 
 export default function TrendingSection() {
@@ -37,15 +38,20 @@ export default function TrendingSection() {
             <div className="max-w-6xl mx-auto">
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center flex-1">
-                        <h3 className=" text-black text-lg sm:text-xl font-bold px-4 py-1 rounded ">
+                        <Image src="/images/material/leaf9.png"
+                            width={50}
+                            height={50}
+                            alt="leaf 
+                                                               "  />
+                        <h3 className=" text-black text-lg sm:text-xl font-bold  py-1 rounded ">
                             Trending Videos
                         </h3>
-                        <Line/>
+                        <Line />
                     </div>
 
                     <a
                         href="/videos?filter=trending"
-                        className=" text-black  px-4 pt-5 rounded  transition ml-4"
+                        className=" text-black   pt-4rounded  transition ml-4"
                     >
                         See All
                     </a>

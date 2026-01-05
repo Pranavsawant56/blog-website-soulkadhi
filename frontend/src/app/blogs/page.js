@@ -203,10 +203,10 @@ export default function AluVadiPage() {
         <div className="w-full max-w-md md:max-w-full">
           {/* Heading */}
           <div className="flex items-center mb-2 w-full">
-            <Image src="/images/material/leaf.svg" width={26} height={26} alt="leaf" />
-            <h3 className="text-xl flex items-center mb-2 ml-2 w-full">
+            <Image src="/images/material/leaf5.png" width={50} height={50} alt="leaf" />
+            <h3 className="text-xl flex items-center mt-4 mb-2 ml-2 w-full">
               Ingredients
-              <Line className="from-[#a0522d] via-[#a0522d]/30" />
+              <Line className="from-[#a0522d] via-[#a0522d]/30 mt-3" />
             </h3>
           </div>
 
@@ -269,8 +269,8 @@ export default function AluVadiPage() {
         {/* INTRO */}
         <div className="relative">
           <div className="flex items-center mb-1 w-full">
-            <Image src="/images/material/mat2.png" width={26} height={26} alt="leaf" />
-            <h3 className=" text-xl flex items-center ml-2 w-full">
+            <Image src="/images/material/leaf6.png" width={50} height={50} alt="leaf" />
+            <h3 className=" text-xl flex items-center mt-4 ml-2 w-full">
               Introduction
               <Line className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
@@ -300,8 +300,8 @@ export default function AluVadiPage() {
         {/* HOW TO MAKE */}
         <div className="relative overflow-hidden">
           <div className="flex items-center  w-full">
-            <Image src="/images/material/leaf.svg" width={26} height={26} alt="leaf" />
-            <h3 className="text-xl flex items-center mb-2 ml-2 w-full">
+            <Image src="/images/material/leaf7.png" width={50} height={50} alt="leaf" />
+            <h3 className="text-xl flex items-center mt-4 mb-2 ml-2 w-full">
               How To Make
               <Line className="from-[#a0522d] via-[#a0522d]/30" />
             </h3>
@@ -371,8 +371,8 @@ export default function AluVadiPage() {
 
           {/* Heading */}
           <div className="flex items-center mb-1 w-full px-3 py-1">
-            <Image src="/images/material/3leafs.png" width={26} height={26} alt="leaf" />
-            <h3 className="font-serif text-xl flex items-center ml-2 w-full">
+            <Image src="/images/material/leaf8.png" width={56} height={56} alt="leaf" />
+            <h3 className="font-serif text-xl flex mt-4 items-center ml-2 w-full">
               Recipe Video
               <Line className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
@@ -426,8 +426,8 @@ export default function AluVadiPage() {
         {/* MAIN INGREDIENT */}
         <div className="relative">
           <div className="flex items-center mb-1 w-full px-3 py-1">
-            <Image src="/images/material/leaf3.png" width={26} height={26} alt="leaf" />
-            <h3 className="font-serif text-xl flex items-center ml-2 w-full">
+            <Image src="/images/material/leaf9.png" width={50} height={50} alt="leaf" />
+            <h3 className="font-serif text-xl flex  mt-4 items-center ml-2 w-full">
               Main Ingredient
               <Line className="from-[#a0522d] via-[#a0522d]/50" />
             </h3>
@@ -460,8 +460,12 @@ export default function AluVadiPage() {
         {/* HISTORY */}
         <div className="relative">
           <div className="flex items-center mb-1 w-full px-3 py-1">
-            <Image src="/images/material/mat2.png" width={26} height={26} alt="leaf" />
-            <h3 className="font-serif text-xl flex items-center ml-2 w-full">
+            <Image src="/images/material/leaf5.png"
+             width={50}
+              height={50} 
+              alt="leaf 
+               "  />
+            <h3 className="font-serif text-xl mt-4 flex items-center ml-2 w-full">
               History of Alu Vadi
               <Line className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
@@ -481,8 +485,8 @@ export default function AluVadiPage() {
         {/* GEOGRAPHY & WEATHER */}
         <div className="relative">
           <div className="flex items-center mb-1 w-full px-3 py-1">
-            <Image src="/images/material/leaf2.svg" width={26} height={26} alt="leaf" />
-            <h3 className="font-serif text-xl flex items-center ml-2 w-full">
+            <Image src="/images/material/leaf11.png" width={50} height={50} alt="leaf" />
+            <h3 className="font-serif text-xl  mt-4 flex items-center ml-2 w-full">
               Geography & Weather
               <Line className="from-[#a0522d] via-[#a0522d]/40" />
             </h3>
@@ -532,12 +536,13 @@ export default function AluVadiPage() {
           {/* LEFT BOX — 30% */}
           <div className="flex items-start gap-3 mt-15">
             <Image
-              src="/images/material/leaf-1.png"
-              width={40}
-              height={40}
+              src="/images/material/leaf12.png"
+              width={50}
+              height={50}
               alt="leaf"
+              
             />
-            <h3 className="font-serif text-xl leading-tight">
+            <h3 className="font-serif text-xl   mt-4 leading-tight">
               Health  Benefits
             </h3>
             <Line className="from-[#a0522d] via-[#a0522d]/80" />
@@ -608,8 +613,8 @@ export default function AluVadiPage() {
       {/* WHY KONKAN LOVES IT */}
       <section className="max-w-6xl mx-auto px-6 pt-1 ">
         <div className="flex items-center gap-2 mb-4 w-full">
-          <Image src="/images/material/leaf.svg" width={30} height={30} alt="leaf" />
-          <h3 className=" text-xl flex items-center w-full">
+          <Image src="/images/material/leaf13.png" width={50} height={50} alt="leaf" />
+          <h3 className=" text-xl mt-4 flex items-center w-full">
             Complimentary Foods
             <Line className="from-[#a0522d] via-[#a0522d]/50" />
           </h3>
