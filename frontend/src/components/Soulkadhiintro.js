@@ -24,24 +24,24 @@ export default function SoulkadhiIntro() {
           <div className="text-white text-center md:text-left px-1 mt-6">
             <h2
               className="text-2xl md:text-3xl font-bold mb-2"
-              
+
             >
-              HI, WE ARE SOULKADHI
+              Hi, We Are Soulkadhi Team
             </h2>
 
             <p
               className="text-lg leading-relaxed"
-             
+
             >
-              Soulful flavors of Kokan 🥥, from firewood kitchens 🔥 to heartfelt
-              village stories 🎥.
+           This is where Konkan breathes — through kitchens, soil, rain, and daily life.
             </p>
 
             <p
               className="text-lg leading-relaxed mt-1"
-             
+
             >
-              Tradition, love, and the spirit of Sahyadri ⛰️ in every bite.
+             SoulKadhi simply observes, documents, and shares what is truly experienced.
+
             </p>
           </div>
         </div>
@@ -49,3 +49,5 @@ export default function SoulkadhiIntro() {
     </div>
   );
 }
+
+
