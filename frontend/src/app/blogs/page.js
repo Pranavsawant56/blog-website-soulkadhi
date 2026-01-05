@@ -206,7 +206,7 @@ export default function AluVadiPage() {
             <Image src="/images/material/leaf5.png" width={50} height={50} alt="leaf" />
             <h3 className="text-xl flex items-center mt-4 mb-2 ml-2 w-full">
               Ingredients
-              <Line className="from-[#a0522d] via-[#a0522d]/30 mt-3" />
+              <Line className="from-[#a0522d] via-[#a0522d]/30" />
             </h3>
           </div>
 
@@ -688,7 +688,7 @@ export default function AluVadiPage() {
             </div>
 
             {/* STEP TEXT */}
-            <p className="mt-3 px-4 text-white text-center text-lg max-w-3xl z-10">
+            <p className=" absolute bottom-[80px] mt-3 px-4 text-white text-center text-lg max-w-3xl bg-black/60 rounded-xl ">
               <span className="font-bold mr-2">
                 Step {modalIndex + 1}:
               </span>
