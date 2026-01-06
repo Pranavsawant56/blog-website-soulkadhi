@@ -80,7 +80,7 @@ export default function VideosPage() {
                     </button>
 
                     {/* Page number */}
-                    <p className="text-lg">
+                    <p className="text-lg text-black">
                         Page {currentPage} of {totalPages}
                     </p>
 

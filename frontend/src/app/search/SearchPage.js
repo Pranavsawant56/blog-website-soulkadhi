@@ -108,23 +108,23 @@ export default function SearchPage() {
 
             {/* PAGINATION */}
             {results.length > videosPerPage && (
-                <div className="flex justify-center items-center gap-4 mt-12">
+                <div className="flex justify-center items-center gap-10 mt-12">
                     <button
                         disabled={currentPage === 1}
                         onClick={() => setCurrentPage((p) => p - 1)}
-                        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-40"
+                        className="px-4 py-2 bg-[#6b3d24] rounded disabled:opacity-40"
                     >
                         Previous
                     </button>
 
-                    <span className="text-lg font-semibold">
+                    <span className="text-lg font-semibold text-black">
                         Page {currentPage} of {totalPages}
                     </span>
 
                     <button
                         disabled={currentPage === totalPages}
                         onClick={() => setCurrentPage((p) => p + 1)}
-                        className="px-4 py-2 bg-gray-200 rounded disabled:opacity-40"
+                        className="px-4 py-2 bg-[#6b3d24] rounded disabled:opacity-40"
                     >
                         Next
                     </button>
