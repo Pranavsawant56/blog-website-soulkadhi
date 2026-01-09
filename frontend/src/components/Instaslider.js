@@ -14,7 +14,7 @@ export default function FoodGallery() {
           height={50}
           alt="leaf"
         />
-        <h3 className="text-black text-lg sm:text-xl font-bold py-1 rounded">
+        <h3 className="text-black text-lg sm:text-xl font-bold py-1 rounded ">
           Latest Post
         </h3>
         <Line />
@@ -22,7 +22,7 @@ export default function FoodGallery() {
 
       {/* RESPONSIVE GRID */}
       <div className="
-        max-w-6xl w-full
+        max-w-6xl w-full mt-6
         grid gap-2
         grid-cols-2 auto-rows-[180px]
         sm:grid-cols-6 sm:auto-rows-[160px]
