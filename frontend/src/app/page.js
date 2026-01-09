@@ -12,10 +12,7 @@ import gsap from "gsap";
 import Instaslider from ".././components/Instaslider.js"
 
 export default function HomePage() {
-  const instagramEmbeds = [
-  `<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/POST_ID1/" data-instgrm-version="14"></blockquote>`,
-  `<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/POST_ID2/" data-instgrm-version="14"></blockquote>`,
-];
+ 
   const { hasLoaded, setHasLoaded } = useContext(LoaderContext);
   const [loading, setLoading] = useState(!hasLoaded);
   const [animated, setAnimated] = useState(false);
@@ -55,7 +52,7 @@ export default function HomePage() {
         <LatestVideoSection />
         <TrendingSection />
         <Soulkadhiintro />
-        <Instaslider embeds={instagramEmbeds} />;
+        <Instaslider/>;
       </div>
     </>
   );
