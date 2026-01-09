@@ -194,3 +194,29 @@ body::before {
   );
 }
 
+.instagram-media iframe {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover;
+  display: block;
+}
+
+/* global.css or a module.css */
+.scrollbar-brown::-webkit-scrollbar {
+  height: 8px; /* horizontal scrollbar height */
+  width: 8px;  /* vertical scrollbar width */
+}
+
+.scrollbar-brown::-webkit-scrollbar-track {
+  background: #c08a5a; /* track color, light background */
+  border-radius: 4px;
+}
+
+.scrollbar-brown::-webkit-scrollbar-thumb {
+  background-color: #8B4513; /* brown thumb */
+  border-radius: 4px;
+  border: 2px solid #f5f5f5; /* optional: padding around thumb */
+}
+
