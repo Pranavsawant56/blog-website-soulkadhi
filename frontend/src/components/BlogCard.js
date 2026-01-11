@@ -34,22 +34,23 @@ export default function BlogCard({ blog }) {
           ease-[cubic-bezier(0.22,1,0.36,1)]
           hover:scale-[1.07] hover:-translate-y-1 
           hover:bg-(--color-grey-orange) rounded-xl
+         
         "
       >
         {/* Thumbnail */}
-        <div className="relative w-full rounded-lg overflow-hidden max-w-[320px] sm:max-w-[360px] mx-auto">
+        <div className="relative w-full max-w-[220px] overflow-hidden rounded-md">
           <Image
             src={blog.thumbnail_image}
             alt={blog.heading}
-            width={360}
-            height={200}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            width={220}
+            height={280}
+            className="w-full h-[280px] object-cover group-hover:scale-105 transition-transform duration-500"
           />
         </div>
 
         {/* Title */}
-        <div className="flex flex-col items-center justify-center mt-1 mb-1 max-w-[320px] text-center">
-          <h3 className="text-sm sm:text-base font-semibold text-[#2b1c10] leading-tight">
+        <div className="mt-1 max-w-[220px] text-center">
+          <h3 className="text-xs sm:text-sm font-medium text-[#2b1c10] leading-snug ">
             {blog.heading}
           </h3>
         </div>

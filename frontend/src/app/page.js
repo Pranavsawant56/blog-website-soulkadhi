@@ -9,7 +9,8 @@ import LatestVideoSection from "../components/LatestVideoSection";
 import TrendingSection from "../components/TrendingSection";
 import Soulkadhiintro from "../components/Soulkadhiintro";
 import gsap from "gsap";
-import Instaslider from ".././components/Instaslider.js"
+import Instaslider from ".././components/Instaslider.js";
+import LatestBlogsection from "../components/LatestBlogSection";
 
 export default function HomePage() {
  
@@ -50,6 +51,7 @@ export default function HomePage() {
         <HeroSlider />
         <SearchBar />
         <LatestVideoSection />
+        <LatestBlogsection/>
         <TrendingSection />
         <Soulkadhiintro />
         <Instaslider/>;
