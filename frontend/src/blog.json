@@ -128,10 +128,10 @@
                 "Garlic Solkadhi",
                 "soft drinks"
             ],
-            "categories": [
+            "category": [
                 "Traditional Drink",
                 "Konkani Cuisine",
-                "Vegetarian"
+                "Veg"
             ]
             
         },
@@ -311,14 +311,14 @@
                 }
             ],
             "types": [
-                "non-veg",
+                "nonveg",
                 "fry",
                 "soft drinks"
             ],
-            "categories": [
+            "category": [
                 "Traditional ",
                 "Konkani Cuisine",
-                "non-veg"
+                "nonveg"
             ]
         },
         {
@@ -471,12 +471,12 @@
             "types": [
                 "non-veg",
                 "fry",
-                "soft drinks"
+                "desserts"
             ],
-            "categories": [
+            "category": [
                 "Traditional ",
                 "Konkani Cuisine",
-                "non-veg"
+                "desserts"
             ]
         },
         {
@@ -631,10 +631,10 @@
                 "fry",
                 "soft drinks"
             ],
-            "categories": [
+            "category": [
                 "Traditional ",
                 "Konkani Cuisine",
-                "non-veg"
+                "veg"
             ]
         },
          {
@@ -765,10 +765,10 @@
                 "Garlic Solkadhi",
                 "soft drinks"
             ],
-            "categories": [
+            "category": [
                 "Traditional Drink",
                 "Konkani Cuisine",
-                "Vegetarian"
+                "veg"
             ]
             
         }

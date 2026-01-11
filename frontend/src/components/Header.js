@@ -36,9 +36,9 @@ export default function Header() {
                         <div className="absolute left-0 mt-2 w-40 bg-white/90 text-black rounded-lg z-40 shadow-lg
                          opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300">
 
-                            <Link href="/categories?type=veg" className="block px-4 py-2 hover:bg-gray-100"> Veg</Link>
-                            <Link href="/categories?type=nonveg" className="block px-4 py-2 hover:bg-gray-100"> Non-Veg </Link>
-                            <Link href="/categories?type=desserts" className="block px-4 py-2 hover:bg-gray-100">Desserts </Link>
+                            <Link href="/categories?types=veg" className="block px-4 py-2 hover:bg-gray-100"> Veg</Link>
+                            <Link href="/categories?types=nonveg" className="block px-4 py-2 hover:bg-gray-100"> Non-Veg </Link>
+                            <Link href="/categories?types=desserts" className="block px-4 py-2 hover:bg-gray-100">Desserts </Link>
                         </div>
                     </div>
 
