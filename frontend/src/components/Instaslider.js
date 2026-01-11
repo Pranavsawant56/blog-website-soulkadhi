@@ -42,7 +42,7 @@ export default function FoodGallery() {
           href="https://www.instagram.com/p/DQtYdk3jcM0/?img_index=1"
           target="_blank"
           className="col-span-1 relative border border-black overflow-hidden group"
-        >
+        > 
           <Image src="/images/Latest-post/bambu.JPG" alt="2" fill className="object-cover group-hover:scale-110 transition" />
         </Link>
 
