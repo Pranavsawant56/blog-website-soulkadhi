@@ -29,7 +29,7 @@ export default function LatestBlogSection() {
                         <h3 className=" text-black text-lg sm:text-xl  mt-3 py-1 rounded ">
                             Latest Blogs
                         </h3>
-                        <span className="flex-grow  mt-6 h-[2px] bg-gradient-to-r 
+                        <span className="flex-grow ml-2 mt-6 h-[2px] bg-gradient-to-r 
                             from-[#a0522d] via-[#a0522d]/90 to-transparent ${className}"></span>
                     </div>
 

@@ -192,7 +192,7 @@ export default function BlogPostClient({ blog }) {
             <section className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 py-6 items-start">
 
                 {/* IMAGE SLIDER */}
-                <div className="md:col-span-2 blend-image relative w-full max-w-full aspect-video rounded-xl overflow-hidden">
+                <div className="md:col-span-2 blend-image relative w-full max-w-full aspect-video rounded-xl overflow-hidden  ">
                     <Image
                         src={sliderImages[index] ?? sliderImages[0]}
                         fill
@@ -208,7 +208,7 @@ export default function BlogPostClient({ blog }) {
                     {/* Heading */}
                     <div className="flex items-center mb-2 w-full">
                         <Image src="/images/material/leaf5.png" width={50} height={50} alt="leaf" />
-                        <h3 className="text-xl flex items-center mt-4 mb-2 ml-2 w-full">
+                        <h3 className="text-xl flex items-center  mb-2 ml-2 w-full">
                             Ingredients
                             <Line className="from-[#a0522d] via-[#a0522d]/30" />
                         </h3>
@@ -220,10 +220,10 @@ export default function BlogPostClient({ blog }) {
                             ref={scrollRef}
                             className="bg-[#ccac8d]/40 shadow-inner border-[18px] border-transparent rounded-2xl
         [border-image:url('/images/material/br-extended.png')_32_stretch]
-        [border-image-outset:2] max-h-92 overflow-y-auto
-        [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+        [border-image-outset:2] max-h-92 overflow-y-auto scrollbar-brown
+        [&::-webkit-scrollbar] [-ms-overflow-style:'none'] [scrollbar-width:'none']"
                         >
-                            <ul className="list-none text-sm leading-6 p-4 sm:p-6 space-y-2">
+                            <ul className="list-none text-sm leading-6 p-4 sm:p-6 space-y-2 justify-content">
                                 {ingredients.map((item, idx, arr) => (
                                     <li key={idx}>
                                         <div className="grid grid-cols-[1fr_140px] gap-4 items-start">
@@ -231,7 +231,7 @@ export default function BlogPostClient({ blog }) {
                                                 <span className="mt-2 h-2 w-2 rounded-full bg-black/70" />
                                                 <span>{item.name}</span>
                                             </div>
-                                            <span className="text-left ml-15">{item.quantity}</span>
+                                            <span className="text-left ml-20">{item.quantity}</span>
                                         </div>
 
                                         {idx !== arr.length - 1 && (
@@ -243,13 +243,7 @@ export default function BlogPostClient({ blog }) {
                         </aside>
 
                         {/* ⬇️ Scroll Down Button */}
-                        <button
-                            onClick={scrollDown}
-                            className="absolute bottom-5 left-1/2 -translate-x-1/2 bg-white/70 backdrop-blur-md shadow-lg
-           rounded-full w-8 h-8 flex items-center justify-center
-           hover:bg-white transition">
-                            ▼
-                        </button>
+                       
                     </div>
                 </div>
             </section>
