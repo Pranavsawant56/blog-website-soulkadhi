@@ -18,12 +18,12 @@ export default function SearchBar() {
         <div className="py-4"
             style={{ backgroundColor: "var(--color-grey-orange)" }}>
             <form onSubmit={handelSearch}
-                className="m-w-4xl mx-auto w-[80%] flex bg-white rounded-2xl overflow-hidden shadow"
+                className="max-w-6xl mx-auto  flex bg-white rounded-2xl overflow-hidden shadow"
             >
                 <input value={text}
                     onChange={(e) => setText(e.target.value)}
                     placeholder="Search for your favorite video"
-                    className="w-full p-2 text-md outline-none text-black text-center" />
+                    className="w-full p-2 pl-20 text-md outline-none text-black text-center" />
 
                 <button
                     type="submit"
