@@ -19,7 +19,7 @@ export default function LatestVideoSection() {
     }, []);
 
     return (
-        <section className=" py-10 px-4 sm:px-8 lg:px-16 xl:px-24"
+        <section className=" pt-10 px-4 sm:px-8 lg:px-16 xl:px-24"
         >
             <div className="max-w-6xl mx-auto">
                 {/* Header row with title and See All button */}
@@ -33,7 +33,7 @@ export default function LatestVideoSection() {
                         <h3 className=" text-black text-lg sm:text-xl  mt-3 py-1 rounded ">
                             Latest Videos
                         </h3>
-                        <span className="flex-grow  ml-2 mt-6 h-[2px] bg-gradient-to-r 
+                        <span className="flex-grow  ml-1 mt-6 h-[2px] bg-gradient-to-r 
                         from-[#a0522d] via-[#a0522d]/90 to-transparent ${className}"></span>
                     </div>
 

@@ -16,7 +16,7 @@ export default function LatestBlogSection() {
     }, []);
 
     return (
-        <section className="py-10 px-4 sm:px-6 lg:px-10">
+        <section className="pt-5 px-4 sm:px-6 lg:px-10">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
@@ -29,7 +29,7 @@ export default function LatestBlogSection() {
                         <h3 className=" text-black text-lg sm:text-xl  mt-3 py-1 rounded ">
                             Latest Blogs
                         </h3>
-                        <span className="flex-grow ml-2 mt-6 h-[2px] bg-gradient-to-r 
+                        <span className="flex-grow ml-1 mt-6 h-[2px] bg-gradient-to-r 
                             from-[#a0522d] via-[#a0522d]/90 to-transparent ${className}"></span>
                     </div>
 
