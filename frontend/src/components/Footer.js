@@ -33,19 +33,33 @@ export default function Footer() {
                 {/* FOLLOW US */}
                 <div>
                     <h3 className="text-xl mb-3 font-(--font-roboto)">Follow Us</h3>
-                    <div className="flex justify-center items-center space-x-5 text-gray-300 font-(--font-poppins)">
+                    <div className="flex flex-col items-center space-y-4 text-gray-300">
 
-                        <Link href="https://www.youtube.com/@Soulkadhiotr" target="_blank">
-                            <FaYoutube size={26} className="hover:text-red-500" />
+                        {/* SOCIAL ICONS ROW */}
+                        <div className="flex items-center space-x-5">
+                            <Link href="https://www.youtube.com/@Soulkadhiotr" target="_blank">
+                                <FaYoutube size={26} className="hover:text-red-500" />
+                            </Link>
+
+                            <Link href="https://www.facebook.com/profile.php?id=61583666728813" target="_blank">
+                                <FaFacebook size={26} className="hover:text-blue-500" />
+                            </Link>
+
+                            <Link href="https://www.instagram.com/soulkadhi__" target="_blank">
+                                <FaInstagram size={26} className="hover:text-pink-500" />
+                            </Link>
+                        </div>
+
+                        {/* SUBSCRIBE BUTTON */}
+                        <Link
+                            href="https://www.youtube.com/@Soulkadhiotr?sub_confirmation=1"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#5b3523] px-6 py-2 rounded-full bg-red-100 font-semibold hover:bg-red-500 transition"
+                        >
+                            Subscribe
                         </Link>
 
-                        <Link href="https://www.facebook.com/profile.php?id=61583666728813" target="_blank">
-                            <FaFacebook size={26} className="hover:text-blue-500" />
-                        </Link>
-
-                        <Link href="https://www.instagram.com/soulkadhi__" target="_blank">
-                            <FaInstagram size={26} className="hover:text-pink-500" />
-                        </Link>
                     </div>
                 </div>
 
