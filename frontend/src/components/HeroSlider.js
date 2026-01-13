@@ -80,7 +80,7 @@ export default function HeroSlider() {
     if (videos.length === 0) return null;
 
     return (
-        <div className="w-full h-[500px] sm:h-[300px] md:h-[400px] relative overflow-hidden bg-black">
+        <div className="w-full h-[650px] sm:h-[450px] md:h-[500px] lg:h-[550px] relative overflow-hidden bg-black">
 
             {/* SLIDER */}
             <div
