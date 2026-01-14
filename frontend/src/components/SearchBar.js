@@ -22,7 +22,7 @@ export default function SearchBar() {
             >
                 <input value={text}
                     onChange={(e) => setText(e.target.value)}
-                    placeholder="Search for your favorite video"
+                    placeholder="Search for your favourite food"
                     className="w-full p-2 pl-20 text-md outline-none text-black text-center" />
 
                 <button
