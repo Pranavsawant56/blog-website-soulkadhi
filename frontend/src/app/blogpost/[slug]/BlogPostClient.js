@@ -52,6 +52,7 @@ export default function BlogPostClient({ blog }) {
     const scrollRef = useRef(null);
     const [sPage, setSPage] = useState(0);
 
+
     const scrollDown = () => {
         if (scrollRef.current) {
             scrollRef.current.scrollBy({
@@ -131,6 +132,7 @@ export default function BlogPostClient({ blog }) {
         };
     }, [modalIndex]);
 
+
     return (
         <main className="  bg-fix bg-cover bg-center bg-repeat text-[#3b2f2f]">
 
@@ -162,7 +164,7 @@ export default function BlogPostClient({ blog }) {
             {/* INTRODUCTION */}
             <section className="max-w-6xl mx-auto mb-0 px-6 py-6 space-y-4 ">
                 <div className="space-y-4">
-                    <p className="leading-7 max-w-6xl ">
+                    <p className="leading-7 max-w-6xl  blog-intro ">
                         {blog.short_info}
                     </p>
                 </div>
@@ -189,10 +191,10 @@ export default function BlogPostClient({ blog }) {
 
 
             {/* SLIDER + INGREDIENTS */}
-            <section className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 py-6 items-start">
+            <section className=" relative  grid md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6 pt-6 items-start">
 
                 {/* IMAGE SLIDER */}
-                <div className="md:col-span-2 blend-image relative w-full max-w-full aspect-video rounded-xl overflow-hidden  ">
+                <div className=" relative  mt-6 md:col-span-2 blend-image   w-full max-w-full aspect-video rounded-xl overflow-hidden  ">
                     <Image
                         src={sliderImages[index] ?? sliderImages[0]}
                         fill
@@ -223,15 +225,15 @@ export default function BlogPostClient({ blog }) {
         [border-image-outset:2] max-h-92 overflow-y-auto scrollbar-brown
         [&::-webkit-scrollbar] [-ms-overflow-style:'none'] [scrollbar-width:'none']"
                         >
-                            <ul className="list-none text-sm leading-6 p-4 sm:p-6 space-y-2 justify-content">
+                            <ul className="list-none text-sm leading-6 p-4 sm:p-6 space-y-2 ">
                                 {ingredients.map((item, idx, arr) => (
                                     <li key={idx}>
                                         <div className="grid grid-cols-[1fr_140px] gap-4 items-start">
                                             <div className="flex items-start gap-2">
-                                                <span className="mt-2 h-2 w-2 rounded-full bg-black/70" />
-                                                <span>{item.name}</span>
+                                                <span className=" mt-2 h-2 w-2 rounded-full bg-black/70 " />
+                                                <span className="whitespace-nowrap">{item.name}</span>
                                             </div>
-                                            <span className="text-left ml-20">{item.quantity}</span>
+                                            <span className="text-left whitespace-nowrap  ml-20">{item.quantity}</span>
                                         </div>
 
                                         {idx !== arr.length - 1 && (
@@ -243,54 +245,63 @@ export default function BlogPostClient({ blog }) {
                         </aside>
 
                         {/* ⬇️ Scroll Down Button */}
-                       
+
                     </div>
                 </div>
             </section>
 
             {/* INTRO + HOW TO MAKE */}
-            <section className="max-w-6xl mx-auto px-6  grid md:grid-cols-2 gap-6">
+            <section className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 ">
 
-                {/* INTRO */}
+                {/* INTRODUCTION — 60% */}
                 <div className="relative">
                     <div className="flex items-center mb-1 w-full">
-                        <Image src="/images/material/leaf6.png" width={50} height={50} alt="leaf" />
-                        <h3 className=" text-xl flex items-center mt-4 ml-2 w-full">
+                        <Image
+                            src="/images/material/leaf6.png"
+                            width={50}
+                            height={50}
+                            alt="leaf"
+                        />
+                        <h3 className="text-xl flex items-center mt-4 ml-2 w-full">
                             Introduction
                             <Line className="from-[#a0522d] via-[#a0522d]/40" />
                         </h3>
                     </div>
 
-                    <aside className="  rounded-xl shadow-inner pt-4">
+                    <aside className="rounded-xl blog-intro shadow-inner ">
                         {blog.introduction}
-
                     </aside>
                 </div>
 
-                {/* HOW TO MAKE */}
-                <div className="relative overflow-hidden">
-                    <div className="flex items-center  w-full">
-                        <Image src="/images/material/leaf7.png" width={50} height={50} alt="leaf" />
-                        <h3 className="text-xl flex items-center mt-4 mb-2 ml-2 w-full">
+                {/* HOW TO MAKE — 40% */}
+                <div className="relative overflow-hidden ">
+                    <div className="flex items-center w-full">
+                        <Image
+                            src="/images/material/leaf7.png"
+                            width={50}
+                            height={50}
+                            alt="leaf"
+                        />
+                        <h3 className="text-xl flex items-center mt-4 ml-2 w-full">
                             How To Make
                             <Line className="from-[#a0522d] via-[#a0522d]/30" />
                         </h3>
                     </div>
-                    <aside className="p-4 sm:p-8 rounded-xl shadow-inner pt-4">
 
-                        {/* SLIDER WINDOW */}
-                        <div className="overflow-hidden h-[320px]">
-                            <div
-                                className="grid grid-cols-2 sm:grid-cols-2 gap-2 transition-transform duration-500 ease-in-out"
-                                style={{
-                                    transform: `translateY(-${sPage * 320}px)`,
-                                }}
-                            >
+                    <aside className="pt-2 pb-2 px-0 sm:px-6 rounded-xl shadow-inner">
+
+
+                        {/* SCROLLABLE STEPS */}
+                        <div className="h-[320px] overflow-y-auto overflow-x-visible pr-4 custom-scroll">
+
+                            <div className="grid grid-cols-2 gap-3 pl-2">
+
+
                                 {stepImages.map((img, i) => (
                                     <div key={i} className="flex flex-col items-center py-1">
 
                                         {/* IMAGE BOX */}
-                                        <div className="relative w-full max-w-[200px] h-[120px] sm:h-[120px]">
+                                        <div className="relative w-full max-w-[180px] h-[120px]">
                                             <button
                                                 onClick={() => setModalIndex(i)}
                                                 className="w-full h-full rounded-xl overflow-hidden"
@@ -298,210 +309,216 @@ export default function BlogPostClient({ blog }) {
                                                 <Image
                                                     src={img}
                                                     fill
-                                                    className="object-cover"
+                                                    className="object-cover rounded-lg"
                                                     alt={`step ${i + 1}`}
                                                 />
                                             </button>
 
                                             {/* STEP NUMBER */}
-                                            <span className="absolute -bottom-1 -left-1 z-10 w-6 h-6 border border-black bg-white text-black flex items-center justify-center font-bold shadow">
+                                            <span className="absolute -bottom-1 -left-1 z-10 w-6 h-6 border border-[#5b3523] bg-[#8a5c3b] text-black flex items-center justify-center font-bold shadow rounded-lg">
                                                 {i + 1}
                                             </span>
                                         </div>
 
-                                        {/* TEXT */}
+                                        {/* STEP TEXT */}
                                         <span className="mt-1 text-sm font-medium text-[#3b2f2f] text-center">
                                             {stepDescriptions[i]}
                                         </span>
+
                                     </div>
                                 ))}
+
                             </div>
                         </div>
 
-                        {/* BUTTON */}
-                        <div className="flex justify-center">
-                            <button
-                                className="w-[45%] sm:w-[25%] bg-[#7b4a2e] text-white rounded-lg py-1"
-                                onClick={() => setSPage(prev => (prev + 1) % totalPages)}
-                            >
-                                {sPage === totalPages - 1 ? "▲" : "▼"}
-                            </button>
-                        </div>
                     </aside>
-
                 </div>
-
 
             </section>
 
-            {/* VIDEO + MAIN INGREDIENT */}
-            <section className="max-w-6xl mx-auto px-6  grid md:grid-cols-2 gap-6 items-start">
 
+            {/* VIDEO + MAIN INGREDIENT */}
+            <section className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 items-start">
+
+                {/* LEFT — RECIPE VIDEO (60%) */}
                 <div className="relative">
 
                     {/* Heading */}
-                    <div className="flex items-center mb-1 w-full px-3 py-1">
+                    <div className="flex items-center mb-1 w-full">
                         <Image src="/images/material/leaf8.png" width={56} height={56} alt="leaf" />
-                        <h3 className="font-serif text-xl flex mt-4 items-center ml-2 w-full">
+                        <h3 className="font-serif text-xl flex items-center mt-2 ml-2 w-full">
                             Recipe Video
                             <Line className="from-[#a0522d] via-[#a0522d]/40" />
                         </h3>
                     </div>
 
-                    {/* Video Thumbnail with Play Button */}
+                    {/* Video Thumbnail */}
                     <aside className="bg-[#efe3cf] p-2 rounded-xl shadow-inner">
                         <div
                             className="relative w-full aspect-video rounded-lg overflow-hidden cursor-pointer"
                             onClick={() => setVideoOpen(true)}
                         >
-                            {/* Thumbnail image */}
                             <Image
-                                src={`/${videothum}`} // you can use video thumbnail
+                                src={`/${videothum}`}
                                 fill
                                 className="object-cover"
-                                alt="Alu Vadi Video Thumbnail"
+                                alt="Recipe Video Thumbnail"
                             />
-                            {/* Play button overlay */}
+
+                            {/* Play Button */}
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-white text-4xl bg-red-600 rounded-full px-4 py-2">▶</span>
+                                <span className="text-white text-4xl bg-red-600 rounded-full px-4 py-2">
+                                    ▶
+                                </span>
                             </div>
                         </div>
                     </aside>
 
                     {/* VIDEO MODAL */}
                     {videoOpen && (
-                        <div
-                            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
-                        >
+                        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
                             <div className="relative w-[90%] md:w-[70%] aspect-video">
                                 {videoUrl && (
                                     <iframe
                                         className="absolute inset-0 w-full h-full rounded-lg"
-                                        src={videoUrl + "?autoplay=1"} // optional autoplay
+                                        src={videoUrl + "?autoplay=1"}
                                         title="Recipe Video"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                         allowFullScreen
                                     />
                                 )}
 
-
-
                                 <button
-                                    className="absolute -top-8 right-3 bg-black/20 rounded-lg px-2 text-white font-bold text-lg"
+                                    className="absolute -top-8 right-3 bg-black/30 rounded-lg px-2 text-white font-bold text-lg"
                                     onClick={() => setVideoOpen(false)}
                                 >
-                                    X
+                                    ✕
                                 </button>
                             </div>
                         </div>
                     )}
                 </div>
 
-
-                {/* MAIN INGREDIENT */}
+                {/* RIGHT — MAIN INGREDIENT (40%) */}
                 <div className="relative">
-                    <div className="flex items-center mb-1 w-full px-3 py-1">
+
+                    {/* Heading */}
+                    <div className="flex items-center mb-1 w-full">
                         <Image src="/images/material/leaf9.png" width={50} height={50} alt="leaf" />
-                        <h3 className="font-serif text-xl flex  mt-4 items-center ml-2 w-full">
+                        <h3 className="font-serif text-xl flex items-center mt-2 ml-2 w-full">
                             Main Ingredient
                             <Line className="from-[#a0522d] via-[#a0522d]/50" />
                         </h3>
                     </div>
 
-                    <aside className=" p-4 rounded-xl shadow-inner">
+                    <aside className="p-4 rounded-xl shadow-inner">
+
                         <div className="flex flex-col items-center text-center">
+
+                            {/* Ingredient Image */}
                             <Image
-                                src={`/${maining}`} // becomes "/images/material/dummyimg.png"
+                                src={`/${maining}`}
                                 width={220}
                                 height={160}
-                                className="rounded-lg mb-2"
+                                className="rounded-lg mb-3"
                                 alt={blog.main_ingredient?.name || "Main Ingredient"}
                             />
 
-                            <h4 className="font-semibold text-lg mb-1">   {blog.main_ingredient?.name || "Ingredient Name"}</h4>
-                            <p className="text-sm leading-6 max-w-sm">
+                            {/* Ingredient Name */}
+                            <h4 className="font-semibold text-lg mb-2">
+                                {blog.main_ingredient?.name || "Ingredient Name"}
+                            </h4>
+
+                            {/* Ingredient Description */}
+                            <p className="blog-intro text-justify">
                                 {blog.main_ingredient?.info || ""}
                             </p>
+
                         </div>
                     </aside>
                 </div>
 
             </section>
 
-            {/* HISTORY + GEOGRAPHY */}
-            <section className="max-w-6xl mx-auto px-6 py-6 grid md:grid-cols-2 gap-6">
 
-                {/* HISTORY */}
+            {/* HISTORY + GEOGRAPHY */}
+            <section className="max-w-6xl mx-auto px-6 pt-2 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 mt-4">
+
+                {/* HISTORY — 60% */}
                 <div className="relative">
-                    <div className="flex items-center mb-1 w-full px-3 py-1">
-                        <Image src="/images/material/leaf5.png"
+
+                    {/* Heading */}
+                    <div className="flex items-center mb-1 w-full">
+                        <Image
+                            src="/images/material/leaf5.png"
                             width={50}
                             height={50}
-                            alt="leaf 
-               "  />
-                        <h3 className="font-serif text-xl mt-4 flex items-center ml-2 w-full">
+                            alt="leaf"
+                        />
+                        <h3 className="font-serif text-xl flex items-center ml-2 w-full">
                             History of {blog.heading}
                             <Line className="from-[#a0522d] via-[#a0522d]/40" />
                         </h3>
                     </div>
 
-                    <aside className=" p-4 rounded-xl shadow-inner">
-                        <p className="text-sm leading-7">
+                    {/* Content */}
+                    <aside className="rounded-xl shadow-inner blog-intro ">
+                        <p className="leading-7">
                             {blog.history}
                         </p>
                     </aside>
                 </div>
 
-                {/* GEOGRAPHY & WEATHER */}
+                {/* GEOGRAPHY & WEATHER — 40% */}
                 <div className="relative">
-                    <div className="flex items-center mb-1 w-full px-3 py-1">
-                        <Image src="/images/material/leaf11.png" width={50} height={50} alt="leaf" />
-                        <h3 className="font-serif text-xl  mt-4 flex items-center ml-2 w-full">
+
+                    {/* Heading */}
+                    <div className="flex items-center mb-1 w-full">
+                        <Image
+                            src="/images/material/leaf11.png"
+                            width={50}
+                            height={50}
+                            alt="leaf"
+                        />
+                        <h3 className="font-serif text-xl flex items-center ml-2 w-full">
                             Geography & Weather
                             <Line className="from-[#a0522d] via-[#a0522d]/40" />
                         </h3>
                     </div>
 
-                    <aside className=" p-4 rounded-xl shadow-inner space-y-2">
-                        <Image
-                            src={`/${weather}`}
-                            width={120}
-                            height={40}
-                            className="rounded-lg object-contain w-24 md:w-32 mx-auto"
-                            alt="Konkan  Weather"
-                        />
+                    {/* Content */}
+                    <aside className="p-4 rounded-xl shadow-inner space-y-3">
 
-                        <p className="text-sm leading-7">
+                        {/* Weather Image */}
+                        <div className="flex justify-center">
+                            <Image
+                                src={`/${weather}`}
+                                width={40}
+                                height={20}
+                                className="object-contain w-12 md:w-16"
+                                alt="Konkan Weather"
+                            />
+                        </div>
+
+                        {/* Weather Text */}
+                        <p className="leading-7 text-justify blog-intro">
                             {blog.geography_weather.info}
                         </p>
+
                     </aside>
+
                 </div>
 
             </section>
 
+
             {/* HEALTH BENEFITS */}
-            <section className="">
-                {/* TOP BORDER */}
-                <div className="flex items-center max-w-6xl mx-auto ">
-                    {/* Left line */}
-                    <span className="flex-grow h-px bg-gradient-to-r from-transparent via-[#a0522d]  to-[#a0522d] " />
+            {/* HEALTH BENEFITS / HISTORY SECTION */}
+            <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-[40%_60%] gap-6 items-start mt-8">
 
-                    {/* Dots */}
-                    <span className="flex gap-2 mx-4">
-                        <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
-                        <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
-                        <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
-                    </span>
-
-                    {/* Right line */}
-                    <span className="flex-grow h-px bg-gradient-to-l from-transparent via-[#a0522d]  to-[#a0522d] " />
-                </div>
-
-                {/* WRAPPER */}
-                <div className="max-w-6xl mx-auto grid grid-cols-[30%_70%] gap-6 items-start px-4 sm:px-6 lg:px-8">
-
-                    {/* LEFT BOX — 30% */}
-                    <div className=" flex items-center gap-3 mt-6">
+                {/* LEFT SIDE — Heading & line */}
+                <div className="flex flex-col justify-start">
+                    <div className="flex items-center gap-3">
                         <Image
                             src="/images/material/leaf12.png"
                             width={50}
@@ -511,43 +528,28 @@ export default function BlogPostClient({ blog }) {
                         <h3 className="font-serif text-xl leading-tight">
                             Health Benefits
                         </h3>
+                        <Line />
                     </div>
-
-
-                    {/* RIGHT BOX — 70% */}
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6">
-                        {blog.health_benefits?.map((item, i) => (
-                            <div key={i} className="flex flex-col items-center gap-2 text-center">
-                                <Image
-                                    src={`/${item.icon}`} // make sure the path is correct
-                                    width={120}
-                                    height={120}
-                                    alt={item.title.replace(/-/g, " ")}
-                                    className="rounded-lg"
-                                />
-                                <p className="capitalize">{item.title.replace(/-/g, " ")}</p>
-                            </div>
-                        ))}
-                    </div>
-
                 </div>
 
+                {/* RIGHT SIDE — Grid of images + titles */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-2">
+                    {blog.health_benefits?.map((item, i) => (
+                        <div key={i} className="flex flex-col items-center gap-2 text-center">
+                            <Image
+                                src={`/${item.icon}`} // make sure path is correct
+                                width={100}
+                                height={100}
+                                className="rounded-lg"
+                                alt={item.title.replace(/-/g, " ")}
+                            />
+                            <p className="capitalize text-sm font-medium">{item.title.replace(/-/g, " ")}</p>
+                        </div>
+                    ))}
+                </div>
 
-                {/* 
-        <div className="flex items-center max-w-6xl mx-auto ">
-         
-          <span className="flex-grow h-px bg-gradient-to-r from-transparent via-[#a0522d]  to-[#a0522d] " />
-
-          <span className="flex gap-2 mx-4">
-            <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
-            <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
-            <span className="w-1 h-1 rounded-full bg-[#a0522d]" />
-          </span>
-
-          
-          <span className="flex-grow h-px bg-gradient-to-l from-transparent via-[#a0522d]  to-[#a0522d] " />
-        </div> */}
             </section>
+
 
 
             {/* WHY KONKAN LOVES IT */}
