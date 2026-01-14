@@ -40,9 +40,9 @@ export default function LatestVideoSection() {
                     {/* See All Button */}
                     <a
                         href="/videos"
-                        className=" text-black  px-4 pt-5 rounded  transition ml-4"
+                        className=" text-black pt-3 rounded  transition ml-4"
                     >
-                        See All
+                        more
                     </a>
                 </div>
 
