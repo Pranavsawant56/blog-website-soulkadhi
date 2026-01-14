@@ -338,7 +338,7 @@ export default function BlogPostClient({ blog }) {
 
 
             {/* VIDEO + MAIN INGREDIENT */}
-            <section className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 items-start">
+            <section className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 items-start ">
 
                 {/* LEFT — RECIPE VIDEO (60%) */}
                 <div className="relative">
@@ -442,10 +442,10 @@ export default function BlogPostClient({ blog }) {
 
 
             {/* HISTORY + GEOGRAPHY */}
-            <section className="max-w-6xl mx-auto px-6 pt-2 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 mt-4">
+            <section className="max-w-6xl mx-auto px-6 pt-2 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 mt-2 ">
 
                 {/* HISTORY — 60% */}
-                <div className="relative">
+                <div className="relative mt-2">
 
                     {/* Heading */}
                     <div className="flex items-center mb-1 w-full">
