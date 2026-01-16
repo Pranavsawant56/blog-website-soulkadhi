@@ -67,7 +67,7 @@ export default function SearchPage() {
     };
 
     return (
-        <div className="py-10 px-4 sm:px-8 lg:px-16 xl:px-24">
+        <div className=" max-w-6xl m-auto py-10 px-4 sm:px-8 lg:px-16 xl:px-24">
             {/* HEADER */}
             <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">
                 Search results for:{" "}
@@ -75,16 +75,16 @@ export default function SearchPage() {
             </h1>
 
             {/* FIXED SEARCH BAR */}
-            <div className="flex justify-center mb-6">
+            <div className="max-w-6xl w-full m-auto flex justify-center mb-6">
                 <form
                     onSubmit={handleSearch}
-                    className="relative w-full max-w-md"
+                    className="relative w-full"
                 >
                     <input
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}
                         placeholder="Search"
-                        className="w-full p-3 pr-12 text-black text-md rounded-2xl bg-white border border-gray-300 outline-none shadow-sm"
+                        className="w-full p-3 pr-12   pl-20  text-center text-black text-md rounded-2xl bg-white border border-gray-300 outline-none shadow-sm"
                     />
                     <button
                         type="submit"
@@ -94,6 +94,7 @@ export default function SearchPage() {
                     </button>
                 </form>
             </div>
+
 
             {results.length === 0 && (
                 <p className="text-gray-500 text-center">No videos found</p>
