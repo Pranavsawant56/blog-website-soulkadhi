@@ -19,7 +19,7 @@ export default function LatestVideoSection() {
     }, []);
 
     return (
-        <section className=" pt-10 px-4 sm:px-8 lg:px-16 xl:px-24"
+        <section className=" pt-6 px-4 sm:px-8 lg:px-16 xl:px-24"
         >
             <div className="max-w-6xl mx-auto">
                 {/* Header row with title and See All button */}

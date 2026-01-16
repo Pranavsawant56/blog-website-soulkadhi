@@ -171,7 +171,7 @@ export default function BlogPostClient({ blog }) {
             </section>
 
 
-            <div className="flex items-center max-w-6xl mx-auto ">
+            <div className="flex items-center max-w-6xl mx-auto  ">
                 {/* Left line */}
                 <span className="flex-grow h-px bg-gradient-to-r from-transparent via-[#a0522d]  to-[#a0522d] " />
 
@@ -244,14 +244,14 @@ export default function BlogPostClient({ blog }) {
                             </ul>
                         </aside>
 
-                        {/* ⬇️ Scroll Down Button */}
+                       
 
                     </div>
                 </div>
             </section>
 
             {/* INTRO + HOW TO MAKE */}
-            <section className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 ">
+            <section className="max-w-6xl mx-auto px-6  pt-6  grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 ">
 
                 {/* INTRODUCTION — 60% */}
                 <div className="relative">
@@ -338,7 +338,7 @@ export default function BlogPostClient({ blog }) {
 
 
             {/* VIDEO + MAIN INGREDIENT */}
-            <section className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 items-start ">
+            <section className="max-w-6xl mx-auto px-6  pt-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 items-start ">
 
                 {/* LEFT — RECIPE VIDEO (60%) */}
                 <div className="relative">
@@ -442,7 +442,7 @@ export default function BlogPostClient({ blog }) {
 
 
             {/* HISTORY + GEOGRAPHY */}
-            <section className="max-w-6xl mx-auto px-6 pt-2 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 mt-2 ">
+            <section className="max-w-6xl mx-auto px-6 pt-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 mt-2 ">
 
                 {/* HISTORY — 60% */}
                 <div className="relative mt-2">
@@ -514,7 +514,7 @@ export default function BlogPostClient({ blog }) {
 
             {/* HEALTH BENEFITS */}
             {/* HEALTH BENEFITS / HISTORY SECTION */}
-            <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-[40%_60%] gap-6 items-start mt-8">
+            <section className="max-w-6xl mx-auto px-4 pt-6 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-[40%_60%] gap-6 items-start mt-8">
 
                 {/* LEFT SIDE — Heading & line */}
                 <div className="flex flex-col justify-start">
@@ -553,7 +553,7 @@ export default function BlogPostClient({ blog }) {
 
 
             {/* WHY KONKAN LOVES IT */}
-            <section className="max-w-6xl mx-auto px-6 pt-1 ">
+            <section className="max-w-6xl mx-auto px-6 pt-6 ">
                 <div className="flex items-center gap-2 mb-4 w-full">
                     <Image src="/images/material/leaf13.png" width={50} height={50} alt="leaf" />
                     <h3 className=" text-xl mt-4 flex items-center w-full">

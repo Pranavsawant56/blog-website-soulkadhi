@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function SoulkadhiIntro() {
   return (
-    <div className="w-full bg-(--color-grey-orange)">
+    <div className="w-full bg-(--color-grey-orange) ">
       <div className="flex justify-center px-4 py-2">
         <div
           className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-6

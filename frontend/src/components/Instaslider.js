@@ -6,7 +6,7 @@ import Line from "../components/Line";
 
 export default function FoodGallery() {
   return (
-    <section className="max-w-6xl m-auto justify-center p-4">
+    <section className="max-w-6xl m-auto justify-center  pt-6 px-4">
       <div className="flex items-center flex-1">
         <Image
           src="/images/material/leaf8.png"

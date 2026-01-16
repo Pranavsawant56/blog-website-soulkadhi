@@ -16,7 +16,7 @@ export default function LatestBlogSection() {
     }, []);
 
     return (
-        <section className="pt-5 px-4 sm:px-6 lg:px-10">
+        <section className="pt-6 px-4 sm:px-6 lg:px-10">
             <div className="max-w-6xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">

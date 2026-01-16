@@ -34,7 +34,7 @@ export default function TrendingSection() {
     }, []);
 
     return (
-        <section className="py-4 px-4 sm:px-8 lg:px-16 xl:px-24" >
+        <section className="py-6 px-4 sm:px-8 lg:px-16 xl:px-24" >
             <div className="max-w-6xl mx-auto">
                 <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center flex-1">
