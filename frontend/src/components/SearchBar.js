@@ -11,7 +11,7 @@ export default function SearchBar() {
     const handelSearch = (e) => {
         e.preventDefault();
         if (!text.trim()) return;
-        router.push(`/search?query=${encodeURIComponent(text)}`)
+        router.push(`/search.html?query=${encodeURIComponent(text)}`)
     };
 
     return (

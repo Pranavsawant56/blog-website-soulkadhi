@@ -4,15 +4,15 @@ import { FaYoutube, FaFacebook, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
     return (
-        <footer className="bg-(--color-dark-brown) text-white py-10 px-6 mt-10 font-(--font-poppins)">
+        <footer className="bg-(--color-dark-brown) text-white py-10 px-6 mt-10 ">
 
           {/* MAIN GRID */}
 <div className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 gap-y-20 text-center md:text-left">
 
   {/* QUICK LINKS */}
   <div>
-    <h3 className="text-xl mb-3 font-(--font-roboto)">Quick Links</h3>
-    <ul className="space-y-2 text-gray-300 font-(--font-poppins)">
+    <h3 className="text-xl mb-3 ">Quick Links</h3>
+    <ul className="space-y-2 text-gray-300">
       <li><Link href="/" className="hover:text-amber-950">Home</Link></li>
       <li><Link href="/about" className="hover:text-amber-950">About Us</Link></li>
       <li><Link href="/blogs" className="hover:text-amber-950">Blogs</Link></li>
@@ -24,8 +24,8 @@ export default function Footer() {
 
   {/* TOP CATEGORIES */}
   <div>
-    <h3 className="text-xl mb-3 font-(--font-roboto)">Top Categories</h3>
-    <ul className="space-y-2 text-gray-300 font-(--font-poppins)">
+    <h3 className="text-xl mb-3 ">Top Categories</h3>
+    <ul className="space-y-2 text-gray-300 ">
       <li><Link href="/categories?type=veg" className="hover:text-amber-950">Veg</Link></li>
       <li><Link href="/categories?type=non-veg" className="hover:text-amber-950">Non-Veg</Link></li>
       <li><Link href="/categories?type=seafood" className="hover:text-amber-950">Sea Food</Link></li>
@@ -40,12 +40,12 @@ export default function Footer() {
 
   {/* FOLLOW US */}
   <div>
-    <h3 className="text-xl mb-3 font-(--font-roboto)">Follow Us</h3>
+    <h3 className="text-xl mb-3 ">Follow Us</h3>
 
     <div className="flex flex-col items-center md:items-start space-y-4 text-gray-300">
       {/* SOCIAL ICONS */}
       <div className="flex items-center space-x-5 justify-center md:justify-start">
-        <Link href="https://www.youtube.com/@Soulkadhiotr" target="_blank">
+        <Link href="https://www.youtube.com/@Soulkadhiotr?sub_confirmation=1" target="_blank">
           <FaYoutube size={26} className="hover:text-red-500" />
         </Link>
 
