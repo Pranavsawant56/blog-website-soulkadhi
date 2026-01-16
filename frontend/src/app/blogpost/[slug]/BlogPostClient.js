@@ -52,6 +52,43 @@ export default function BlogPostClient({ blog }) {
     const scrollRef = useRef(null);
     const [sPage, setSPage] = useState(0);
 
+    // compli food codee 
+    const carouselRef = useRef(null); // renamed ref
+
+    // Auto-scroll
+    useEffect(() => {
+        const carousel = carouselRef.current;
+        if (!carousel) return;
+
+        const scrollStep = 1; // pixels per interval
+        const scrollInterval = 20; // ms
+
+        const interval = setInterval(() => {
+            if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
+                carousel.scrollLeft = 0; // reset to start
+            } else {
+                carousel.scrollLeft += scrollStep;
+            }
+        }, scrollInterval);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    // Manual scroll handlers
+    const handleScroll = (direction) => {
+        const carousel = carouselRef.current;
+        if (!carousel) return;
+
+        const scrollDistance = 250; // pixels per click
+        if (direction === "left") {
+            carousel.scrollBy({ left: -scrollDistance, behavior: "smooth" });
+        } else {
+            carousel.scrollBy({ left: scrollDistance, behavior: "smooth" });
+        }
+    };
+
+    // compli food code
+
 
     const scrollDown = () => {
         if (scrollRef.current) {
@@ -210,7 +247,7 @@ export default function BlogPostClient({ blog }) {
                     {/* Heading */}
                     <div className="flex items-center mb-2 w-full">
                         <Image src="/images/material/leaf5.png" width={50} height={50} alt="leaf" />
-                        <h3 className="text-xl flex items-center  mb-2 ml-2 w-full">
+                        <h3 className="text-xl flex items-center mb-2 ml-2 w-full">
                             Ingredients
                             <Line className="from-[#a0522d] via-[#a0522d]/30" />
                         </h3>
@@ -221,19 +258,26 @@ export default function BlogPostClient({ blog }) {
                         <aside
                             ref={scrollRef}
                             className="bg-[#ccac8d]/40 shadow-inner border-[18px] border-transparent rounded-2xl
-        [border-image:url('/images/material/br-extended.png')_32_stretch]
-        [border-image-outset:2] max-h-92 overflow-y-auto scrollbar-brown
-        [&::-webkit-scrollbar] [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+            [border-image:url('/images/material/br-extended.png')_32_stretch]
+            [border-image-outset:2] max-h-92 overflow-y-auto scrollbar-brown
+            [&::-webkit-scrollbar] [-ms-overflow-style:'none'] [scrollbar-width:'none']"
                         >
-                            <ul className="list-none text-sm leading-6 p-4 sm:p-6 space-y-2 ">
+                            <ul className="list-none text-sm leading-6 p-4 sm:p-6 space-y-2">
                                 {ingredients.map((item, idx, arr) => (
                                     <li key={idx}>
                                         <div className="grid grid-cols-[1fr_140px] gap-4 items-start">
                                             <div className="flex items-start gap-2">
-                                                <span className=" mt-2 h-2 w-2 rounded-full bg-black/70 " />
+                                                {/* Bullet Image */}
+                                                <Image
+                                                    src="/images/material/ing-flower2.png" // your bullet image path
+                                                    width={20} // adjust size as needed
+                                                    height={20}
+                                                    alt="bullet"
+                                                    className="pt-1"
+                                                />
                                                 <span className="whitespace-nowrap">{item.name}</span>
                                             </div>
-                                            <span className="text-left whitespace-nowrap  ml-20">{item.quantity}</span>
+                                            <span className="text-left whitespace-nowrap ml-20">{item.quantity}</span>
                                         </div>
 
                                         {idx !== arr.length - 1 && (
@@ -243,11 +287,9 @@ export default function BlogPostClient({ blog }) {
                                 ))}
                             </ul>
                         </aside>
-
-                       
-
                     </div>
                 </div>
+
             </section>
 
             {/* INTRO + HOW TO MAKE */}
@@ -353,7 +395,7 @@ export default function BlogPostClient({ blog }) {
                     </div>
 
                     {/* Video Thumbnail */}
-                    <aside className="bg-[#efe3cf] p-2 rounded-xl shadow-inner">
+                    <aside className=" p-2 rounded-xl shadow-inner">
                         <div
                             className="relative w-full aspect-video rounded-lg overflow-hidden cursor-pointer"
                             onClick={() => setVideoOpen(true)}
@@ -512,7 +554,7 @@ export default function BlogPostClient({ blog }) {
             </section>
 
 
-            {/* HEALTH BENEFITS */}
+
             {/* HEALTH BENEFITS / HISTORY SECTION */}
             <section className="max-w-6xl mx-auto px-4 pt-6 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-[40%_60%] gap-6 items-start mt-8">
 
