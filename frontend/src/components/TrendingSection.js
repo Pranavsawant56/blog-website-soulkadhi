@@ -50,7 +50,7 @@ export default function TrendingSection() {
                     </div>
 
                     <a
-                        href="/videos?filter=trending"
+                        href="/videos.html?filter=trending"
                         className=" text-black    rounded  transition ml-4"
                     >
                         more

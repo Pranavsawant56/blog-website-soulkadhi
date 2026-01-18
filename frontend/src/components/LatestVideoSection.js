@@ -39,7 +39,7 @@ export default function LatestVideoSection() {
 
                     {/* See All Button */}
                     <a
-                        href="/videos"
+                        href="/videos.html"
                         className=" text-black pt-3 rounded  transition ml-4"
                     >
                         more

@@ -11,7 +11,7 @@ export default function BlogPostClient({ blog }) {
         img.startsWith("/") ? img : `/${img}`
     );
     const ingredients = blog.ingredients || [];
-    const maining = blog.main_ingredient?.image; // "images/material/dummyimg.png"
+
     const weather = blog.geography_weather?.weather_icon;
     const videothum = blog.recipe_video?.thumbnails;
 
@@ -51,41 +51,106 @@ export default function BlogPostClient({ blog }) {
 
     const scrollRef = useRef(null);
     const [sPage, setSPage] = useState(0);
+    // main ingredients
+    const mainIngredients = blog?.main_ingredients || [];
+
+    const totalIngredients = mainIngredients.length || 1;
+
+    const showButtons = totalIngredients > 1;
+
+
+
+    const [currentIngredientIndex, setCurrentIngredientIndex] = useState(0);
+
+
+    const goToPreviousIngredient = () => {
+        setCurrentIngredientIndex(
+            (prevIndex) => (prevIndex - 1 + totalIngredients) % totalIngredients
+        );
+    };
+
+    const goToNextIngredient = () => {
+        setCurrentIngredientIndex(
+            (prevIndex) => (prevIndex + 1) % totalIngredients
+        );
+    };
+
+    const currentIngredient =
+        mainIngredients[currentIngredientIndex] || blog.main_ingredient;
+
+
+    // main ingredients 
 
     // compli food codee 
-    const carouselRef = useRef(null); // renamed ref
+    const SCROLL_SPEED = 0.5; // px per frame
+    const MANUAL_PAUSE = 1000;
+    const carouselRef = useRef(null);
+    const rafRef = useRef(null);
+    const resumeTimerRef = useRef(null);
 
-    // Auto-scroll
-    useEffect(() => {
-        const carousel = carouselRef.current;
-        if (!carousel) return;
+    const foodList = blog?.complimentary_foods || [];
+    const loopedFoodList = [...foodList, ...foodList, ...foodList];
 
-        const scrollStep = 1; // pixels per interval
-        const scrollInterval = 20; // ms
+    /* ================= AUTO SCROLL ================= */
+    const startAutoScroll = () => {
+        stopAutoScroll();
 
-        const interval = setInterval(() => {
-            if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth) {
-                carousel.scrollLeft = 0; // reset to start
-            } else {
-                carousel.scrollLeft += scrollStep;
+        const loop = () => {
+            const el = carouselRef.current;
+            if (!el) return;
+
+            el.scrollLeft += SCROLL_SPEED;
+
+            // reset seamlessly
+            if (el.scrollLeft >= el.scrollWidth / 3) {
+                // because we triple the list, reset at 1/3
+                el.scrollLeft = el.scrollLeft - el.scrollWidth / 3;
             }
-        }, scrollInterval);
 
-        return () => clearInterval(interval);
-    }, []);
+            rafRef.current = requestAnimationFrame(loop);
+        };
 
-    // Manual scroll handlers
-    const handleScroll = (direction) => {
-        const carousel = carouselRef.current;
-        if (!carousel) return;
+        rafRef.current = requestAnimationFrame(loop);
+    };
 
-        const scrollDistance = 250; // pixels per click
-        if (direction === "left") {
-            carousel.scrollBy({ left: -scrollDistance, behavior: "smooth" });
-        } else {
-            carousel.scrollBy({ left: scrollDistance, behavior: "smooth" });
+    const stopAutoScroll = () => {
+        if (rafRef.current) {
+            cancelAnimationFrame(rafRef.current);
+            rafRef.current = null;
         }
     };
+
+    /* ================= MANUAL SCROLL ================= */
+    const manualScroll = (direction) => {
+        stopAutoScroll();
+        clearTimeout(resumeTimerRef.current);
+
+        const el = carouselRef.current;
+        if (!el) return;
+
+        el.scrollBy({
+            left: direction === "next" ? 300 : -300,
+            behavior: "smooth",
+        });
+
+        resumeTimerRef.current = setTimeout(startAutoScroll, MANUAL_PAUSE);
+    };
+
+    /* ================= INIT ================= */
+    useEffect(() => {
+        const el = carouselRef.current;
+        if (!el) return;
+
+        // Initialize scroll to middle section for seamless looping
+        el.scrollLeft = el.scrollWidth / 3;
+
+        startAutoScroll();
+
+        return () => {
+            stopAutoScroll();
+            clearTimeout(resumeTimerRef.current);
+        };
+    }, []);
 
     // compli food code
 
@@ -442,43 +507,77 @@ export default function BlogPostClient({ blog }) {
                 </div>
 
                 {/* RIGHT — MAIN INGREDIENT (40%) */}
-                <div className="relative">
+                <div className="relative border border-black">
 
                     {/* Heading */}
-                    <div className="flex items-center mb-1 w-full">
-                        <Image src="/images/material/leaf9.png" width={50} height={50} alt="leaf" />
+                    <div className="flex items-center mb-3 w-full">
+                        <Image
+                            src="/images/material/leaf9.png"
+                            width={50}
+                            height={50}
+                            alt="leaf"
+                        />
                         <h3 className="font-serif text-xl flex items-center mt-2 ml-2 w-full">
                             Main Ingredient
-                            <Line className="from-[#a0522d] via-[#a0522d]/50" />
                         </h3>
                     </div>
 
-                    <aside className="p-4 rounded-xl shadow-inner">
+                    <aside className="rounded-xl shadow-inner p-3 relative ">
 
-                        <div className="flex flex-col items-center text-center">
+                        {/* LEFT BUTTON */}
+                        {showButtons && (
+                            <button
+                                onClick={goToPreviousIngredient}
+                                className="absolute left-2 top-1/2 -translate-y-1/2 z-10
+       bg-[#c08a5a]/70 shadow rounded-full w-8 h-8
+       flex items-center justify-center hover:bg-[#7b4b2a]"
+                            >
+                                ‹
+                            </button>
+                        )}
 
-                            {/* Ingredient Image */}
-                            <Image
-                                src={`/${maining}`}
-                                width={220}
-                                height={160}
-                                className="rounded-lg mb-3"
-                                alt={blog.main_ingredient?.name || "Main Ingredient"}
-                            />
+                        {/* RIGHT BUTTON */}
+                        {showButtons && (
+                            <button
+                                onClick={goToNextIngredient}
+                                className="absolute right-2 top-1/2 -translate-y-1/2 z-10
+       bg-[#c08a5a]/70 shadow rounded-full w-8 h-8
+       flex items-center justify-center hover:bg-[#7b4b2a]"
+                            >
+                                ›
+                            </button>
+                        )}
 
-                            {/* Ingredient Name */}
-                            <h4 className="font-semibold text-lg mb-2">
-                                {blog.main_ingredient?.name || "Ingredient Name"}
-                            </h4>
+                        <div className="relative">
 
-                            {/* Ingredient Description */}
-                            <p className="blog-intro text-justify">
-                                {blog.main_ingredient?.info || ""}
+                            {/* Floating Image */}
+                            <div className="float-left mr-4 mb-2 w-[240px]">
+                                <Image
+                                    src={`/${currentIngredient.image}`}
+                                    width={240}
+                                    height={170}
+                                    className="rounded-md"
+                                    alt={currentIngredient.name || "Main Ingredient"}
+                                />
+
+                                <h4 className="font-serif font-semibold text-base mt-1 text-center">
+                                    {currentIngredient.name}
+                                </h4>
+                            </div>
+
+                            {/* Wrapped Text */}
+                            <p className="blog-intro leading-snug  tracking-normal">
+                                {currentIngredient.info}
                             </p>
 
+                            <div className="clear-both" />
                         </div>
                     </aside>
+
                 </div>
+
+
+
 
             </section>
 
@@ -595,32 +694,64 @@ export default function BlogPostClient({ blog }) {
 
 
             {/* WHY KONKAN LOVES IT */}
-            <section className="max-w-6xl mx-auto px-6 pt-6 ">
-                <div className="flex items-center gap-2 mb-4 w-full">
-                    <Image src="/images/material/leaf13.png" width={50} height={50} alt="leaf" />
-                    <h3 className=" text-xl mt-4 flex items-center w-full">
-                        Complimentary Foods
-                        <Line className="from-[#a0522d] via-[#a0522d]/50" />
-                    </h3>
+            <section className="max-w-6xl mx-auto px-6 pt-6">
+                {/* Heading */}
+                <div className="flex items-center mb-1 w-full">
+                    <Image
+                        src="/images/material/leaf13.png"
+                        width={50}
+                        height={50}
+                        alt="leaf"
+                    />
+
+                    <div className="flex items-center w-full ml-2">
+                        <h3 className="text-xl whitespace-nowrap">
+                            Complimentary Foods
+                        </h3>
+
+                        <Line className="ml-3 flex-1 from-[#a0522d] via-[#a0522d]/50" />
+                    </div>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                    {blog.complimentary_foods?.map((item, i) => (
-                        <div key={i} className="space-y-2">
-                            <Image
-                                src={`/${item.image}`} // Add leading slash
-                                width={250}
-                                height={180}
-                                className="rounded-lg mx-auto"
-                                alt={item.name}
-                            />
-                            <p className="text-sm font-medium capitalize">{item.name}</p>
-                        </div>
-                    ))}
+
+                <div className="relative overflow-hidden w-full">
+                    {/* Prev Button */}
+                    <button
+                        onClick={() => manualScroll("prev")}
+                        className="absolute left-2 top-[45%] -translate-y-1/2 z-10 bg-[#c08a5a] shadow rounded-full w-10 h-10 flex items-center justify-center hover:bg-[#7b4b2a] transition"
+                    >
+                        ‹
+                    </button>
+
+                    {/* TRACK */}
+                    <div
+                        ref={carouselRef}
+                        className="flex gap-4 items-center overflow-x-hidden py-4"
+                    >
+                        {loopedFoodList.map((item, index) => (
+                            <div key={index} className="min-w-[240px] shrink-0 text-center">
+                                <Image
+                                    src={`/${item.image}`}
+                                    width={240}
+                                    height={160}
+                                    className="rounded-lg mx-auto"
+                                    alt={item.name}
+                                />
+                                <p className="text-sm font-medium capitalize mt-2">{item.name}</p>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Next Button */}
+                    <button
+                        onClick={() => manualScroll("next")}
+                        className="absolute right-2 top-[45%] -translate-y-1/2 z-10 bg-[#c08a5a] shadow rounded-full w-10 h-10 flex items-center justify-center hover:bg-[#7b4b2a] transition"
+                    >
+                        ›
+                    </button>
                 </div>
 
             </section>
-
 
             {modalIndex !== null && (
                 <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">

@@ -7,7 +7,7 @@
             "sub_heading": "Traditional Konkani Recipe",
             "short_info": "A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling  A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling digestivedigestive.",
             "thumbnail_image": "images/material/thumnail.png",
-             "date": "2026-01-10",
+            "date": "2026-01-10",
             "slider_images": [
                 "/images/material/dummyimg.png",
                 "/images/aluwadi/sliderimg/img1.JPG",
@@ -73,7 +73,7 @@
             "recipe_video": {
                 "platform": "YouTube",
                 "url": "https://www.youtube.com/watch?v=dibT86BWdOE",
-                "thumbnails":"images/aluwadi/main-img/aluwadi.jpeg"
+                "thumbnails": "images/aluwadi/main-img/aluwadi.jpeg"
             },
             "main_ingredient": {
                 "name": "Kokum",
@@ -132,8 +132,7 @@
                 "Traditional Drink",
                 "Konkani Cuisine",
                 "Veg"
-            ]   
-            
+            ]
         },
         {
             "id": 2,
@@ -260,13 +259,20 @@
             "recipe_video": {
                 "platform": "YouTube",
                 "url": "https://www.youtube.com/watch?v=-EYyEZw0hIY",
-                "thumbnails":"images/aluwadi/main-img/aluwadi.jpeg"
+                "thumbnails": "images/aluwadi/main-img/aluwadi.jpeg"
             },
-            "main_ingredient": {
-                "name": "chicken",
-                "image": "images/material/dummyimg.png",
-                "info": "Kokum is a sour purple fruit native to the native Ghats.  native native native native It is widely used in Konkani cuisine for its cooling properties and digestive benefits. okum is a sour purple fruit native to the Western Ghats. It is widely used in Konkani cuisine for its cooling properties and digestive benefits."
-            },
+            "main_ingredients": [
+                {
+                    "name": "Chicken",
+                    "image": "images/material/dummyimg.png",
+                    "info": "Kaul chicken is a hardy indigenous poultry breed from cdccsc Maharashtra, mainly the Konkan region. It is known for strong immunity, adaptability to free range farming, and tasty meat. Kaul chickens grow slowly but need minimal care. Farmers prefer them for low maintenance, disease resistance, and steady demand in rural and local village  markets markets markets markets markets markets."
+                },
+                {
+                    "name": "Kokum",
+                    "image": "images/material/dummyimg.png",
+                    "info": "Kokam is a tropical fruit native  Kokum Kokum to the Western Ghats of India, widely used in Konkani and Maharashtrian cuisine. It has a sour taste and is known for cooling and digestive properties. Kokam is commonly used in curries, sol kadhi, and drinks. It is also valued in traditional medicine for reducing heat, acidity, and improving digestion."
+                }
+            ],
             "history": "Solkadhi has been prepared and consumed for centuries in Konkani households. Solkadhi has been prepared and consumed for centuries in Konkani householdsSolkadhi has been prepared and consumed for centuries in Konkani householdsvSolkadhi has been prepared and consumed for centuries in Konkani householdsSolkadhi has been prepared and consumed for centuries in Konkani householdsSolkadhi has been prepared and consumed for centuries in Konkani householdsSolkadhi has been prepared and consumed for centuries in Konkani households Traditionally served after meals, it helped counter the heat and heaviness of spicy coastal food. Traditionally served after meals, it helped counter the heat and heaviness of spicy coastal food Traditionally served after meals, it helped counter the ",
             "geography_weather": {
                 "region": "Konkan Coast, Maharashtra & Goa",
@@ -418,7 +424,7 @@
             "recipe_video": {
                 "platform": "YouTube",
                 "url": "https://www.youtube.com/watch?v=-EYyEZw0hIY",
-                "thumbnails":"images/aluwadi/main-img/aluwadi.jpeg"
+                "thumbnails": "images/aluwadi/main-img/aluwadi.jpeg"
             },
             "main_ingredient": {
                 "name": "chicken",
@@ -576,7 +582,7 @@
             "recipe_video": {
                 "platform": "YouTube",
                 "url": "https://www.youtube.com/watch?v=-EYyEZw0hIY",
-                "thumbnails":"images/aluwadi/main-img/aluwadi.jpeg"
+                "thumbnails": "images/aluwadi/main-img/aluwadi.jpeg"
             },
             "main_ingredient": {
                 "name": "chicken",
@@ -637,14 +643,14 @@
                 "veg"
             ]
         },
-         {
+        {
             "id": 5,
             "slug": "mutton",
             "heading": "Solkadhi",
             "sub_heading": "Traditional Konkani Recipe",
             "short_info": "A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling  A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling digestivedigestive.",
             "thumbnail_image": "images/material/thumnail.png",
-             "date": "2026-01-05",
+            "date": "2026-01-05",
             "slider_images": [
                 "/images/material/dummyimg.png",
                 "/images/aluwadi/sliderimg/img1.JPG",
@@ -710,7 +716,7 @@
             "recipe_video": {
                 "platform": "YouTube",
                 "url": "https://www.youtube.com/watch?v=dibT86BWdOE",
-                "thumbnails":"images/aluwadi/main-img/aluwadi.jpeg"
+                "thumbnails": "images/aluwadi/main-img/aluwadi.jpeg"
             },
             "main_ingredient": {
                 "name": "Kokum",
@@ -770,8 +776,6 @@
                 "Konkani Cuisine",
                 "veg"
             ]
-            
         }
-        
     ]
 }

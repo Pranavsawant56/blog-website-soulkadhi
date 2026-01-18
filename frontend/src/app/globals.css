@@ -234,6 +234,8 @@ body::before {
   font-size: 1rem;
   text-align: justify;
   hyphens: auto;
+  overflow-wrap: break-word; /* ensures long words wrap properly */
+  word-break: break-word;
 }
 
 .blog-intro::first-letter {
@@ -241,6 +243,7 @@ body::before {
   -webkit-initial-letter: 2;  /* Safari support */
   font-weight: 700;
    margin-right: 4px;
+   
  
 }
 /* Default text color for entire app */

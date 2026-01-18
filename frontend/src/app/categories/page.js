@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 // Dynamically import the client component (SSR: false)
 const ClientCategoriesPage = dynamic(
-  () => import("./ClientCategoriesPage"),
+  () => import("./ClientCategoriesPage.js"),
   { ssr: false } // important!
 );
 

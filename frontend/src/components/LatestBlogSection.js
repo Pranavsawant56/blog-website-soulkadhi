@@ -35,7 +35,7 @@ export default function LatestBlogSection() {
 
                     {/* See All Button */}
                     <a
-                        href="/blogs"
+                        href="/blogs.html"
                         className=" text-black  pt-3 rounded  transition ml-4"
                     >
                         more
