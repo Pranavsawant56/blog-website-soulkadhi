@@ -96,7 +96,7 @@ export default function VideoCard({ video }) {
 
       {/* Title */}
       <div className="flex flex-col items-center justify-center mt-1 mb-1 max-w-[320px]">
-        <h3 className="text-sm sm:text-base font-semibold text-center text-[#2b1c10] leading-tight">
+        <h3 className="text-sm sm:text-base font-semibold text-center  leading-tight">
           {video?.title ? video.title.split("|")[0].trim() : "Untitled Video"}
         </h3>
       </div>

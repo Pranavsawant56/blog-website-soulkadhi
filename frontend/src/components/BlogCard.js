@@ -50,7 +50,7 @@ export default function BlogCard({ blog }) {
 
         {/* Title */}
         <div className="mt-1 max-w-[220px] text-center">
-          <h3 className="text-xs sm:text-sm font-medium text-[#2b1c10] leading-snug ">
+          <h3 className="text-xs sm:text-sm font-medium  leading-snug ">
             {blog.heading}
           </h3>
         </div>

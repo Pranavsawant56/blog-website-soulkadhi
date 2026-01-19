@@ -74,7 +74,9 @@ export default function ContactForm() {
 
   return (
     <div className="flex justify-center items-start sm:items-center py-6 px-4 sm:px-6 lg:px-8">
+      
       <div className="w-full max-w-md sm:max-w-lg lg:max-w-xl p-6 sm:p-8 bg-white rounded-lg shadow-lg h-auto">
+        
         {!submitted ? (
           <form onSubmit={handleSubmit} className="space-y-4">
             {/* Name & Surname */}

@@ -23,10 +23,10 @@ All videos are shot by five brothers in the heart of Kokan, filled with natural 
 
         {/* INTRO SECTION */}
         <div className="bg-white p-8 mb-12 rounded-2xl shadow-lg">
-          <h1 className="text-3xl font-bold text-center mb-6 text-(--color-grey-brown)">
+          <h1 className="text-3xl font-bold text-center mb-6 ">
             About Soulkadhi
           </h1>
-          <p className="text-lg text-gray-700">{intro}</p>
+          <p className="text-lg  ">{intro}</p>
         </div>
 
         {/* FIRST ROW — 3 CARDS */}
@@ -47,7 +47,7 @@ All videos are shot by five brothers in the heart of Kokan, filled with natural 
                 <Image src={bro.img} alt={bro.name} width={160} height={160} className="object-cover" />
               </div>
 
-              <h3 className="text-xl font-semibold text-gray-900">{bro.name}</h3>
+              <h3 className="text-xl font-semibold ">{bro.name}</h3>
 
               <div className="inline-flex items-center gap-2 text-pink-600 mt-3">
                 <Instagram size={20} />
@@ -74,7 +74,7 @@ All videos are shot by five brothers in the heart of Kokan, filled with natural 
                 <Image src={bro.img} alt={bro.name} width={160} height={160} className="object-cover" />
               </div>
 
-              <h3 className="text-xl font-semibold text-gray-900">{bro.name}</h3>
+              <h3 className="text-xl font-semibold ">{bro.name}</h3>
 
               <div className="inline-flex items-center gap-2 text-pink-600 mt-3">
                 <Instagram size={20} />

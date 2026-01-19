@@ -7,7 +7,7 @@ export default function BlogPage() {
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-center mb-6">
           <h2 className="bg-[#6b3d24] text-white text-lg sm:text-xl px-4 py-1 rounded">
-            All Blogs
+             Blogs
           </h2>
         </div>
 

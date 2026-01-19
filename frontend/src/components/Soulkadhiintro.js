@@ -21,7 +21,7 @@ export default function SoulkadhiIntro() {
           </div>
 
           {/* TEXT */}
-          <div className="text-white text-center md:text-left px-1 mt-6">
+          <div className=" text-center md:text-left px-1 mt-6">
             <h2
               className="text-2xl md:text-3xl font-bold mb-2"
 

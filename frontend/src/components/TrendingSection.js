@@ -43,7 +43,7 @@ export default function TrendingSection() {
                             height={50}
                             alt="leaf 
                                                                "  />
-                        <h3 className=" text-black text-lg sm:text-xl font-bold  py-1 rounded ">
+                        <h3 className="  text-lg sm:text-xl font-bold  py-1 rounded ">
                             Trending Videos
                         </h3>
                         <Line />
@@ -51,7 +51,7 @@ export default function TrendingSection() {
 
                     <a
                         href="/videos.html?filter=trending"
-                        className=" text-black    rounded  transition ml-4"
+                        className="    rounded  transition ml-4"
                     >
                         more
                     </a>

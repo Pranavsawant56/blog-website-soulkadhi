@@ -51,6 +51,35 @@ export default function BlogPostClient({ blog }) {
 
     const scrollRef = useRef(null);
     const [sPage, setSPage] = useState(0);
+    //video play 
+    const videoSectionRef = useRef(null);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVideoOpen(true);   // open modal
+                } else {
+                    setVideoOpen(false);  // close modal
+                }
+            },
+            { threshold: 0.5 } // 50% visible
+        );
+
+        if (videoSectionRef.current) {
+            observer.observe(videoSectionRef.current);
+        }
+
+        return () => {
+            if (videoSectionRef.current) {
+                observer.unobserve(videoSectionRef.current);
+            }
+        };
+    }, []);
+
+    // video play 
+
+
+
     // main ingredients
     const mainIngredients = blog?.main_ingredients || [];
 
@@ -236,7 +265,7 @@ export default function BlogPostClient({ blog }) {
 
 
     return (
-        <main className="  bg-fix bg-cover bg-center bg-repeat text-[#3b2f2f]">
+        <main className="  bg-fix bg-cover bg-center bg-repeat ">
 
 
             {/* HERO */}
@@ -334,7 +363,7 @@ export default function BlogPostClient({ blog }) {
                                             <div className="flex items-start gap-2">
                                                 {/* Bullet Image */}
                                                 <Image
-                                                    src="/images/material/ing-flower2.png" // your bullet image path
+                                                    src="/images/material/ing-flo-8.webp" // your bullet image path
                                                     width={20} // adjust size as needed
                                                     height={20}
                                                     alt="bullet"
@@ -448,7 +477,8 @@ export default function BlogPostClient({ blog }) {
             <section className="max-w-6xl mx-auto px-6  pt-6 grid grid-cols-1 md:grid-cols-[60%_40%] gap-6 items-start ">
 
                 {/* LEFT — RECIPE VIDEO (60%) */}
-                <div className="relative">
+                <div className="relative" ref={videoSectionRef}>
+
 
                     {/* Heading */}
                     <div className="flex items-center mb-1 w-full">
@@ -507,7 +537,7 @@ export default function BlogPostClient({ blog }) {
                 </div>
 
                 {/* RIGHT — MAIN INGREDIENT (40%) */}
-                <div className="relative border border-black">
+                <div className="relative ">
 
                     {/* Heading */}
                     <div className="flex items-center mb-3 w-full">
@@ -528,8 +558,8 @@ export default function BlogPostClient({ blog }) {
                         {showButtons && (
                             <button
                                 onClick={goToPreviousIngredient}
-                                className="absolute left-2 top-1/2 -translate-y-1/2 z-10
-       bg-[#c08a5a]/70 shadow rounded-full w-8 h-8
+                                className="absolute right-106 top-1/2 -translate-y-1/2 z-10
+       bg-[#c08a5a] shadow-sm rounded-full w-8 h-8
        flex items-center justify-center hover:bg-[#7b4b2a]"
                             >
                                 ‹
@@ -540,8 +570,8 @@ export default function BlogPostClient({ blog }) {
                         {showButtons && (
                             <button
                                 onClick={goToNextIngredient}
-                                className="absolute right-2 top-1/2 -translate-y-1/2 z-10
-       bg-[#c08a5a]/70 shadow rounded-full w-8 h-8
+                                className="absolute left-106 top-1/2 -translate-y-1/2 z-10
+       bg-[#c08a5a] shadow-sm rounded-full w-8 h-8
        flex items-center justify-center hover:bg-[#7b4b2a]"
                             >
                                 ›

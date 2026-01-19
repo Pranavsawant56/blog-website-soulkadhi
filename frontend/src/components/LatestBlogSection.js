@@ -26,7 +26,7 @@ export default function LatestBlogSection() {
                             height={50}
                             alt="leaf 
                                            "  />
-                        <h3 className=" text-black text-lg sm:text-xl  mt-3 py-1 rounded ">
+                        <h3 className="  text-lg sm:text-xl  mt-3 py-1 rounded ">
                             Latest Blogs
                         </h3>
                         <span className="flex-grow ml-1 mt-6 h-[2px] bg-gradient-to-r 
@@ -36,7 +36,7 @@ export default function LatestBlogSection() {
                     {/* See All Button */}
                     <a
                         href="/blogs.html"
-                        className=" text-black  pt-3 rounded  transition ml-4"
+                        className="   pt-3 rounded  transition ml-4"
                     >
                         more
                     </a>
