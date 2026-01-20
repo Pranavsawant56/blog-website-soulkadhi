@@ -44,7 +44,7 @@ export default function BlogPostClient({ blog }) {
     ]
 
     const [modalIndex, setModalIndex] = useState(null)
-    const [videoOpen, setVideoOpen] = useState(false)
+
     const [stepPage, setStepPage] = useState(0)
     const [index, setIndex] = useState(0)
 
@@ -53,28 +53,25 @@ export default function BlogPostClient({ blog }) {
     const [sPage, setSPage] = useState(0);
     //video play 
     const videoSectionRef = useRef(null);
+    const [inView, setInView] = useState(false);
+    const [videoOpen, setVideoOpen] = useState(false);
+
+
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVideoOpen(true);   // open modal
-                } else {
-                    setVideoOpen(false);  // close modal
-                }
+                setInView(entry.isIntersecting);
             },
-            { threshold: 0.5 } // 50% visible
+            { threshold: 0.5 }
         );
 
         if (videoSectionRef.current) {
             observer.observe(videoSectionRef.current);
         }
 
-        return () => {
-            if (videoSectionRef.current) {
-                observer.unobserve(videoSectionRef.current);
-            }
-        };
+        return () => observer.disconnect();
     }, []);
+
 
     // video play 
 
@@ -353,7 +350,7 @@ export default function BlogPostClient({ blog }) {
                             ref={scrollRef}
                             className="bg-[#ccac8d]/40 shadow-inner border-[18px] border-transparent rounded-2xl
             [border-image:url('/images/material/br-extended.png')_32_stretch]
-            [border-image-outset:2] max-h-92 overflow-y-auto scrollbar-brown
+            [border-image-outset:2] max-h-92 overflow-y-auto scrollbar-ink-brown
             [&::-webkit-scrollbar] [-ms-overflow-style:'none'] [scrollbar-width:'none']"
                         >
                             <ul className="list-none text-sm leading-6 p-4 sm:p-6 space-y-2">
@@ -428,7 +425,7 @@ export default function BlogPostClient({ blog }) {
 
 
                         {/* SCROLLABLE STEPS */}
-                        <div className="h-[320px] overflow-y-auto overflow-x-visible pr-4 custom-scroll">
+                        <div className="h-[320px] overflow-y-auto overflow-x-visible pr-4 scrollbar-ink-brown">
 
                             <div className="grid grid-cols-2 gap-3 pl-2">
 
@@ -490,43 +487,62 @@ export default function BlogPostClient({ blog }) {
                     </div>
 
                     {/* Video Thumbnail */}
-                    <aside className=" p-2 rounded-xl shadow-inner">
+                    <aside className=" p-5 rounded-xl shadow-inner">
                         <div
-                            className="relative w-full aspect-video rounded-lg overflow-hidden cursor-pointer"
-                            onClick={() => setVideoOpen(true)}
+                            ref={videoSectionRef}
+                            className="relative w-full aspect-video rounded-lg overflow-hidden"
                         >
-                            <Image
-                                src={`/${videothum}`}
-                                fill
-                                className="object-cover"
-                                alt="Recipe Video Thumbnail"
-                            />
+                            {inView ? (
+                                <>
+                                    {/* Inline autoplay video */}
+                                    <iframe
+                                        className="absolute inset-0 w-full h-full"
+                                        src={videoUrl + "?autoplay=1&mute=1"}
+                                        title="Recipe Video"
+                                        allow="autoplay; encrypted-media; picture-in-picture"
+                                    />
 
-                            {/* Play Button */}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-white text-4xl bg-red-600 rounded-full px-4 py-2">
-                                    ▶
-                                </span>
-                            </div>
+                                    {/* CLICK CAPTURE LAYER */}
+                                    <div
+                                        className="absolute inset-0 z-10 cursor-pointer"
+                                        onClick={() => setVideoOpen(true)}
+                                    />
+                                </>
+                            ) : (
+                                <>
+                                    <Image
+                                        src={`/${videothum}`}
+                                        fill
+                                        className="object-cover"
+                                        alt="Recipe Video Thumbnail"
+                                    />
+
+                                    {/* Play icon */}
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <span className="text-white text-4xl rounded-full px-4 py-2">
+                                            ▶
+                                        </span>
+                                    </div>
+                                </>
+                            )}
                         </div>
+
                     </aside>
 
                     {/* VIDEO MODAL */}
                     {videoOpen && (
                         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50">
                             <div className="relative w-[90%] md:w-[70%] aspect-video">
-                                {videoUrl && (
-                                    <iframe
-                                        className="absolute inset-0 w-full h-full rounded-lg"
-                                        src={videoUrl + "?autoplay=1"}
-                                        title="Recipe Video"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                        allowFullScreen
-                                    />
-                                )}
+                                <iframe
+                                    className="absolute inset-0 w-full h-full rounded-lg"
+                                    src={videoUrl + "?autoplay=1"}
+                                    title="Recipe Video"
+                                    allow="autoplay; encrypted-media; picture-in-picture"
+                                    allowFullScreen
+                                />
 
                                 <button
-                                    className="absolute -top-8 right-3 bg-black/30 rounded-lg px-2 text-white font-bold text-lg"
+                                    className="absolute -top-8 right-3 bg-black/40 rounded-lg px-2 text-white text-lg"
                                     onClick={() => setVideoOpen(false)}
                                 >
                                     ✕
@@ -534,6 +550,7 @@ export default function BlogPostClient({ blog }) {
                             </div>
                         </div>
                     )}
+
                 </div>
 
                 {/* RIGHT — MAIN INGREDIENT (40%) */}
@@ -626,7 +643,7 @@ export default function BlogPostClient({ blog }) {
                             height={50}
                             alt="leaf"
                         />
-                        <h3 className="font-serif text-xl flex items-center ml-2 w-full">
+                        <h3 className="font-serif text-xl flex items-center ml-2 w-full  ">
                             History of {blog.heading}
                             <Line className="from-[#a0522d] via-[#a0522d]/40" />
                         </h3>
@@ -644,7 +661,7 @@ export default function BlogPostClient({ blog }) {
                 <div className="relative">
 
                     {/* Heading */}
-                    <div className="flex items-center mb-1 w-full">
+                    <div className="flex items-center mb-1 w-full ">
                         <Image
                             src="/images/material/leaf11.png"
                             width={50}
@@ -658,10 +675,10 @@ export default function BlogPostClient({ blog }) {
                     </div>
 
                     {/* Content */}
-                    <aside className="p-4 rounded-xl shadow-inner space-y-3">
+                    <aside className=" rounded-xl shadow-inner space-y-3">
 
                         {/* Weather Image */}
-                        <div className="flex justify-center">
+                        <div className="flex justify-center ">
                             <Image
                                 src={`/${weather}`}
                                 width={40}
@@ -672,7 +689,7 @@ export default function BlogPostClient({ blog }) {
                         </div>
 
                         {/* Weather Text */}
-                        <p className="leading-7 text-justify blog-intro">
+                        <p className="leading-7 text-justify blog-intro pt-1">
                             {blog.geography_weather.info}
                         </p>
 
