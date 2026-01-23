@@ -53,24 +53,7 @@ export default function BlogPostClient({ blog }) {
     const [sPage, setSPage] = useState(0);
     //video play 
     const videoSectionRef = useRef(null);
-    const [inView, setInView] = useState(false);
     const [videoOpen, setVideoOpen] = useState(false);
-
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setInView(entry.isIntersecting);
-            },
-            { threshold: 0.5 }
-        );
-
-        if (videoSectionRef.current) {
-            observer.observe(videoSectionRef.current);
-        }
-
-        return () => observer.disconnect();
-    }, []);
 
 
     // video play 
@@ -487,47 +470,29 @@ export default function BlogPostClient({ blog }) {
                     </div>
 
                     {/* Video Thumbnail */}
-                    <aside className=" p-5 rounded-xl shadow-inner">
+                    <aside className="p-5 rounded-xl shadow-inner">
                         <div
                             ref={videoSectionRef}
                             className="relative w-full aspect-video rounded-lg overflow-hidden"
                         >
-                            {inView ? (
-                                <>
-                                    {/* Inline autoplay video */}
-                                    <iframe
-                                        className="absolute inset-0 w-full h-full"
-                                        src={videoUrl + "?autoplay=1&mute=1"}
-                                        title="Recipe Video"
-                                        allow="autoplay; encrypted-media; picture-in-picture"
-                                    />
+                            <>
+                                {/* Autoplay video on page load */}
+                                <iframe
+                                    className="absolute inset-0 w-full h-full"
+                                    src={videoUrl + "?autoplay=1&mute=1"}
+                                    title="Recipe Video"
+                                    allow="autoplay; encrypted-media; picture-in-picture"
+                                />
 
-                                    {/* CLICK CAPTURE LAYER */}
-                                    <div
-                                        className="absolute inset-0 z-10 cursor-pointer"
-                                        onClick={() => setVideoOpen(true)}
-                                    />
-                                </>
-                            ) : (
-                                <>
-                                    <Image
-                                        src={`/${videothum}`}
-                                        fill
-                                        className="object-cover"
-                                        alt="Recipe Video Thumbnail"
-                                    />
-
-                                    {/* Play icon */}
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <span className="text-white text-4xl rounded-full px-4 py-2">
-                                            ▶
-                                        </span>
-                                    </div>
-                                </>
-                            )}
+                                {/* Click layer to open modal / full video */}
+                                <div
+                                    className="absolute inset-0 z-10 cursor-pointer"
+                                    onClick={() => setVideoOpen(true)}
+                                />
+                            </>
                         </div>
-
                     </aside>
+
 
                     {/* VIDEO MODAL */}
                     {videoOpen && (
