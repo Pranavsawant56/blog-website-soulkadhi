@@ -6,7 +6,6 @@ let blogjson = null;
 
 // ✅ Generate static params for export
 export function generateStaticParams() {
-
   return blogsData.blogs.map((blog) => ({
     slug: blog.slug,
   }));
@@ -14,12 +13,10 @@ export function generateStaticParams() {
 
 // Server Component (default)
 export default async function RecipePage({ params }) {
- 
- 
   const { slug } =  await params; // now safe in async function
-console.log(slug);
-   const res =  await fetch("https://soulkadhi.anubhootee.com/phpserver/recipe.php?slug="+ slug);
-    const blogjson = await res.json();
+  console.log(slug);
+  const res =  await fetch("https://soulkadhi.anubhootee.com/phpserver/recipe.php?slug="+ slug);
+  const blogjson = await res.json();
   console.log(blogjson);
   
 
