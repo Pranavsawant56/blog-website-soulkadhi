@@ -1,61 +1,60 @@
 "use client";
 
-import { useState, useEffect, useRef, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { LoaderContext } from "../context/LoaderContext";
-import OverlayLoader from "../components/OverlayLoader";
 import HeroSlider from "../components/HeroSlider";
 import SearchBar from "../components/SearchBar";
 import LatestVideoSection from "../components/LatestVideoSection";
 import TrendingSection from "../components/TrendingSection";
 import Soulkadhiintro from "../components/Soulkadhiintro";
-import gsap from "gsap";
-import Instaslider from ".././components/Instaslider.js";
+import Instaslider from "../components/Instaslider";
 import LatestBlogsection from "../components/LatestBlogSection";
+import blogsData from "@/blog.json"; // ✅ Use this directly
+
 
 export default function HomePage() {
- 
-  const { hasLoaded, setHasLoaded } = useContext(LoaderContext);
-  const [loading, setLoading] = useState(!hasLoaded);
-  const [animated, setAnimated] = useState(false);
-  const pageRef = useRef(null);
+  const { setHasLoaded } = useContext(LoaderContext);
+
+  const [videos, setVideos] = useState([]);
+  const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-  if (!hasLoaded) {
-    const timer = setTimeout(() => {
-      setLoading(false);
-      setHasLoaded(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }
-}, [hasLoaded, setHasLoaded]);
+    async function fetchData() {
+      try {
+        // 🎥 Fetch videos
+        const resVideos = await fetch(
+          "https://soulkadhi.anubhootee.com/phpserver/get_videos.php"
+        );
 
+        if (!resVideos.ok) throw new Error("Videos API failed");
 
- useEffect(() => {
-  if (!loading && pageRef.current && !hasLoaded) {
-    gsap.from(pageRef.current, {
-      opacity: 0,
-      y: 40,
-      duration: 1,
-      ease: "power3.out",
-      clearProps: "all", // IMPORTANT
-    });
-  }
-}, [loading, hasLoaded]);
+        const videoData = await resVideos.json();
+        setVideos(videoData);
 
+        // 📝 Blogs from local JSON (already imported)
+        setBlogs(blogsData);
+
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      } finally {
+        // 🟢 Always stop loader after attempt
+        setHasLoaded(true);
+      }
+    }
+
+    fetchData();
+  }, [setHasLoaded]);
 
   return (
-    <>
-      {loading && <OverlayLoader />}
-      <div ref={pageRef}>
-
-        <HeroSlider />
-        <SearchBar />
-        <LatestVideoSection />
-        <LatestBlogsection/>
-        <TrendingSection />
-        <Soulkadhiintro />
-        <Instaslider/>;
-      </div>
-    </>
+    <div>
+      <HeroSlider />
+      <SearchBar />
+      <LatestVideoSection videos={videos} />
+      <LatestBlogsection blogs={blogs} />
+      <TrendingSection videos={videos} />
+      <Soulkadhiintro />
+      <Instaslider />
+      
+    </div>
   );
 }

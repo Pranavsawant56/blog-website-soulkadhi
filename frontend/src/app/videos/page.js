@@ -1,46 +1,60 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { fetchVideos } from "../../utils/fetchVideos";
 import VideoCard from "../../components/VideoCard";
-import OverlayLoader from "@/components/OverlayLoader";
-import Pagination from "@/components/Pagination";
+import { LoaderContext } from "@/context/LoaderContext"; 
+import Pagination from "../../components/pagination";
 
 
 export default function VideosPage() {
+    
+    const { setHasLoaded } = useContext(LoaderContext); 
     const [videos, setVideos] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 12;
 
     useEffect(() => {
-        async function loadVideos() {
-            const data = await fetchVideos();
+    async function loadVideos() {
+      try {
+        const data = await fetchVideos();
 
-            const searchParams = new URLSearchParams(window.location.search);
-            const filter = searchParams.get("filter");
+        const searchParams = new URLSearchParams(window.location.search);
+        const filter = searchParams.get("filter");
 
-            let sorted = [...data];
+        let sorted = [...data];
 
-            // Helper to convert string numbers with commas to numbers
-            const parseNumber = (str) => Number(str?.replace(/,/g, "") || 0);
+        // Convert "1,234" → 1234
+        const parseNumber = (str) => Number(str?.replace(/,/g, "") || 0);
 
-            if (filter === "trending") {
-                // Sort by total engagement = views + likes + comments
-                sorted.sort((a, b) => {
-                    const aScore = parseNumber(a.views) + parseNumber(a.likes) + parseNumber(a.comments);
-                    const bScore = parseNumber(b.views) + parseNumber(b.likes) + parseNumber(b.comments);
-                    return bScore - aScore;
-                });
-            } else {
-                // Sort by latest published
-                sorted.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-            }
-
-            setVideos(sorted);
+        if (filter === "trending") {
+          sorted.sort((a, b) => {
+            const aScore =
+              parseNumber(a.views) +
+              parseNumber(a.likes) +
+              parseNumber(a.comments);
+            const bScore =
+              parseNumber(b.views) +
+              parseNumber(b.likes) +
+              parseNumber(b.comments);
+            return bScore - aScore;
+          });
+        } else {
+          sorted.sort(
+            (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)
+          );
         }
 
-        loadVideos();
-    }, []);
+        setVideos(sorted);
+      } catch (err) {
+        console.error("Video fetch error:", err);
+      } finally {
+        setHasLoaded(true); // ✅ VERY IMPORTANT — stops loader
+      }
+    }
+
+    loadVideos();
+  }, [setHasLoaded]);
 
     const totalPages = Math.ceil(videos.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;

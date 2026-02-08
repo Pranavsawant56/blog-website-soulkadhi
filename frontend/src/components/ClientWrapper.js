@@ -1,23 +1,22 @@
-/* "use client";
-
-import { LoaderProvider } from "../context/LoaderContext";
-
-export default function ClientWrapper({ children }) {
-  return <LoaderProvider>{children}</LoaderProvider>;
-} */
 "use client";
 
-import { LoaderProvider } from "../context/LoaderContext";
+import { useContext, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { LoaderContext } from "../context/LoaderContext";
+import OverlayLoader from "../components/OverlayLoader";
 
 export default function ClientWrapper({ children }) {
+  const { hasLoaded, setHasLoaded } = useContext(LoaderContext);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setHasLoaded(false); // show loader on every route change
+  }, [pathname, setHasLoaded]);
+
   return (
-    <LoaderProvider>
-      <div className="page-bg min-h-screen flex flex-col">
-        {children}
-      </div>
-    </LoaderProvider>
+    <>
+      {!hasLoaded && <OverlayLoader />}
+      <div className="page-bg min-h-screen flex flex-col">{children}</div>
+    </>
   );
 }
-
-
-

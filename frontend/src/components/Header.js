@@ -4,10 +4,17 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import categories from "@/categories.json"
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isCatOpen, setIsCatOpen] = useState(false);
+    const normalize = (str) =>
+  str
+    .trim()                    // remove leading/trailing spaces
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
 
     return (
         <header
@@ -32,15 +39,58 @@ export default function Header() {
                     <Link href="/" className="hover:text-amber-950 transition">Home</Link>
                     {/* Categories dropdown (Desktop) */}
                     <div className="relative group">
-                        <button className="hover:text-amber-950 transition">Categories</button>
-                        <div className="absolute left-0 mt-2 w-40 bg-white/90 text-black rounded-lg z-40 shadow-lg
-                         opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300">
+                        <button className="font-medium hover:text-amber-950">
+                            Categories
+                        </button>
 
-                            <Link href="/categories?types=veg" className="block px-4 py-2 hover:bg-gray-100"> Veg</Link>
-                            <Link href="/categories?types=nonveg" className="block px-4 py-2 hover:bg-gray-100"> Non-Veg </Link>
-                            <Link href="/categories?types=desserts" className="block px-4 py-2 hover:bg-gray-100">Desserts </Link>
+                        {/* Mega Dropdown */}
+                        <div
+                            className="
+                                         absolute top-full mt-4
+                                         left-1/2 -translate-x-1/2
+                                         w-[1100px]
+                                         bg-white shadow-xl rounded-2xl
+                                         px-8 py-6
+                                         opacity-0 invisible
+                                         group-hover:opacity-100 group-hover:visible
+                                         transition-all duration-300
+                                         z-50 "
+                        >
+                            <div className="
+                                          grid
+                                          grid-cols-6
+                                          grid-rows-2
+                                          grid-flow-col
+                                          gap-x-12
+                                          gap-y-8
+                                        ">
+                                {categories.slice(0, 12).map((category) => (
+                                    <div key={category.title} className="min-w-0">
+                                        <h4 className="mb-3 text-sm font-semibold text-[#3a1704] tracking-wide">
+                                            {category.title}
+                                        </h4>
+
+                                        <ul className="space-y-2">
+                                            {category.items.map((item) => (
+                                                <li key={item} className="leading-snug">
+                                                    <Link
+                                                        href={`/categories?types=${normalize(item)}`}
+                                                        className="text-sm text-[#c08a5a] hover:text-amber-950 transition whitespace-normal"
+                                                    >
+                                                        {item}
+                                                    </Link>
+
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
+
+
+
 
                     <Link href="/blogs" className="hover:text-amber-950 transition"> Blogs</Link>
                     <Link href="/videos" className="hover:text-amber-950 transition">Videos</Link>
@@ -49,65 +99,125 @@ export default function Header() {
 
                 {/* 🔹 Mobile Menu Button */}
                 <button
-                    className="md:hidden text-white mr-3"
                     onClick={() => setIsOpen(!isOpen)}
-                    aria-label="Toggle Menu"
+                    className="relative z-100 flex h-8 w-8 flex-col justify-between md:hidden"
                 >
-                    {isOpen ? <X size={28} /> : <Menu size={28} />}
+                    <span
+                        className={`h-0.5 w-full bg-black transition-transform duration-300 ${isOpen ? "translate-y-[14px] rotate-45" : ""
+                            }`}
+                    />
+                    <span
+                        className={`h-0.5 w-full bg-black transition-opacity duration-300 ${isOpen ? "opacity-0" : ""
+                            }`}
+                    />
+                    <span
+                        className={`h-0.5 w-full bg-black transition-transform duration-300 ${isOpen ? "-translate-y-[14px] -rotate-45" : ""
+                            }`}
+                    />
                 </button>
+
+
+
             </div>
 
             {/* 🔹 Mobile Dropdown Menu */}
             {isOpen && (
                 <nav
-                    className=" md:hidden absolute top-[82px] right-3 bg-white/60 backdrop-blur-md text-black flex flex-col items-start
-                                space-y-2 px-5 py-4 font-roboto text-sm font-medium shadow-lg rounded-2xl z-50 w-160px">
+                    className={`
+    fixed top-0 right-0 h-screen w-[85%] max-w-[320px] 
+    bg-[#5b3523] text-white
+    z-50 md:hidden
+    transform transition-transform duration-300 ease-in-out
+    ${isOpen ? "translate-x-0" : "translate-x-full"}
+    px-6 py-6
+    overflow-y-auto
+  `}
+                >
                     {/* Home */}
-                    <div className="w-full">
-                        <Link href="/" onClick={() => setIsOpen(false)} className="hover:text-[--color-grey-brown] block" >Home </Link>
-                        <hr className="border-black/20 my-1 w-full" />
-                    </div>
+                    <Link
+                        href="/"
+                        onClick={() => setIsOpen(false)}
+                        className="block py-2 font-medium hover:text-[--color-grey-brown]"
+                    >
+                        Home
+                    </Link>
+
+
+                    <hr className="my-3 border-black/20" />
 
                     {/* Categories */}
-                    <div className="w-full">
+                    <div>
                         <button
                             onClick={() => setIsCatOpen(!isCatOpen)}
-                            className="flex justify-between items-center w-full hover:text-[--color-grey-brown]"
+                            className="flex w-full items-center justify-between py-2 font-medium"
                         >
                             <span>Categories</span>
                             <span className="text-lg">{isCatOpen ? "−" : "+"}</span>
                         </button>
 
-                        {/* ✅ Sub Dropdown (with <hr> between items) */}
                         {isCatOpen && (
-                            <div className="ml-3 mt-1 flex flex-col text-xs text-black/90 space-y-1 w-full">
-                                <Link href="/categories?type=veg" onClick={() => setIsOpen(false)}>Veg </Link>
-                                <hr className="border-black/20 my-1 w-[70%]" />
-                                <Link href="/categories?type=nonveg" onClick={() => setIsOpen(false)}> Non-Veg</Link>
-                                <hr className="border-black/20 my-1 w-[70%]" />
-                                <Link href="/categories?type=desserts" onClick={() => setIsOpen(false)}>Desserts</Link>
+                            <div className="mt-2 ml-2 space-y-3 text-sm">
+                                {categories.map((category) => (
+                                    <div key={category.title}>
+                                        <p className="font-semibold text-gray-300 mb-1">{category.title}</p>
+
+                                        <div className="ml-3 space-y-1">
+                                            {category.items.map((item) => (
+                                                <Link
+                                                    key={item}
+                                                    href={`/categories?types=${item
+                                                        .toLowerCase()
+                                                        .replace(/\s+/g, "-")}`}
+                                                    onClick={() => {
+                                                        setIsOpen(false);
+                                                        setIsCatOpen(false);
+                                                    }}
+                                                    className="block text-white/80 hover:text-[--color-grey-brown]"
+                                                >
+                                                    {item}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         )}
-                        <hr className="border-black/20 my-1 w-full" />
                     </div>
+
+                    <hr className="my-3 border-black/20" />
 
                     {/* Blogs */}
-                    <div className="w-full">
-                        <Link href="/blogs" onClick={() => setIsOpen(false)} className="hover:text-[--color-grey-brown] block"> Blogs</Link>
-                        <hr className="border-black/20 my-1 w-full" />
-                    </div>
+                    <Link
+                        href="/blogs"
+                        onClick={() => setIsOpen(false)}
+                        className="block py-2 font-medium hover:text-[--color-grey-brown]"
+                    >
+                        Blogs
+                    </Link>
+
+                    <hr className="my-3 border-black/20" />
 
                     {/* Videos */}
-                    <div className="w-full">
-                        <Link href="/videos" onClick={() => setIsOpen(false)} className="hover:text-[--color-grey-brown]block" >Videos </Link>
-                        <hr className="border-black/20 my-1 w-full" />
-                    </div>
+                    <Link
+                        href="/videos"
+                        onClick={() => setIsOpen(false)}
+                        className="block py-2 font-medium hover:text-[--color-grey-brown]"
+                    >
+                        Videos
+                    </Link>
+
+                    <hr className="my-3 border-black/20" />
 
                     {/* About */}
-                    <div className="w-full">
-                        <Link href="/about" onClick={() => setIsOpen(false)} className="hover:text-[--color-grey-brown]block"> About</Link>
-                    </div>
+                    <Link
+                        href="/about"
+                        onClick={() => setIsOpen(false)}
+                        className="block py-2 font-medium hover:text-[--color-grey-brown]"
+                    >
+                        About
+                    </Link>
                 </nav>
+
             )}
         </header>
     );

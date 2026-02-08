@@ -1,8 +1,10 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { fetchVideos } from "@/utils/fetchVideos";
-import VideoCard from "@/components/VideoCard";
+import blogsData from "@/blog.json";
+import BlogCard from "@/components/BlogCard";
+import Pagination from "@/components/pagination";
 import { Search } from "lucide-react";
 
 export default function SearchPage() {
@@ -10,27 +12,21 @@ export default function SearchPage() {
     const router = useRouter();
     const query = params.get("query")?.toLowerCase().trim() || "";
 
-    const [allVideos, setAllVideos] = useState([]);
+    const [allBlogs, setAllBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Pagination states
     const [currentPage, setCurrentPage] = useState(1);
-    const videosPerPage = 12;
+    const itemsPerPage = 20;
 
-    // Local state for search input in search page
     const [searchText, setSearchText] = useState(query);
 
-    // Fetch videos
+    // Load blogs
     useEffect(() => {
-        async function load() {
-            const data = await fetchVideos();
-            setAllVideos(data);
-            setLoading(false);
-        }
-        load();
+        setAllBlogs(blogsData.blogs || blogsData);
+        setLoading(false);
     }, []);
 
-    // Reset page and update search input when new query comes
+    // Reset page when search query changes
     useEffect(() => {
         setCurrentPage(1);
         setSearchText(query);
@@ -38,28 +34,32 @@ export default function SearchPage() {
 
     if (loading) return <p className="p-4">Loading...</p>;
 
-    // Filter results
-    const results = allVideos.filter((video) => {
-        const title = video.title?.toLowerCase() || "";
-        let description = video.description?.toLowerCase() || "";
+    // 🔎 Search Logic
+    const results = allBlogs.filter((blog) => {
+        const heading = blog.heading?.toLowerCase() || "";
+        const shortInfo = blog.short_info?.toLowerCase() || "";
+        const intro = blog.introduction?.toLowerCase() || "";
+        const history = blog.history?.toLowerCase() || "";
 
-        description = description.replace(/namaste.*\n?/i, "");
-        description = description.replace(/do watch till the end.*\n?/i, "");
-        description = description.replace(/🎥.*\n?/i, "");
-        description = description.replace(/⏱️ Video Timeline.*\n?/i, "");
-        description = description.replace(/📺 Watch our all episodes.*\n?/i, "");
-        description = description.replace(/🙏 Please Like, Share.*\n?/i, "");
-        description = description.replace(/#.*\n?/g, "");
+        const categories = blog.category || [];
+        const categoryMatch = categories.some((cat) =>
+            cat.toLowerCase().includes(query)
+        );
 
-        return title.includes(query) || description.includes(query);
+        return (
+            heading.includes(query) ||
+            shortInfo.includes(query) ||
+            intro.includes(query) ||
+            history.includes(query) ||
+            categoryMatch
+        );
     });
 
-    // Pagination calculations
-    const totalPages = Math.ceil(results.length / videosPerPage);
-    const startIndex = (currentPage - 1) * videosPerPage;
-    const currentVideos = results.slice(startIndex, startIndex + videosPerPage);
+    // 📄 Pagination Logic
+    const totalPages = Math.ceil(results.length / itemsPerPage);
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const currentBlogs = results.slice(startIndex, startIndex + itemsPerPage);
 
-    // Handle search form submit
     const handleSearch = (e) => {
         e.preventDefault();
         if (!searchText.trim()) return;
@@ -67,24 +67,20 @@ export default function SearchPage() {
     };
 
     return (
-        <div className=" max-w-6xl m-auto py-10 px-4 sm:px-8 lg:px-16 xl:px-24">
-            {/* HEADER */}
+        <div className="max-w-6xl m-auto py-10 px-4 sm:px-8 lg:px-16 xl:px-24">
             <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">
                 Search results for:{" "}
                 <span className="text-[#9b5935]">"{query}"</span>
             </h1>
 
-            {/* FIXED SEARCH BAR */}
+            {/* Search Bar */}
             <div className="max-w-6xl w-full m-auto flex justify-center mb-6">
-                <form
-                    onSubmit={handleSearch}
-                    className="relative w-full"
-                >
+                <form onSubmit={handleSearch} className="relative w-full">
                     <input
                         value={searchText}
                         onChange={(e) => setSearchText(e.target.value)}
-                        placeholder="Search"
-                        className="w-full p-3 pr-12   pl-20  text-center text-black text-md rounded-2xl bg-white border border-gray-300 outline-none shadow-sm"
+                        placeholder="Search blogs..."
+                        className="w-full p-3 pr-12 pl-20 text-center text-black text-md rounded-2xl bg-white border border-gray-300 outline-none shadow-sm"
                     />
                     <button
                         type="submit"
@@ -95,40 +91,26 @@ export default function SearchPage() {
                 </form>
             </div>
 
-
+            {/* No Results */}
             {results.length === 0 && (
-                <p className="text-gray-500 text-center">No videos found</p>
+                <p className="text-gray-500 text-center">No blogs found</p>
             )}
 
-            {/* VIDEO GRID */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto max-w-6xl">
-                {currentVideos.map((video) => (
-                    <VideoCard key={video.videoId} video={video} />
+            {/* Blog Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 mx-auto max-w-6xl">
+                {currentBlogs.map((blog) => (
+                    <BlogCard key={blog.id} blog={blog} />
                 ))}
             </div>
 
-            {/* PAGINATION */}
-            {results.length > videosPerPage && (
-                <div className="flex justify-center items-center gap-10 mt-12">
-                    <button
-                        disabled={currentPage === 1}
-                        onClick={() => setCurrentPage((p) => p - 1)}
-                        className="px-4 py-2 bg-[#6b3d24] rounded disabled:opacity-40"
-                    >
-                        Previous
-                    </button>
-
-                    <span className="text-lg font-semibold text-black">
-                        Page {currentPage} of {totalPages}
-                    </span>
-
-                    <button
-                        disabled={currentPage === totalPages}
-                        onClick={() => setCurrentPage((p) => p + 1)}
-                        className="px-4 py-2 bg-[#6b3d24] rounded disabled:opacity-40"
-                    >
-                        Next
-                    </button>
+            {/* Pagination Component */}
+            {totalPages > 1 && (
+                <div className="flex justify-center mt-12">
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={setCurrentPage}
+                    />
                 </div>
             )}
         </div>

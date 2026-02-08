@@ -3,6 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Line from "@/components/Line";
+import useStopLoader from '@/components/useStopLoader';
+
+
+
 
 export default function BlogPostClient({ blog }) {
     // ALL your states, sliders, modals, clicks here
@@ -242,6 +246,7 @@ export default function BlogPostClient({ blog }) {
             window.removeEventListener("wheel", handleWheel);
         };
     }, [modalIndex]);
+    useStopLoader();
 
 
     return (
@@ -519,74 +524,98 @@ export default function BlogPostClient({ blog }) {
                 </div>
 
                 {/* RIGHT — MAIN INGREDIENT (40%) */}
-                <div className="relative ">
+                <div className="relative">
 
                     {/* Heading */}
                     <div className="flex items-center mb-3 w-full">
                         <Image
                             src="/images/material/leaf9.png"
-                            width={50}
-                            height={50}
+                            width={40}
+                            height={40}
                             alt="leaf"
+                            className="sm:w-[50px] sm:h-[50px]"
                         />
-                        <h3 className="font-serif text-xl flex items-center mt-2 ml-2 w-full">
+                        <h3 className="font-serif text-lg sm:text-xl ml-2">
                             Main Ingredient
                         </h3>
                     </div>
 
-                    <aside className="rounded-xl shadow-inner p-3 relative ">
+                    <aside className="rounded-xl shadow-inner p-4 relative">
 
-                        {/* LEFT BUTTON */}
+                        {/* LEFT BUTTON – Desktop only */}
                         {showButtons && (
                             <button
                                 onClick={goToPreviousIngredient}
-                                className="absolute right-106 top-1/2 -translate-y-1/2 z-10
-       bg-[#c08a5a] shadow-sm rounded-full w-8 h-8
-       flex items-center justify-center hover:bg-[#7b4b2a]"
+                                className="hidden sm:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10
+        bg-[#c08a5a] shadow-sm rounded-full w-6 h-6
+        items-center justify-center hover:bg-[#7b4b2a]"
                             >
                                 ‹
                             </button>
                         )}
 
-                        {/* RIGHT BUTTON */}
+                        {/* RIGHT BUTTON – Desktop only */}
                         {showButtons && (
                             <button
                                 onClick={goToNextIngredient}
-                                className="absolute left-106 top-1/2 -translate-y-1/2 z-10
-       bg-[#c08a5a] shadow-sm rounded-full w-8 h-8
-       flex items-center justify-center hover:bg-[#7b4b2a]"
+                                className="hidden sm:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10
+        bg-[#c08a5a] shadow-sm rounded-full w-6 h-6
+        items-center justify-center hover:bg-[#7b4b2a]"
                             >
                                 ›
                             </button>
                         )}
 
+                        {/* CONTENT */}
                         <div className="relative">
 
-                            {/* Floating Image */}
-                            <div className="float-left mr-4 mb-2 w-[240px]">
+                            {/* Image */}
+                            <div className="w-full sm:float-left sm:w-[240px] sm:mr-4 mb-3 flex flex-col items-center">
                                 <Image
                                     src={`/${currentIngredient.image}`}
                                     width={240}
                                     height={170}
-                                    className="rounded-md"
+                                    className="rounded-md w-full max-w-[240px]"
                                     alt={currentIngredient.name || "Main Ingredient"}
                                 />
 
-                                <h4 className="font-serif font-semibold text-base mt-1 text-center">
+                                <h4 className="font-serif font-semibold text-base mt-2 text-center">
                                     {currentIngredient.name}
                                 </h4>
                             </div>
 
-                            {/* Wrapped Text */}
-                            <p className="blog-intro leading-snug  tracking-normal">
+                            {/* Text */}
+                            <p className="blog-intro leading-snug tracking-normal text-sm sm:text-base">
                                 {currentIngredient.info}
                             </p>
 
                             <div className="clear-both" />
                         </div>
-                    </aside>
 
+                        {/* MOBILE BUTTONS */}
+                        {showButtons && (
+                            <div className="flex justify-between mt-4 sm:hidden">
+                                <button
+                                    onClick={goToPreviousIngredient}
+                                    className="bg-[#c08a5a] rounded-full w-9 h-9
+          flex items-center justify-center hover:bg-[#7b4b2a]"
+                                >
+                                    ‹
+                                </button>
+
+                                <button
+                                    onClick={goToNextIngredient}
+                                    className="bg-[#c08a5a] rounded-full w-9 h-9
+          flex items-center justify-center hover:bg-[#7b4b2a]"
+                                >
+                                    ›
+                                </button>
+                            </div>
+                        )}
+
+                    </aside>
                 </div>
+
 
 
 

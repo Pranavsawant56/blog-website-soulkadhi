@@ -6,7 +6,7 @@
             "heading": "Solkadhi",
             "sub_heading": "Traditional Konkani Recipe",
             "short_info": "A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling  A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling digestivedigestive.",
-            "thumbnail_image": "images/material/thumnail.png",
+            "thumbnail_image": "/images/material/soulkadhi thumnail.png",
             "date": "2026-01-10",
             "slider_images": [
                 "/images/material/dummyimg.png",
@@ -140,7 +140,7 @@
             "heading": "Kaul Chicken",
             "sub_heading": "Traditional Konkani Recipe",
             "short_info": "A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling digestive.A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling .A refreshing coconvvut milk and kokum drink from the Konkan coast, served as a cooling digestive.",
-            "thumbnail_image": "images/material/thumnail.png",
+            "thumbnail_image": "/images/material/soulkadhi_tumbnail.png",
             "date": "2026-01-09",
             "slider_images": [
                 "images/material/dummyimg.png",
@@ -333,7 +333,7 @@
             "heading": "crab sukka",
             "sub_heading": "Traditional Konkani Recipe",
             "short_info": "A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling digestive.",
-            "thumbnail_image": "images/material/thumnail.png",
+            "thumbnail_image": "/images/material/Soulkadhi_thumb.png",
             "date": "2026-01-08",
             "slider_images": [
                 "images/material/dummyimg.png",
@@ -491,7 +491,7 @@
             "heading": "Banana flower vegetable",
             "sub_heading": "Traditional Konkani Recipe",
             "short_info": "A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling digestive.",
-            "thumbnail_image": "images/material/thumnail.png",
+            "thumbnail_image": "/images/material/t2.png",
             "date": "2026-01-07",
             "slider_images": [
                 "images/material/dummyimg.png",
@@ -632,24 +632,35 @@
                     "image": "images/aluwadi/comfood/soulkadhi.png"
                 }
             ],
-            "types": [
-                "non-veg",
-                "fry",
-                "soft drinks"
-            ],
+            
             "category": [
-                "Traditional ",
+                "Traditional  village food",
                 "Konkani Cuisine",
-                "veg"
+                "veg",
+                "winter",
+                "pickles",
+                "dinner",
+                "chicken",
+                "slow cooked",
+                "bitter",
+                "firewood cooked",
+                "rice",
+                "spring",
+                "non veg",
+                "sea food",
+                "vegan",
+                "fish",
+                "vegetarian",
+                "spicy"
             ]
         },
         {
             "id": 5,
-            "slug": "mutton",
-            "heading": "Solkadhi",
+            "slug": "mutton-sukka",
+            "heading": "Mutton sukka ",
             "sub_heading": "Traditional Konkani Recipe",
             "short_info": "A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling  A refreshing coconut milk and kokum drink from the Konkan coast, served as a cooling digestivedigestive.",
-            "thumbnail_image": "images/material/thumnail.png",
+            "thumbnail_image": "/images/material/thumnail.png",
             "date": "2026-01-05",
             "slider_images": [
                 "/images/material/dummyimg.png",

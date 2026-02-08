@@ -1,0 +1,116 @@
+[
+    {
+        "title": "Food Type",
+        "items": [
+            "Vegetarian",
+            "Non-Vegetarian",
+            "Vegan"
+            
+        ]
+    },
+    {
+        "title": "Plant Based",
+        "items": [
+            "Vegetables",
+            "Wild Vegetables",
+            "Root Vegetables",
+            "Flower Based Food",
+            "Fruit Based Food"
+        ]
+    },
+    {
+        "title": "Animal Based",
+        "items": [
+            "Seafood",
+            "Fish",
+            "Chicken",
+            "Mutton",
+            "Milk"
+        ]
+    },
+    {
+        "title": "Natural Staples",
+        "items": [
+            "Rice",
+            "Pulses",
+            "Flours",
+            "Coconut",
+            "Jaggery"
+        ]
+    },
+    {
+        "title": "Meal Type",
+        "items": [
+            "Breakfast",
+            "Lunch",
+            "Dinner",
+            "Snacks",
+            "Quick Bites"
+        ]
+    },
+    {
+        "title": "Preparation Style",
+        "items": [
+            "Fried",
+            "Boiled",
+            "Steamed",
+            "Fermented",
+            "Soups"
+        ]
+    },
+    {
+        "title": "Taste Profile",
+        "items": [
+            "Spicy",
+            "Sweet",
+            "Tangy",
+            "Sour",
+            "Bitter"
+        ]
+    },
+    {
+        "title": "Serving Style",
+        "items": [
+            "Hot Served",
+            "Cold Served"
+        ]
+    },
+    {
+        "title": "Dish Type",
+        "items": [
+            "Appetizers",
+            "Desserts",
+            "Beverages",
+            "Chutney",
+            "Pickles",
+            "Preserved Food"
+        ]
+    },
+    {
+        "title": "Cultural & Occasion",
+        "items": [
+            "Festive Food",
+            "Travelling Food"
+        ]
+    },
+    {
+        "title": "Traditional & Heritage",
+        "items": [
+            "Traditional Village Food",
+            "Slow Cooked",
+            "Clay Pot Cooked",
+            "Firewood Cooked"
+        ]
+    },
+    {
+        "title": "Season",
+        "items": [
+            " Spring",
+            "Summer",
+            "Monsoon ",
+            "Autumn ",
+            "Pre-Winter",
+            "Winter"
+        ]
+    }
+]

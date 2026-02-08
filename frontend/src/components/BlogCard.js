@@ -8,6 +8,20 @@ import Link from "next/link";
 export default function BlogCard({ blog }) {
   const cardRef = useRef(null);
 
+const fixPath = (path) => {
+  const BASE = "https://soulkadhi.anubhootee.com";
+  if (!path) return null;
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  return BASE + (path.startsWith("/") ? path : "/" + path);
+};
+
+// when formatting the blog
+const formattedBlog = {
+  ...blog,
+  thumbnail_image: fixPath(blog.thumbnail_image)
+};
+
+
   useEffect(() => {
     if (!cardRef.current) return;
 
@@ -29,12 +43,14 @@ export default function BlogCard({ blog }) {
       <div
         ref={cardRef}
         className="
-          flex flex-col items-center
-          transform transition-all duration-500 
-          ease-[cubic-bezier(0.22,1,0.36,1)]
-          hover:scale-[1.07] hover:-translate-y-1 
-          hover:bg-(--color-grey-orange) rounded-xl
-         
+                  inline-flex w-fit flex-col items-center
+                  mx-auto
+                  transition-all duration-500
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
+                  hover:scale-[1.07]
+                  hover:bg-(--color-grey-orange)
+                  rounded-xl
+
         "
       >
         {/* Thumbnail */}
@@ -45,7 +61,8 @@ export default function BlogCard({ blog }) {
             width={220}
             height={280}
             className="w-full h-[280px] object-cover group-hover:scale-105 transition-transform duration-500"
-          />
+            unoptimized
+            />
         </div>
 
         {/* Title */}
