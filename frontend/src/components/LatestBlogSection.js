@@ -2,18 +2,35 @@
 
 import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
-import blogsData from "../blog.json";
 import Image from "next/image";
+
 export default function LatestBlogSection() {
-    const [latestBlogs, setLatestBlogs] = useState([]);
+  const [latestBlogs, setLatestBlogs] = useState([]);
 
-    useEffect(() => {
-        const sortedBlogs = [...blogsData.blogs].sort(
-            (a, b) => new Date(b.date) - new Date(a.date)
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const res = await fetch(
+          "https://soulkadhi.anubhootee.com/phpserver/recipe.php"
         );
+        if (!res.ok) throw new Error("Failed to fetch blogs");
 
-        setLatestBlogs(sortedBlogs.slice(0, 5));
-    }, []);
+        const blogs = await res.json();
+
+        // Sort by date and get latest 5
+        const sortedBlogs = blogs
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 5);
+
+        setLatestBlogs(sortedBlogs);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchBlogs();
+  }, []);
+
 
     return (
         <section className="pt-6 px-4 sm:px-6 lg:px-10">

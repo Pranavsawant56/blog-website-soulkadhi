@@ -2,21 +2,39 @@
 
 import { useState, useEffect } from "react";
 import BlogCard from "@/components/BlogCard";
-import blogsData from "@/blog.json";
 import Pagination from "../../components/pagination.js";
 
 export default function BlogPage() {
-  
+  const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
-  
-  const totalPages = Math.ceil(blogsData.blogs.length / itemsPerPage);
 
+  // Fetch blogs from API
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const res = await fetch(
+          "https://soulkadhi.anubhootee.com/phpserver/recipe.php"
+        );
+        if (!res.ok) throw new Error("Failed to fetch blogs");
+
+        const data = await res.json();
+        // Sort blogs by date (newest first)
+        const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+        setBlogs(sorted);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchBlogs();
+  }, []);
+
+  // Pagination logic
+  const totalPages = Math.ceil(blogs.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-
-  const currentBlogs = blogsData.blogs.slice(startIndex, endIndex);
-
+  const currentBlogs = blogs.slice(startIndex, endIndex);
   return (
     <section className="py-10 px-4 sm:px-8 lg:px-16 xl:px-24">
       <div className="max-w-6xl mx-auto">
@@ -33,15 +51,15 @@ export default function BlogPage() {
         </div>
 
         {/* Pagination */}
-             {totalPages > 1 && (
-                  <div className="flex justify-center mt-12">
-                    <Pagination
-                      currentPage={currentPage}
-                      totalPages={totalPages}
-                      onPageChange={setCurrentPage}
-                    />
-                  </div>
-                )}
+        {totalPages > 1 && (
+          <div className="flex justify-center mt-12">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

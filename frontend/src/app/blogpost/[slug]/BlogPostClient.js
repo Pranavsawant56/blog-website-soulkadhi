@@ -188,7 +188,10 @@ export default function BlogPostClient({ blog }) {
         return () => clearInterval(interval);
     }, [sliderImages.length]);
 
-    const stepDescriptions = blog.steps.map(step => step.description);
+    const stepDescriptions =
+  blog.steps?.map(step => step.description || step.title || "") || [];
+
+
 
     const itemsPerPage = 2 * 2; // 2 columns * 2 rows per page (adjust if layout changes)
     const totalPages = Math.ceil(stepImages.length / itemsPerPage);

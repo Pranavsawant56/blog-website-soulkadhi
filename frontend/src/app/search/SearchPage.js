@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import blogsData from "@/blog.json";
+// import blogsData from "@/blog.json";
 import BlogCard from "@/components/BlogCard";
 import Pagination from "@/components/pagination";
 import { Search } from "lucide-react";

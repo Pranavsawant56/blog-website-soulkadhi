@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import blogsData from "@/blog.json";
+// import blogsData from "@/blog.json";
 import BlogCard from "@/components/BlogCard";
 import Pagination from "@/components/pagination";
 import { useState, useEffect } from "react";

@@ -9,7 +9,7 @@ import TrendingSection from "../components/TrendingSection";
 import Soulkadhiintro from "../components/Soulkadhiintro";
 import Instaslider from "../components/Instaslider";
 import LatestBlogsection from "../components/LatestBlogSection";
-import blogsData from "@/blog.json"; // ✅ Use this directly
+// import blogsData from "@/blog.json"; // ✅ Use this directly
 
 
 export default function HomePage() {
@@ -27,24 +27,32 @@ export default function HomePage() {
         );
 
         if (!resVideos.ok) throw new Error("Videos API failed");
-
         const videoData = await resVideos.json();
         setVideos(videoData);
 
-        // 📝 Blogs from local JSON (already imported)
-        setBlogs(blogsData);
+        // 📝 Fetch blogs from live API
+        const resBlogs = await fetch(
+          "https://soulkadhi.anubhootee.com/phpserver/recipe.php"
+        );
+        if (!resBlogs.ok) throw new Error("Blogs API failed");
+        const blogData = await resBlogs.json();
+
+        // Sort by date if needed (newest first)
+        const sortedBlogs = blogData.sort(
+          (a, b) => new Date(b.date) - new Date(a.date)
+        );
+
+        setBlogs(sortedBlogs);
 
       } catch (err) {
         console.error("Error fetching data:", err);
       } finally {
-        // 🟢 Always stop loader after attempt
         setHasLoaded(true);
       }
     }
 
     fetchData();
   }, [setHasLoaded]);
-
   return (
     <div>
       <HeroSlider />
@@ -54,7 +62,7 @@ export default function HomePage() {
       <TrendingSection videos={videos} />
       <Soulkadhiintro />
       <Instaslider />
-      
+
     </div>
   );
 }

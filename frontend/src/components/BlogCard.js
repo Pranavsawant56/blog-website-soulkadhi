@@ -8,18 +8,6 @@ import Link from "next/link";
 export default function BlogCard({ blog }) {
   const cardRef = useRef(null);
 
-const fixPath = (path) => {
-  const BASE = "https://soulkadhi.anubhootee.com";
-  if (!path) return null;
-  if (path.startsWith("http://") || path.startsWith("https://")) return path;
-  return BASE + (path.startsWith("/") ? path : "/" + path);
-};
-
-// when formatting the blog
-const formattedBlog = {
-  ...blog,
-  thumbnail_image: fixPath(blog.thumbnail_image)
-};
 
 
   useEffect(() => {
