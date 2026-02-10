@@ -8,34 +8,55 @@ import { useState, useEffect } from "react";
 
 export default function CategoriesPage() {
   const searchParams = useSearchParams();
+
+  // Hooks first
   const [types, setTypes] = useState(searchParams.get("types")?.toLowerCase() || "");
-  const normalize = (str) =>
-    str
-      .trim()                    // remove leading/trailing spaces
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^a-z0-9-]/g, "");
-
-
-
-  useEffect(() => {
-    setTypes(searchParams.get("types")?.toLowerCase() || "");
-  }, [searchParams.toString()]); // re-run when the URL changes
-
-  const filteredBlogs = blogsData.blogs.filter((blog) =>
-    blog.category?.some((c) => normalize(c) === types)
-  );
-
-
+  const [allBlogs, setAllBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 20;
 
+ 
+  const normalize = (str) =>
+    str.trim().toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
+
+   const filteredBlogs = allBlogs.filter((blog) =>
+    blog.category?.some((c) => normalize(c) === types)
+  );
+  
+  // Update types when URL changes
+  useEffect(() => {
+    setTypes(searchParams.get("types")?.toLowerCase() || "");
+  }, [searchParams.toString()]);
+
+  // Fetch blogs
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const res = await fetch("https://soulkadhi.anubhootee.com/phpserver/recipe.php", { cache: "no-store" });
+        if (!res.ok) throw new Error("Failed to fetch blogs");
+        const data = await res.json();
+        setAllBlogs(data || []);
+      } catch (err) {
+        console.error(err);
+        setAllBlogs([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) return <p className="text-center py-10">Loading...</p>;
+
+  
+
   const totalPages = Math.ceil(filteredBlogs.length / itemsPerPage);
-
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  const currentBlogs = filteredBlogs.slice(startIndex, startIndex + itemsPerPage);
 
-  const currentBlogs = filteredBlogs.slice(startIndex, endIndex);
 
   return (
     <section className="py-12 px-4">

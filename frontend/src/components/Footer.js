@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
 import { FaYoutube, FaFacebook, FaInstagram } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 export default function Footer() {
+  const [categories, setCategories] = useState([]);
   const normalize = (str) =>
     str
       .trim() // remove extra spaces
@@ -36,7 +38,7 @@ export default function Footer() {
             {["Veg", "Non-Veg", "Sea Food", "Rice", "Vegan", "Chicken", "Vegetables"].map((cat) => (
               <li key={cat}>
                 <Link
-                  href={`/categories?types=${normalize(cat)}`}
+                  href={`/categories?types=${cat.toLowerCase().replace(/\s+/g, "-")}`}
                   className="hover:text-amber-950"
                 >
                   {cat} {/* Keep display as proper title */}
