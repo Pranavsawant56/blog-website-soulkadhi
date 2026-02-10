@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-// import blogsData from "@/blog.json";
 import BlogCard from "@/components/BlogCard";
 import Pagination from "@/components/pagination";
 import { Search } from "lucide-react";
@@ -14,16 +13,29 @@ export default function SearchPage() {
 
     const [allBlogs, setAllBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 20;
-
     const [searchText, setSearchText] = useState(query);
 
-    // Load blogs
+    // 🔄 Fetch blogs from API
     useEffect(() => {
-        setAllBlogs(blogsData.blogs || blogsData);
-        setLoading(false);
+        async function fetchBlogs() {
+            try {
+                const res = await fetch(
+                    "https://soulkadhi.anubhootee.com/phpserver/recipe.php"
+                );
+                if (!res.ok) throw new Error("Failed to fetch blogs");
+
+                const data = await res.json();
+                setAllBlogs(data);
+            } catch (err) {
+                console.error(err);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchBlogs();
     }, []);
 
     // Reset page when search query changes
