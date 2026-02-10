@@ -39,3 +39,4 @@ if (mail($to, $subject, $body, $headers)) {
   http_response_code(500);
   echo json_encode(["error" => "Email failed to send"]);
 }
+?>
