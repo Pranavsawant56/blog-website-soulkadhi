@@ -1,9 +1,10 @@
 import BlogPostClient from "./BlogPostClient";
-
+export const dynamic = "force-dynamic";
 // ✅ 1. Get all slugs for static build
 export async function generateStaticParams() {
   const res = await fetch(
-    "https://soulkadhi.anubhootee.com/phpserver/recipe.php"
+    "https://soulkadhi.anubhootee.com/phpserver/recipe.php",
+    { cache: "no-store" }
   );
 
   if (!res.ok) return [];

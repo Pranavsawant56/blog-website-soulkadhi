@@ -1,5 +1,6 @@
 import BlogCard from "@/components/BlogCard";
 
+export const dynamic = "force-dynamic";
 export default async function BlogListPage() {
   // Fetch all blogs from API
   const res = await fetch(
