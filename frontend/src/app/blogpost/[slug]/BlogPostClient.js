@@ -240,6 +240,7 @@ export default function BlogPostClient({ blog }) {
                 );
             }
         };
+        
 
         window.addEventListener("keydown", handleKeyDown);
         window.addEventListener("wheel", handleWheel, { passive: true });
@@ -360,6 +361,7 @@ export default function BlogPostClient({ blog }) {
                                                 <span className="whitespace-nowrap">{item.name}</span>
                                             </div>
                                             <span className="text-left whitespace-nowrap ml-20">{item.quantity}</span>
+
                                         </div>
 
                                         {idx !== arr.length - 1 && (

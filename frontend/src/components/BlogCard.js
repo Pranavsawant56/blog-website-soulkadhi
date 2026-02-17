@@ -44,7 +44,7 @@ export default function BlogCard({ blog }) {
         {/* Thumbnail */}
         <div className="relative w-full max-w-[220px] overflow-hidden rounded-md">
           <Image
-            src={blog.thumbnail_image}
+            src={`/${blog.thumbnail_image}`}
             alt={blog.heading}
             width={220}
             height={280}

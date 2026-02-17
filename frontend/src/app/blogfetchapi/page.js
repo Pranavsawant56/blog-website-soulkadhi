@@ -1,11 +1,11 @@
 import BlogCard from "@/components/BlogCard";
 
-export const dynamic = "force-dynamic";
+
 export default async function BlogListPage() {
   // Fetch all blogs from API
   const res = await fetch(
     "https://soulkadhi.anubhootee.com/phpserver/recipe.php",
-    { cache: "no-store" }
+   
   );
 
   if (!res.ok) return <p>No blogs found</p>;
