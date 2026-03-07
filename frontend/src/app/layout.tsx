@@ -48,7 +48,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${roboto.variable}`}>
+      <body >
         <LoaderProvider> {/* ✅ ONE GLOBAL PROVIDER */}
           <ClientWrapper>
             <Header />

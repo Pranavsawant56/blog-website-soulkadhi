@@ -1,38 +1,21 @@
 import BlogPostClient from "./BlogPostClient";
 
-// ✅ 1. Get all slugs for static build
-export async function generateStaticParams() {
-  const res = await fetch(
-    "https://soulkadhi.anubhootee.com/phpserver/recipe.php",
-    
-  );
+export const dynamic = "force-dynamic";
 
-  if (!res.ok) return [];
-
-  const blogs = await res.json();
-
-  return blogs.map((blog) => ({
-    slug: blog.slug,
-  }));
-}
-
-
-// ✅ 2. Page for each slug
 export default async function RecipePage({ params }) {
   const { slug } =  await params;
-
-  // fetch ALL recipes
+  console.log("slug",slug);
   const res = await fetch(
     "https://soulkadhi.anubhootee.com/phpserver/recipe.php",
-  
+    { cache: "no-store" }
   );
-
-  if (!res.ok) return <p>Blog not found</p>;
+console.log("res",res);
+  if (!res.ok) return <p>API data not found</p>;
 
   const blogs = await res.json();
-
-  // find only the blog matching slug
+  console.log("blogs",blogs);
   const recipe = blogs.find((blog) => blog.slug === slug);
+  console.log("recipe",recipe);
 
   if (!recipe) return <p>Blog not found</p>;
 

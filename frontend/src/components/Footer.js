@@ -35,7 +35,7 @@ export default function Footer() {
         <div>
           <h3 className="text-xl mb-3 ">Top Categories</h3>
           <ul className="space-y-2 text-gray-300">
-            {["Veg", "Non-Veg", "Sea Food", "Rice", "Vegan", "Chicken", "Vegetables"].map((cat) => (
+            {["Vegetarian", "Non-Vegetarian", "Seafood", "Rice", "Vegan", "Chicken", "Vegetables"].map((cat) => (
               <li key={cat}>
                 <Link
                   href={`/categories?types=${cat.toLowerCase().replace(/\s+/g, "-")}`}

@@ -52,7 +52,7 @@ export default function LatestBlogSection() {
 
                     {/* See All Button */}
                     <a
-                        href="/blogs.html"
+                        href="/blogs"
                         className="   pt-3 rounded  transition ml-4"
                     >
                         more
